@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="articlePageTitle">Artikel – Steirer Pellets Magazin</title>
+  <meta name="description" id="articlePageDesc" content="Ratgeber und Tipps rund um Holzpellets von Steirer Pellets." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+</head>
+<body class="blog-page article-page">
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo">
+        <img src="../images/logo.png" alt="Steirer Pellets Logo" class="logo-img" />
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html#bestellung"><i class="fas fa-shopping-cart"></i> Bestellen</a>
+        <a href="../index.html#preise">Preise</a>
+        <a href="../index.html#produkt">Produkt</a>
+        <a href="../index.html#vorteile">Vorteile</a>
+        <a href="../index.html#nachhaltigkeit">Nachhaltigkeit</a>
+        <a href="index.html" class="active"><i class="fas fa-newspaper"></i> Magazin</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+      </nav>
+      <a href="../index.html#bestellung" class="btn btn-primary nav-cta">
+        <i class="fas fa-shopping-cart"></i> Jetzt bestellen
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Article not found state -->
+  <div id="articleNotFound" class="article-not-found" style="display:none">
+    <div class="container">
+      <i class="fas fa-file-alt"></i>
+      <h2>Artikel nicht gefunden</h2>
+      <p>Dieser Artikel existiert nicht oder wurde verschoben.</p>
+      <a href="index.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Zum Magazin</a>
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div id="articleLoading" class="article-loading">
+    <div class="container">
+      <i class="fas fa-circle-notch fa-spin"></i>
+      <p>Artikel wird geladen …</p>
+    </div>
+  </div>
+
+  <!-- Article Content (filled by JS) -->
+  <div id="articleContent" style="display:none">
+
+    <!-- Article Hero -->
+    <section class="article-hero" id="articleHero">
+      <div class="container">
+        <div class="article-breadcrumb">
+          <a href="../index.html"><i class="fas fa-home"></i> Startseite</a>
+          <i class="fas fa-chevron-right"></i>
+          <a href="index.html">Magazin</a>
+          <i class="fas fa-chevron-right"></i>
+          <span id="articleBreadcrumbTitle">Artikel</span>
+        </div>
+        <div class="article-meta-top">
+          <span class="article-cat-badge" id="articleCatBadge"></span>
+          <span class="article-reading-time" id="articleReadingTime"><i class="fas fa-clock"></i> – Min. Lesezeit</span>
+        </div>
+        <h1 class="article-main-title" id="articleMainTitle">Wird geladen …</h1>
+        <p class="article-sub" id="articleSub"></p>
+        <div class="article-meta-row">
+          <div class="article-author">
+            <div class="author-av"><i class="fas fa-leaf"></i></div>
+            <div>
+              <span class="author-name" id="articleAuthor">Steirer Pellets Team</span>
+              <span class="author-title">Expertenteam</span>
+            </div>
+          </div>
+          <span class="article-date" id="articleDate"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main article layout -->
+    <div class="article-body-wrap">
+      <div class="container article-layout">
+
+        <!-- Aufmacherbild (wird per JS befüllt wenn vorhanden) -->
+        <div id="articleHeroImage" class="article-hero-image-wrap" style="display:none"></div>
+
+        <!-- Article Text -->
+        <article class="article-text" id="articleBody">
+        </article>
+
+        <!-- Article Sidebar -->
+        <aside class="article-sidebar">
+
+          <!-- TOC -->
+          <div class="sidebar-box toc-box">
+            <h3 class="sidebar-heading"><i class="fas fa-list"></i> Inhalt</h3>
+            <nav id="articleToc" class="article-toc"></nav>
+          </div>
+
+          <!-- Share -->
+          <div class="sidebar-box">
+            <h3 class="sidebar-heading"><i class="fas fa-share-alt"></i> Teilen</h3>
+            <div class="share-buttons">
+              <button class="share-btn" id="shareWhatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+              <button class="share-btn" id="shareFacebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+              <button class="share-btn" id="shareCopy"><i class="fas fa-link"></i> Link kopieren</button>
+            </div>
+            <div id="shareCopySuccess" class="share-copy-success" style="display:none">
+              <i class="fas fa-check"></i> Link kopiert!
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="sidebar-box sidebar-order-box">
+            <div class="sidebar-order-icon"><i class="fas fa-fire-alt"></i></div>
+            <h3>Pellets bestellen</h3>
+            <p>ENplus A1 · Lose per Tankwagen · Ab 2 Tonnen</p>
+            <div class="sidebar-price-teaser">
+              <span class="spt-label">Ab 4 Tonnen</span>
+              <span class="spt-price">398 €<small>/t</small></span>
+            </div>
+            <a href="../index.html#bestellung" class="btn btn-primary btn-full">
+              <i class="fas fa-shopping-cart"></i> Jetzt bestellen
+            </a>
+            <a href="tel:+436767060300" class="btn btn-outline btn-full sidebar-call-btn">
+              <i class="fas fa-phone"></i> 0676 7060300
+            </a>
+          </div>
+
+          <!-- Tags -->
+          <div class="sidebar-box" id="articleTagsBox">
+            <h3 class="sidebar-heading"><i class="fas fa-tags"></i> Tags</h3>
+            <div class="tag-cloud" id="articleTags"></div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="related-articles-section">
+      <div class="container">
+        <h2 class="related-title"><i class="fas fa-newspaper"></i> Weitere Artikel</h2>
+        <div id="relatedArticles" class="articles-grid related-grid"></div>
+        <div class="related-back">
+          <a href="index.html" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Alle Artikel im Magazin
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /#articleContent -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="../images/logo.png" alt="Steirer Pellets" class="footer-logo-img" /></div>
+        <p>Nachhaltige Holzpellets lose – direkt per Tankwagen aus dem Herzen der Steiermark.</p>
+        <div class="footer-certs">
+          <span class="footer-cert"><i class="fas fa-award"></i> ENplus A1</span>
+          <span class="footer-cert"><i class="fas fa-leaf"></i> CO₂-neutral</span>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <a href="../index.html#bestellung">Bestellen</a>
+        <a href="../index.html#preise">Preise</a>
+        <a href="../index.html#produkt">Produkt</a>
+        <a href="index.html">Magazin</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 8580 Köflach, Alte Hauptstraße 9</p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+436767060300">0676 7060300</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:office@steirerpellets.at">office@steirerpellets.at</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <span>© 2025 Steirer Pellets GmbH · Alle Rechte vorbehalten</span>
+        <div class="footer-links"><a href="../impressum.html">Impressum</a><a href="../datenschutz.html">Datenschutz</a><a href="../agb.html">AGB</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+  <script src="../js/blog-fallback-data.js"></script>
+  <script src="../js/blog.js"></script>
+</body>
+</html>

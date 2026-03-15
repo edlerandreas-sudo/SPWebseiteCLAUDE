@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steirer Pellets – Holzpellets lose kaufen | ENplus A1 Steiermark</title>
+  <meta name="description" content="Steirer Pellets – ENplus A1 zertifizierte Holzpellets lose per Tankwagen. Ab 398 €/t. Direkt vom Hersteller aus der Steiermark." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#bestellung" class="logo">
+        <img src="images/logo.png" alt="Steirer Pellets Logo" class="logo-img" />
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#bestellung" class="nav-cta-link"><i class="fas fa-shopping-cart"></i> Bestellen</a>
+        <a href="#preise">Preise</a>
+        <a href="#produkt">Produkt</a>
+        <a href="#vorteile">Vorteile</a>
+        <a href="#nachhaltigkeit">Nachhaltigkeit</a>
+        <a href="#lieferung">Lieferung</a>
+        <a href="blog/index.html"><i class="fas fa-newspaper"></i> Magazin</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a href="#bestellung" class="btn btn-primary nav-cta">
+        <i class="fas fa-shopping-cart"></i> Jetzt bestellen
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       BESTELLFORMULAR – ganz oben, volle Breite
+       ======================================================== -->
+  <section class="order-hero" id="bestellung">
+    <div class="order-hero-bg">
+      <div class="order-hero-particles" id="particles"></div>
+    </div>
+
+    <div class="container order-hero-inner">
+
+      <!-- Logo + Claim -->
+      <div class="order-brand">
+        <div class="order-logo-wrap">
+          <img src="images/logo.png" alt="Steirer Pellets" class="order-logo" />
+        </div>
+        <p class="order-tagline">Lose Holzpellets per Tankwagen –<br/>direkt vom steirischen Hersteller.</p>
+        <div class="order-pills">
+          <span><i class="fas fa-award"></i> ENplus A1</span>
+          <span><i class="fas fa-leaf"></i> CO₂-neutral</span>
+          <span><i class="fas fa-truck"></i> Blasbefüllung</span>
+        </div>
+        <div class="order-top-actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+          <a href="https://wa.me/436767060300" class="btn btn-primary" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Bestellung per WhatsApp: 0676 7060300
+          </a>
+        </div>
+        <p style="margin-top:10px;font-size:0.95rem;color:var(--gray-600);font-weight:600">oder telefonisch bestellen: <a href="tel:+436767060300" style="color:var(--green-logo)">0676 7060300</a></p>
+
+        <!-- LKW-Bild freigestellt -->
+        <div class="order-lkw-wrap">
+          <img src="images/lkw-freigestellt.png" alt="Steirer Pellets Tankwagen" class="order-lkw" />
+          <div class="order-lkw-badges">
+            <span><i class="fas fa-check-circle"></i> regional</span>
+            <span><i class="fas fa-check-circle"></i> nachhaltig</span>
+            <span><i class="fas fa-check-circle"></i> aus steirischer Forstwirtschaft</span>
+          </div>
+        </div>
+
+        <!-- Preis-Teaser -->
+        <div class="order-price-teaser">
+          <div class="price-teaser-row">
+            <div class="price-teaser-item best">
+              <span class="pt-label">Ab 4 Tonnen</span>
+              <span class="pt-price"><span class="pt-price-gross">398</span> €<small>/t</small></span>
+              <span class="pt-hint">+ <span class="pt-abschlauch-val">58</span> € Abschlauch</span>
+            </div>
+            <div class="price-teaser-item">
+              <span class="pt-label">Unter 4 Tonnen</span>
+              <span class="pt-price"><span class="pt-price-klein">418</span> €<small>/t</small></span>
+              <span class="pt-hint">+ <span class="pt-abschlauch-val">58</span> € Abschlauch</span>
+            </div>
+          </div>
+          <a href="#preise" class="pt-link"><i class="fas fa-table"></i> Vollständige Preisliste</a>
+        </div>
+      </div>
+
+      <!-- Bestellformular -->
+      <div class="order-form-card" id="order-card">
+        <div class="order-form-header">
+          <div class="order-form-icon"><i class="fas fa-shopping-cart"></i></div>
+          <div>
+            <h2>Pellets bestellen</h2>
+            <p>Verbindliche Bestellung – wir bestätigen per Telefon oder E-Mail.</p>
+          </div>
+        </div>
+
+        <form id="orderForm" class="order-form">
+
+          <!-- ── SCHRITT 1 ── -->
+          <div class="form-step active" id="step1">
+            <div class="step-pill">Schritt 1 von 3 · Menge &amp; Lieferzeit</div>
+
+            <!-- Schieberegler Menge -->
+            <div class="menge-block">
+              <div class="menge-label-row">
+                <label class="form-label">Gewünschte Menge</label>
+                <div class="menge-bubble" id="mengeBubble">
+                  <span class="menge-val" id="mengeDisplay">5</span>
+                  <span class="menge-t">t</span>
+                </div>
+              </div>
+              <div class="slider-wrap">
+                <input type="range" id="mengeSlider" min="2" max="25" step="1" value="5" class="menge-slider" />
+                <div class="slider-track-fill" id="sliderFill"></div>
+              <div class="slider-marks" id="mengeMarks"></div>
+              </div>
+              <input type="hidden" id="mengeInput" name="menge" value="5" />
+              <!-- Pellets-Foto -->
+              <div class="pellets-photo-strip">
+                <img src="images/pellets-hero.jpg" alt="ENplus A1 Holzpellets lose" class="pellets-photo" />
+                <div class="pellets-photo-badge"><i class="fas fa-award"></i> ENplus A1 · 100% steirisches Holz</div>
+              </div>
+
+              <!-- Live Preisberechnung -->
+              <div class="price-calc-box" id="priceCalcBox">
+                <div class="pc-row">
+                  <span class="pc-label"><i class="fas fa-fire"></i> <span id="mengeHintText">5 t · Jahresbedarf Einfamilienhaus</span></span>
+                </div>
+                <div class="pc-divider"></div>
+                <div class="pc-row">
+                  <span class="pc-item-label">Pelletpreis (<span id="pcPreisProT">398</span> €/t × <span id="pcTonnen">5</span> t)</span>
+                  <span class="pc-item-val" id="pcPelletTotal">1.990 €</span>
+                </div>
+                <div class="pc-row">
+                  <span class="pc-item-label">Abschlauchgebühr (einmalig)</span>
+                  <span class="pc-item-val">58 €</span>
+                </div>
+                <div class="pc-row total">
+                  <span class="pc-item-label"><strong>Gesamtpreis</strong></span>
+                  <span class="pc-item-val total-val" id="pcTotal">2.048 €</span>
+                </div>
+                <div class="pc-note">inkl. MwSt. · unverbindliche Schätzung</div>
+              </div>
+            </div>
+
+            <!-- Kalenderwoche -->
+            <div class="form-group">
+              <label class="form-label" for="lieferkw">Gewünschte Lieferwoche *</label>
+              <div class="kw-picker-wrap">
+                <div class="kw-picker" id="kwPicker">
+                  <button type="button" class="kw-nav" id="kwPrev"><i class="fas fa-chevron-left"></i></button>
+                  <div class="kw-display" id="kwDisplay">
+                    <span class="kw-label">KW</span>
+                    <span class="kw-num" id="kwNum">–</span>
+                    <span class="kw-year" id="kwYear">–</span>
+                    <span class="kw-dates" id="kwDates">–</span>
+                  </div>
+                  <button type="button" class="kw-nav" id="kwNext"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <input type="hidden" id="lieferkw" name="lieferkw" required />
+              </div>
+              <div class="kw-hint" id="kwHint"></div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-full step-next" id="nextBtn1">
+              Weiter <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- ── SCHRITT 2 ── -->
+          <div class="form-step" id="step2">
+            <div class="step-pill">Schritt 2 von 3 · Lieferadresse</div>
+
+            <div class="form-row-2">
+              <div class="form-group plz-group">
+                <label class="form-label" for="plz">Postleitzahl *</label>
+                <div class="plz-input-wrap">
+                  <input type="text" id="plz" name="plz" placeholder="z.B. 8580" maxlength="4" required autocomplete="off" />
+                  <div class="plz-status" id="plzStatus"></div>
+                </div>
+                <div class="plz-dropdown" id="plzDropdown"></div>
+                <div class="plz-info" id="plzInfo"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ort">Ort *</label>
+                <input type="text" id="ort" name="ort" placeholder="z.B. Köflach" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="strasse">Straße &amp; Hausnummer *</label>
+              <input type="text" id="strasse" name="strasse" placeholder="Musterstraße 12" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="tankgroesse">Tankgröße</label>
+              <select id="tankgroesse" name="tankgroesse">
+                <option value="">Bitte wählen</option>
+                <option value="bis 3 Tonnen">bis 3 Tonnen</option>
+                <option value="3 bis 5 Tonnen">3 bis 5 Tonnen</option>
+                <option value="5 bis 8 Tonnen">5 bis 8 Tonnen</option>
+                <option value="8 bis 12 Tonnen">8 bis 12 Tonnen</option>
+                <option value="ueber 12 Tonnen">über 12 Tonnen</option>
+                <option value="unbekannt">unbekannt</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="zufahrt">Zufahrtshinweise</label>
+              <textarea id="zufahrt" name="zufahrt" rows="2" placeholder="z.B. Einfahrt links, Parkplatz vorhanden, Kellerabgang …"></textarea>
+            </div>
+
+            <div class="step-buttons">
+              <button type="button" class="step-back" id="backBtn1"><i class="fas fa-arrow-left"></i> Zurück</button>
+              <button type="button" class="btn btn-primary step-next" id="nextBtn2">Weiter <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- ── SCHRITT 3 ── -->
+          <div class="form-step" id="step3">
+            <div class="step-pill">Schritt 3 von 3 · Ihre Daten</div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="vorname">Vorname *</label>
+                <input type="text" id="vorname" name="vorname" placeholder="Max" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="nachname">Nachname *</label>
+                <input type="text" id="nachname" name="nachname" placeholder="Mustermann" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">E-Mail *</label>
+              <input type="email" id="email" name="email" placeholder="max@beispiel.at" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="telefon">Telefon *</label>
+              <input type="tel" id="telefon" name="telefon" placeholder="+43 …" required />
+            </div>
+
+            <!-- Bestellzusammenfassung -->
+            <div class="order-summary-box" id="orderSummary"></div>
+
+            <div class="form-message form-message-error" id="orderError" hidden></div>
+
+            <div class="form-check-row">
+              <input type="checkbox" id="datenschutz" name="datenschutz" required />
+              <label for="datenschutz">Ich stimme der <a href="datenschutz.html">Datenschutzerklärung</a> zu und bestätige, dass meine Daten zur Bestellabwicklung verarbeitet werden dürfen. *</label>
+            </div>
+
+            <div class="form-check-row marketing-consent">
+              <input type="checkbox" id="marketing" name="marketing" />
+              <label for="marketing">Ich bin damit einverstanden, dass Steirer Pellets meine E-Mail-Adresse und Telefonnummer für Informationen zu Angeboten, Aktionen und Neuigkeiten (Marketing) nutzen darf. Diese Einwilligung kann ich jederzeit widerrufen.</label>
+            </div>
+
+            <div class="step-buttons">
+              <button type="button" class="step-back" id="backBtn2"><i class="fas fa-arrow-left"></i> Zurück</button>
+              <button type="submit" class="btn btn-primary" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Verbindlich bestellen
+              </button>
+            </div>
+          </div>
+
+          <!-- ── ERFOLG ── -->
+          <div class="form-step" id="stepSuccess">
+            <div class="success-box">
+              <div class="success-icon"><i class="fas fa-check"></i></div>
+              <h3>Bestellung eingegangen!</h3>
+              <p>Vielen Dank. Wir bestätigen Ihre Bestellung innerhalb von <strong>24 Stunden</strong> per Telefon oder E-Mail.</p>
+              <div class="success-summary" id="successSummary"></div>
+              <a href="tel:+436767060300" class="btn btn-outline success-call">
+                <i class="fas fa-phone"></i> Direkt anrufen: 0676 7060300
+              </a>
+            </div>
+          </div>
+
+        </form><!-- /#orderForm -->
+
+        <!-- Fortschrittsbalken -->
+        <div class="order-progress">
+          <div class="order-progress-bar" id="progressBar" style="width:33%"></div>
+        </div>
+        <!-- Schritt-Dots -->
+        <div class="step-dots">
+          <div class="step-dot active" id="dot1"><span>1</span><small>Menge</small></div>
+          <div class="step-dot-line"></div>
+          <div class="step-dot" id="dot2"><span>2</span><small>Adresse</small></div>
+          <div class="step-dot-line"></div>
+          <div class="step-dot" id="dot3"><span>3</span><small>Daten</small></div>
+        </div>
+      </div><!-- /.order-form-card -->
+
+    </div><!-- /.container -->
+  </section>
+
+  <!-- ===== TRUST BAND ===== -->
+  <section class="trust-band">
+    <div class="container trust-container">
+      <div class="trust-item"><i class="fas fa-certificate"></i><span>ENplus A1 zertifiziert</span></div>
+      <div class="trust-item"><i class="fas fa-tree"></i><span>100% steirisches Holz</span></div>
+      <div class="trust-item"><i class="fas fa-truck"></i><span>Tankwagen-Direktlieferung</span></div>
+      <div class="trust-item"><i class="fas fa-recycle"></i><span>Aus Sägespänen</span></div>
+      <div class="trust-item"><i class="fas fa-fire"></i><span>&gt; 4,6 kWh/kg</span></div>
+      <div class="trust-item"><i class="fas fa-seedling"></i><span>CO₂-neutral</span></div>
+    </div>
+  </section>
+
+  <!-- ===== PREISLISTE ===== -->
+  <section class="section" id="preise">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Transparente Preise</span>
+        <h2 class="section-title">Aktuelle Pellets-Preise</h2>
+        <p class="section-subtitle">Alle Preise inkl. MwSt. · Lieferung per Tankwagen (Blasbefüllung) · Preise gültig bis auf Widerruf</p>
+      </div>
+
+      <div class="price-table-wrap">
+        <div class="price-card best-price">
+          <div class="price-card-badge">Bestes Preis-Leistungs-Verhältnis</div>
+          <div class="price-card-icon"><i class="fas fa-truck-moving"></i></div>
+          <h3>Großlieferung</h3>
+          <p class="price-card-sub">Ab 4 Tonnen lose</p>
+          <div class="price-card-amount">
+            <span class="price-big price-big-gross">398 €</span>
+            <span class="price-per">/ Tonne</span>
+          </div>
+          <ul class="price-card-list">
+            <li><i class="fas fa-check"></i> Preis pro Tonne: <strong><span class="price-big-gross">398</span>,– €</strong></li>
+            <li><i class="fas fa-check"></i> Abschlauchgebühr: <strong><span class="price-abschlauch-val">58</span>,– €</strong> (einmalig)</li>
+            <li><i class="fas fa-check"></i> Beispiel 5 t: <strong>2.048,– €</strong></li>
+            <li><i class="fas fa-check"></i> Beispiel 10 t: <strong>4.038,– €</strong></li>
+            <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
+            <li><i class="fas fa-check"></i> Blasbefüllung inklusive</li>
+          </ul>
+          <a href="#bestellung" class="btn btn-primary btn-full">Jetzt bestellen</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-icon"><i class="fas fa-box"></i></div>
+          <h3>Kleinlieferung</h3>
+          <p class="price-card-sub">Unter 4 Tonnen lose</p>
+          <div class="price-card-amount">
+            <span class="price-big price-big-klein">418 €</span>
+            <span class="price-per">/ Tonne</span>
+          </div>
+          <ul class="price-card-list">
+            <li><i class="fas fa-check"></i> Preis pro Tonne: <strong><span class="price-big-klein">418</span>,– €</strong></li>
+            <li><i class="fas fa-check"></i> Abschlauchgebühr: <strong><span class="price-abschlauch-val">58</span>,– €</strong> (einmalig)</li>
+            <li><i class="fas fa-check"></i> Beispiel 3 t: <strong>1.312,– €</strong></li>
+            <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
+            <li><i class="fas fa-check"></i> Blasbefüllung inklusive</li>
+            <li><i class="fas fa-info-circle" style="color:var(--amber)"></i> Mindestbestellung: 2 Tonnen</li>
+          </ul>
+          <a href="#bestellung" class="btn btn-outline btn-full">Jetzt bestellen</a>
+        </div>
+
+        <div class="price-card price-info-card">
+          <div class="price-card-icon"><i class="fas fa-info-circle"></i></div>
+          <h3>Preishinweise</h3>
+          <div class="price-info-list">
+            <div class="price-info-item">
+              <i class="fas fa-blender"></i>
+              <div>
+                <strong>Abschlauchgebühr</strong>
+                <p>58,– € einmalig pro Lieferung – unabhängig von der Menge.</p>
+              </div>
+            </div>
+            <div class="price-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>Liefergebiet</strong>
+                <p>Steiermark, südl. Niederösterreich, Südburgenland &amp; Ost-Kärnten.</p>
+              </div>
+            </div>
+            <div class="price-info-item">
+              <i class="fas fa-calendar-alt"></i>
+              <div>
+                <strong>Preisgarantie</strong>
+                <p>Preise gelten zum Zeitpunkt der Bestellbestätigung durch uns.</p>
+              </div>
+            </div>
+            <div class="price-info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Fragen?</strong>
+                <p>Rufen Sie uns an: <a href="tel:+436767060300">0676 7060300</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schnell-Rechner -->
+      <div class="quick-calc">
+        <h3><i class="fas fa-calculator"></i> Schnellrechner</h3>
+        <div class="qc-inner">
+          <div class="qc-slider-wrap">
+            <div class="qc-menge-row">
+              <label>Menge:</label>
+              <div class="menge-bubble small" id="qcBubble"><span id="qcDisplay">5</span><span class="menge-t"> t</span></div>
+            </div>
+            <div class="slider-wrap" style="padding-top:0">
+              <input type="range" id="qcSlider" min="2" max="25" step="1" value="5" class="menge-slider" />
+              <div class="slider-track-fill" id="qcFill"></div>
+              <div class="slider-marks" id="qcMarks"></div>
+            </div>
+          </div>
+          <div class="qc-result">
+            <div class="qc-result-row">
+              <span>Preis pro Tonne</span>
+              <strong id="qcPreisT">398 €</strong>
+            </div>
+            <div class="qc-result-row">
+              <span>Pellets (<span id="qcT2">5</span> t)</span>
+              <strong id="qcPellets">1.990 €</strong>
+            </div>
+            <div class="qc-result-row">
+              <span>Abschlauchgebühr</span>
+              <strong>58 €</strong>
+            </div>
+            <div class="qc-result-row total">
+              <span>Gesamtpreis</span>
+              <strong id="qcTotal">2.048 €</strong>
+            </div>
+          </div>
+        </div>
+        <a href="#bestellung" class="btn btn-primary qc-btn"><i class="fas fa-shopping-cart"></i> Jetzt zum Bestellformular</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PRODUKT ===== -->
+  <section class="section" id="produkt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Unser Produkt</span>
+        <h2 class="section-title">Holzpellets lose –<br/>per Tankwagen direkt in Ihr Lager</h2>
+        <p class="section-subtitle">Wir liefern ausschließlich lose Pellets per Blasbefüllung. Das bedeutet maximalen Komfort, keine Säcke schleppen, kein Verpackungsabfall.</p>
+      </div>
+      <div class="produkt-layout">
+        <div class="produkt-visual">
+          <div class="pellet-graphic">
+            <div class="pellet-truck">
+              <div class="truck-body"><i class="fas fa-truck-moving"></i></div>
+              <div class="truck-label">Tankwagen-Direktlieferung</div>
+            </div>
+            <div class="pellet-flow">
+              <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+              <div class="flow-label">Blasbefüllung</div>
+            </div>
+            <div class="pellet-tank">
+              <div class="tank-body"><i class="fas fa-silo"></i><span>Ihr Pellettank</span></div>
+              <div class="tank-fill"><div class="fill-bar" id="fillBar"></div></div>
+            </div>
+          </div>
+          <div class="produkt-badges">
+            <div class="prod-badge"><i class="fas fa-award"></i><div><strong>ENplus A1</strong><span>Höchste Qualität</span></div></div>
+            <div class="prod-badge"><i class="fas fa-ruler-horizontal"></i><div><strong>Ø 6 mm</strong><span>Normdurchmesser</span></div></div>
+            <div class="prod-badge"><i class="fas fa-tint-slash"></i><div><strong>&lt; 10 %</strong><span>Restfeuchte</span></div></div>
+            <div class="prod-badge"><i class="fas fa-fire-alt"></i><div><strong>&gt; 4,6 kWh/kg</strong><span>Brennwert</span></div></div>
+          </div>
+        </div>
+        <div class="produkt-info">
+          <h3>Was macht unsere Lose-Pellets besonders?</h3>
+          <div class="info-points">
+            <div class="info-point"><div class="info-point-icon green"><i class="fas fa-check"></i></div><div><strong>Blasbefüllung – kein Aufwand für Sie</strong><p>Unser Tankwagen bläst die Pellets direkt in Ihren Kellertank oder Lagerraum.</p></div></div>
+            <div class="info-point"><div class="info-point-icon green"><i class="fas fa-check"></i></div><div><strong>Ab 2 Tonnen lieferbar</strong><p>Wir liefern ab einer Mindestmenge von 2 Tonnen. Je größer die Menge, desto günstiger der Kilopreis.</p></div></div>
+            <div class="info-point"><div class="info-point-icon green"><i class="fas fa-check"></i></div><div><strong>Frisch aus der Produktion</strong><p>Unsere Pellets werden aus steirischen Sägespänen gepresst – ohne Bindemittel, 100% naturbelassen.</p></div></div>
+            <div class="info-point"><div class="info-point-icon green"><i class="fas fa-check"></i></div><div><strong>Wenig Asche, hoher Brennwert</strong><p>ENplus A1 garantiert konstant höchste Qualität für eine saubere, effiziente Verbrennung.</p></div></div>
+            <div class="info-point"><div class="info-point-icon green"><i class="fas fa-check"></i></div><div><strong>Kein Verpackungsabfall</strong><p>Lose Pellets erzeugen keinen Plastikmüll – gut für die Umwelt und Ihren Geldbeutel.</p></div></div>
+          </div>
+          <a href="#bestellung" class="btn btn-primary btn-lg-custom"><i class="fas fa-shopping-cart"></i> Jetzt bestellen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VORTEILE ===== -->
+  <section class="section section-dark" id="vorteile">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Warum Steirer Pellets?</span>
+        <h2 class="section-title">Ihre Vorteile auf einen Blick</h2>
+        <p class="section-subtitle">Regional produziert, zertifiziert geprüft, direkt geliefert.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Direkt vom Hersteller</h3><p>Kein Zwischenhändler. Sie kaufen direkt bei uns – dem Produzenten in Köflach.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-medal"></i></div><h3>ENplus A1 Qualität</h3><p>Die höchste europäische Qualitätsstufe. Regelmäßig durch unabhängige Labore geprüft.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-recycle"></i></div><h3>Echte Kreislaufwirtschaft</h3><p>100% aus Sägespänen der steirischen Holzindustrie – kein Baum wird extra gefällt.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-euro-sign"></i></div><h3>Faire Preise</h3><p>398 €/t ab 4 Tonnen. Stabile Preise, kein Zwischenhändler, direkt kalkulierbar.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-truck-fast"></i></div><h3>Komfort-Lieferung</h3><p>Unser Tankwagen kommt zu Ihnen. Per Blasbefüllung direkt in den Tank.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-headset"></i></div><h3>Persönliche Beratung</h3><p>Wir helfen bei Menge, Tankanforderungen und Lieferplanung. Familiär und direkt.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NACHHALTIGKEIT ===== -->
+  <section class="section" id="nachhaltigkeit">
+    <div class="container">
+
+      <!-- Aufmacherfoto Blasbefüllung -->
+      <div class="sustain-photo-wrap">
+        <img src="images/blog-fahrer-befuellung.jpg" alt="Steirer Pellets Fahrer bei der Blasbefüllung" class="sustain-photo" />
+        <div class="sustain-photo-overlay">
+          <span class="sustain-photo-badge"><i class="fas fa-leaf"></i> CO₂-neutral · Regional · Nachhaltig</span>
+        </div>
+      </div>
+
+      <div class="sustainability-layout">
+        <div class="sustainability-visual">
+          <div class="sustain-circles">
+            <svg class="sustain-lines" viewBox="0 0 300 300">
+              <line x1="150" y1="150" x2="150" y2="40" stroke="#1d6b28" stroke-width="2" stroke-dasharray="5,4" opacity="0.5"/>
+              <line x1="150" y1="150" x2="262" y2="150" stroke="#1d6b28" stroke-width="2" stroke-dasharray="5,4" opacity="0.5"/>
+              <line x1="150" y1="150" x2="210" y2="262" stroke="#1d6b28" stroke-width="2" stroke-dasharray="5,4" opacity="0.5"/>
+              <line x1="150" y1="150" x2="38" y2="150" stroke="#1d6b28" stroke-width="2" stroke-dasharray="5,4" opacity="0.5"/>
+            </svg>
+            <div class="sustain-circle main-circle"><i class="fas fa-leaf"></i><span>CO₂<br/>neutral</span></div>
+            <div class="sustain-circle c2"><i class="fas fa-tree"></i><span>Wald</span></div>
+            <div class="sustain-circle c3"><i class="fas fa-industry"></i><span>Produktion</span></div>
+            <div class="sustain-circle c4"><i class="fas fa-home"></i><span>Heizung</span></div>
+            <div class="sustain-circle c5"><i class="fas fa-recycle"></i><span>Kreislauf</span></div>
+          </div>
+
+        </div>
+        <div class="sustainability-text">
+          <span class="section-tag">Nachhaltigkeit</span>
+          <h2 class="section-title">Gut für Sie.<br/>Gut für die Erde.</h2>
+          <p class="sustain-lead">Holzpellets aus Sägespänen sind einer der nachhaltigsten Energieträger. Was früher Abfall war, wird heute zu sauberer Wärme.</p>
+          <div class="sustain-points">
+            <div class="sustain-point"><div class="sustain-point-icon"><i class="fas fa-check"></i></div><div><strong>Aus Sägespänen &amp; Holzresten</strong><p>Kein einziger Baum wird extra für unsere Pellets gefällt.</p></div></div>
+            <div class="sustain-point"><div class="sustain-point-icon"><i class="fas fa-check"></i></div><div><strong>Geschlossener Kohlenstoffkreislauf</strong><p>Das beim Verbrennen freigesetzte CO₂ entspricht exakt dem, was der Baum gespeichert hat.</p></div></div>
+            <div class="sustain-point"><div class="sustain-point-icon"><i class="fas fa-check"></i></div><div><strong>Heimische Wertschöpfung</strong><p>Jeder Kauf stärkt die steirische Holzwirtschaft.</p></div></div>
+            <div class="sustain-point"><div class="sustain-point-icon"><i class="fas fa-check"></i></div><div><strong>Unabhängig von Gas &amp; Öl</strong><p>Stabil, günstig und zukunftssicher heizen.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIEFERUNG ===== -->
+  <section class="section section-green" id="lieferung">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-white">Lieferung</span>
+        <h2 class="section-title white">So einfach kommen Ihre Pellets</h2>
+        <p class="section-subtitle white-sub">Lose per Tankwagen – bequemer geht's nicht</p>
+      </div>
+      <div class="delivery-steps">
+        <div class="delivery-step"><div class="step-number">01</div><div class="step-content"><div class="step-icon"><i class="fas fa-shopping-cart"></i></div><h3>Online bestellen</h3><p>Menge, Lieferadresse und Kalenderwoche auswählen – fertig in 3 Minuten.</p></div></div>
+        <div class="delivery-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="delivery-step"><div class="step-number">02</div><div class="step-content"><div class="step-icon"><i class="fas fa-phone-volume"></i></div><h3>Bestätigung</h3><p>Wir bestätigen Ihre Bestellung innerhalb von 24h per Telefon oder E-Mail.</p></div></div>
+        <div class="delivery-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="delivery-step"><div class="step-number">03</div><div class="step-content"><div class="step-icon"><i class="fas fa-calendar-check"></i></div><h3>Lieferwoche</h3><p>In Ihrer gewünschten Kalenderwoche kommt unser Tankwagen pünktlich zu Ihnen.</p></div></div>
+        <div class="delivery-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="delivery-step"><div class="step-number">04</div><div class="step-content"><div class="step-icon"><i class="fas fa-fire-flame-curved"></i></div><h3>Warm genießen</h3><p>Per Blasbefüllung direkt in Ihren Tank – sauber, schnell, ohne Aufwand.</p></div></div>
+      </div>
+      <div class="delivery-info">
+        <div class="delivery-info-item"><i class="fas fa-map-marked-alt"></i><div><strong>Liefergebiet</strong><span>Steiermark · Südl. NÖ · Südburgenland · Ost-Kärnten</span></div></div>
+        <div class="delivery-info-item"><i class="fas fa-weight-hanging"></i><div><strong>Mindestbestellung</strong><span>2 Tonnen lose</span></div></div>
+        <div class="delivery-info-item"><i class="fas fa-calendar-week"></i><div><strong>Lieferzeit</strong><span>Wunsch-Kalenderwoche wählen</span></div></div>
+        <div class="delivery-info-item"><i class="fas fa-blender"></i><div><strong>Befüllmethode</strong><span>Blasbefüllung per Schlauch</span></div></div>
+      </div>
+
+      <!-- Liefergebiet-Karte -->
+      <div class="delivery-regions">
+        <h3 class="delivery-regions-title"><i class="fas fa-map-marked-alt"></i> Unsere Liefergebiete</h3>
+        <div class="region-cards">
+          <div class="region-card">
+            <div class="region-card-icon"><i class="fas fa-mountain"></i></div>
+            <h4>Steiermark</h4>
+            <p>Gesamte Steiermark – unser Heimmarkt. Von Graz bis Leoben, von Liezen bis Leibnitz.</p>
+            <div class="region-plz">PLZ 8000–8993</div>
+          </div>
+          <div class="region-card">
+            <div class="region-card-icon"><i class="fas fa-city"></i></div>
+            <h4>Südl. Niederösterreich</h4>
+            <p>Niederösterreich südlich von Wien – Wiener Neustadt, Baden, Neunkirchen und Umgebung.</p>
+            <div class="region-plz">PLZ 2500–2700</div>
+          </div>
+          <div class="region-card">
+            <div class="region-card-icon"><i class="fas fa-sun"></i></div>
+            <h4>Südburgenland</h4>
+            <p>Oberwart, Güssing, Jennersdorf und die südlichen Bezirke des Burgenlandes.</p>
+            <div class="region-plz">PLZ 7400–7540</div>
+          </div>
+          <div class="region-card">
+            <div class="region-card-icon"><i class="fas fa-water"></i></div>
+            <h4>Ost-Kärnten</h4>
+            <p>Wolfsberg, Völkermarkt, Klagenfurt-Umgebung und der östliche Teil Kärntens.</p>
+            <div class="region-plz">PLZ 9100–9600</div>
+          </div>
+        </div>
+        <p class="region-hint"><i class="fas fa-info-circle"></i> Nicht sicher ob wir in Ihre Region liefern? <a href="tel:+436767060300">Rufen Sie uns an</a> – wir helfen gerne!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GOOGLE BEWERTUNGEN ===== -->
+  <section class="section section-light" id="kundenstimmen">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Kundenstimmen</span>
+        <h2 class="section-title">Was unsere Kunden sagen</h2>
+        <p class="section-subtitle">Echte Bewertungen von Google – ungefiltert und authentisch.</p>
+      </div>
+
+      <!-- Google Bewertungs-Badge + Widget -->
+      <div class="google-reviews-wrap">
+
+        <!-- Gesamt-Score links -->
+        <div class="google-score-card">
+          <div class="google-logo-row">
+            <svg class="google-logo-svg" viewBox="0 0 74 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.24 8.19v2.46h5.88c-.18 1.38-.64 2.39-1.34 3.1-.86.86-2.2 1.8-4.54 1.8-3.62 0-6.45-2.92-6.45-6.54s2.83-6.54 6.45-6.54c1.95 0 3.38.77 4.43 1.76L15.4 2.5C13.94 1.08 11.98 0 9.24 0 4.28 0 .11 4.04.11 9s4.17 9 9.13 9c2.68 0 4.7-.88 6.28-2.52 1.62-1.62 2.13-3.91 2.13-5.75 0-.57-.04-1.1-.13-1.54H9.24z" fill="#4285F4"/>
+              <path d="M25 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z" fill="#EA4335"/>
+              <path d="M53.58 7.49h-.09c-.57-.68-1.67-1.3-3.06-1.3C47.53 6.19 45 8.72 45 12c0 3.26 2.53 5.81 5.43 5.81 1.39 0 2.49-.62 3.06-1.32h.09v.81c0 2.22-1.19 3.41-3.1 3.41-1.56 0-2.53-1.12-2.93-2.07l-2.22.92c.64 1.54 2.33 3.43 5.15 3.43 2.99 0 5.52-1.76 5.52-6.05V6.49h-2.42v1zm-2.93 8.03c-1.76 0-3.1-1.5-3.1-3.52 0-2.05 1.34-3.52 3.1-3.52 1.74 0 3.1 1.5 3.1 3.54-.01 2.03-1.36 3.5-3.1 3.5z" fill="#4285F4"/>
+              <path d="M38 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z" fill="#FBBC05"/>
+              <path d="M58.78 .24h2.55v17.57h-2.55z" fill="#34A853"/>
+              <path d="M63.81 12.18c-.05-3.68 2.84-5.99 5.57-5.99 1.65 0 3.16.82 3.65 2.01l-8.61 3.57-.61-1.59zm9.33 2.56c-.59 1.63-2.38 2.57-3.78 2.57-1.27 0-2.35-.59-3.06-1.48l8.72-3.61-.44-1.06c-.8-2.17-2.89-3.97-5.67-3.97-3.42 0-6.19 2.72-6.19 5.81 0 3.26 2.74 5.81 6.19 5.81 2.85 0 4.51-1.74 5.2-2.76l-2-.13-.97.82z" fill="#EA4335"/>
+            </svg>
+            <span class="google-reviews-label">Bewertungen</span>
+          </div>
+          <div class="google-score-number">4.8</div>
+          <div class="google-stars-row">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="google-review-count">Basierend auf Google-Rezensionen</div>
+          <a href="https://www.google.com/maps/search/Steirer+Pellets+K%C3%B6flach" target="_blank" rel="noopener" class="google-all-reviews-btn" data-google-reviews-link>
+            <i class="fab fa-google"></i> Alle Google-Bewertungen
+          </a>
+        </div>
+
+        <!-- Karten-Grid -->
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:#4285F4">H</div>
+              <div>
+                <div class="reviewer-name">Hans M.</div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              </div>
+              <i class="fab fa-google review-g-icon"></i>
+            </div>
+            <p class="review-text">„Seit Jahren beziehe ich lose Pellets von Steirer Pellets. Der Tankwagen kommt pünktlich, die Blasbefüllung dauert nur 20 Minuten – ich muss nichts tun. Top Qualität!"</p>
+            <div class="review-meta">Eigenheim, Graz</div>
+          </div>
+
+          <div class="review-card review-card-featured">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:#EA4335">G</div>
+              <div>
+                <div class="reviewer-name">Gertrude L.</div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              </div>
+              <i class="fab fa-google review-g-icon"></i>
+            </div>
+            <p class="review-text">„Als Gasthof-Betreiberin heize ich mit großen Mengen. Steirer Pellets liefert zuverlässig und fair. Keine Säcke schleppen, kein Stress – einfach bestellen und der Tank ist voll."</p>
+            <div class="review-meta">Gasthof-Betreiberin, Steiermark</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:#34A853">K</div>
+              <div>
+                <div class="reviewer-name">Klaus W.</div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              </div>
+              <i class="fab fa-google review-g-icon"></i>
+            </div>
+            <p class="review-text">„Wenig Asche, hoher Brennwert, saubere Verbrennung – die ENplus A1 Qualität merkt man wirklich. Und der Preis stimmt. Ich empfehle Steirer Pellets jedem weiter."</p>
+            <div class="review-meta">Eigenheimbesitzer, Weiz</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA zur Google-Seite -->
+      <div class="google-cta-row">
+        <a href="https://www.google.com/maps/search/Steirer+Pellets+K%C3%B6flach" target="_blank" rel="noopener" class="btn btn-outline google-write-btn" data-google-write-link>
+          <i class="fab fa-google"></i> Bewertung auf Google schreiben
+        </a>
+        <span class="google-cta-hint">Teilen Sie Ihre Erfahrung – helfen Sie anderen Kunden bei der Entscheidung.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT ===== -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Kontakt</span>
+        <h2 class="section-title">Wir sind für Sie da</h2>
+        <p class="section-subtitle">Rufen Sie uns an oder schreiben Sie uns – wir antworten schnell und persönlich.</p>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <div class="contact-logo"><img src="images/logo.png" alt="Steirer Pellets" /></div>
+          <p class="contact-tagline">Ihr Partner für nachhaltige Wärme aus der Steiermark</p>
+          <div class="contact-items">
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Adresse</strong><span>Steirer Pellets GmbH, 8580 Köflach, Alte Hauptstraße 9</span></div></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div><strong>Telefon</strong><span><a href="tel:+436767060300">0676 7060300</a></span></div></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><strong>E-Mail</strong><span><a href="mailto:office@steirerpellets.at">office@steirerpellets.at</a></span></div></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><strong>Öffnungszeiten</strong><span>Mo–Fr: 08:00 – 17:00 Uhr</span></div></div>
+          </div>
+          <div class="contact-social">
+            <a href="mailto:office@steirerpellets.at" class="social-btn" aria-label="E-Mail an Steirer Pellets"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+436767060300" class="social-btn" aria-label="Steirer Pellets anrufen"><i class="fas fa-phone"></i></a>
+            <a href="blog/index.html" class="social-btn" aria-label="Zum Magazin"><i class="fas fa-newspaper"></i></a>
+          </div>
+        </div>
+        <div class="contact-cta-box">
+          <div class="cta-box-inner">
+            <div class="cta-box-icon"><i class="fas fa-shopping-cart"></i></div>
+            <h3>Direkt bestellen</h3>
+            <p>Nutzen Sie unser Bestellformular ganz oben auf der Seite – in nur 3 Minuten fertig!</p>
+            <a href="#bestellung" class="btn btn-primary btn-large"><i class="fas fa-arrow-up"></i> Zum Bestellformular</a>
+          </div>
+          <div class="cta-box-divider">oder</div>
+          <div class="cta-box-inner">
+            <div class="cta-box-icon phone-icon"><i class="fas fa-phone"></i></div>
+            <h3>WhatsApp oder anrufen</h3>
+            <p>Unser Team ist Montag bis Freitag von 8 bis 17 Uhr für Sie per WhatsApp oder telefonisch erreichbar.</p>
+            <a href="https://wa.me/436767060300" class="btn btn-primary btn-large" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp schreiben</a>
+            <a href="tel:+436767060300" class="btn btn-outline btn-large"><i class="fas fa-phone"></i> 0676 7060300</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="images/logo.png" alt="Steirer Pellets" class="footer-logo-img" /></div>
+        <p>Nachhaltige Holzpellets lose – direkt per Tankwagen aus dem Herzen der Steiermark. ENplus A1, CO₂-neutral.</p>
+        <div class="footer-certs">
+          <span class="footer-cert"><i class="fas fa-award"></i> ENplus A1</span>
+          <span class="footer-cert"><i class="fas fa-leaf"></i> CO₂-neutral</span>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <a href="#bestellung">Bestellen</a>
+        <a href="#preise">Preise</a>
+        <a href="#produkt">Produkt</a>
+        <a href="#vorteile">Vorteile</a>
+        <a href="#nachhaltigkeit">Nachhaltigkeit</a>
+        <a href="#lieferung">Lieferung</a>
+        <a href="blog/index.html">Magazin</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 8580 Köflach, Alte Hauptstraße 9</p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+436767060300">0676 7060300</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:office@steirerpellets.at">office@steirerpellets.at</a></p>
+        <p><i class="fas fa-clock"></i> Mo–Fr 08:00–17:00 Uhr</p>
+        <div class="footer-social">
+          <a href="mailto:office@steirerpellets.at" aria-label="E-Mail an Steirer Pellets"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+436767060300" aria-label="Steirer Pellets anrufen"><i class="fas fa-phone"></i></a>
+          <a href="blog/index.html" aria-label="Zum Magazin"><i class="fas fa-newspaper"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <span>© 2025 Steirer Pellets GmbH · Alle Rechte vorbehalten</span>
+        <div class="footer-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/plz-data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- ===== COOKIE CONSENT ===== -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <div class="cookie-title"><i class="fas fa-cookie-bite"></i> Cookies &amp; Datenschutz</div>
+        <p>
+          Diese Website verwendet Cookies, um die Nutzererfahrung zu verbessern und den Betrieb der Website zu ermöglichen
+          (technisch notwendige Cookies). Mit Klick auf <strong>„Alle akzeptieren"</strong> stimmen Sie zusätzlich dem
+          Einsatz von Analyse- und Marketing-Cookies zu. Weitere Infos in unserer
+          <a href="datenschutz.html" class="cookie-link">Datenschutzerklärung</a>.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-settings" id="cookieSettings">
+          <i class="fas fa-sliders-h"></i> Einstellungen
+        </button>
+        <button class="cookie-btn cookie-btn-necessary" id="cookieNecessary">
+          Nur notwendige
+        </button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAcceptAll">
+          <i class="fas fa-check"></i> Alle akzeptieren
+        </button>
+      </div>
+    </div>
+
+    <!-- Erweiterte Einstellungen (aufklappbar) -->
+    <div class="cookie-detail" id="cookieDetail">
+      <div class="cookie-detail-inner">
+        <div class="cookie-category">
+          <div class="cookie-cat-header">
+            <div class="cookie-cat-info">
+              <strong>Notwendige Cookies</strong>
+              <span>Formularfunktion, Sitzungsdaten – immer aktiv</span>
+            </div>
+            <div class="cookie-toggle-locked">
+              <i class="fas fa-lock"></i> Immer aktiv
+            </div>
+          </div>
+        </div>
+        <div class="cookie-category">
+          <div class="cookie-cat-header">
+            <div class="cookie-cat-info">
+              <strong>Analyse-Cookies</strong>
+              <span>Anonyme Nutzungsstatistiken (z. B. Google Analytics)</span>
+            </div>
+            <label class="cookie-toggle-switch">
+              <input type="checkbox" id="cookieAnalytics" />
+              <span class="cookie-toggle-track"></span>
+            </label>
+          </div>
+        </div>
+        <div class="cookie-category">
+          <div class="cookie-cat-header">
+            <div class="cookie-cat-info">
+              <strong>Marketing-Cookies</strong>
+              <span>Personalisierte Werbung, Retargeting</span>
+            </div>
+            <label class="cookie-toggle-switch">
+              <input type="checkbox" id="cookieMarketing" />
+              <span class="cookie-toggle-track"></span>
+            </label>
+          </div>
+        </div>
+        <button class="cookie-btn cookie-btn-save" id="cookieSaveSettings">
+          <i class="fas fa-save"></i> Auswahl speichern
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    // Echten Google-Link hier einmal zentral eintragen:
+    // - Alle Google-Bewertungen
+    // - Bewertung auf Google schreiben
+    var GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/search/?api=1&query=Steirer%20Pellets%20GmbH%2C%20Alte%20Hauptstra%C3%9Fe%209%2C%208580%20K%C3%B6flach';
+    document.querySelectorAll('[data-google-reviews-link], [data-google-write-link]').forEach(function (link) {
+      link.setAttribute('href', GOOGLE_REVIEWS_URL);
+    });
+
+    var CONSENT_KEY = 'sp_cookie_consent';
+
+    function getConsent() {
+      try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch (e) { return null; }
+    }
+    function saveConsent(obj) {
+      obj.ts = new Date().toISOString();
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(obj));
+    }
+    function hideBanner() {
+      var b = document.getElementById('cookieBanner');
+      if (b) { b.classList.remove('visible'); setTimeout(function () { b.style.display = 'none'; }, 400); }
+    }
+    function applyConsent(consent) {
+      // Hier können Analytics/Marketing-Skripte aktiviert werden
+      // if (consent.analytics) { /* Google Analytics laden */ }
+      // if (consent.marketing) { /* FB Pixel etc. laden */ }
+    }
+
+    // Banner anzeigen wenn noch keine Entscheidung
+    var existing = getConsent();
+    if (!existing) {
+      var banner = document.getElementById('cookieBanner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function () { banner.classList.add('visible'); }, 80);
+      }
+    } else {
+      applyConsent(existing);
+    }
+
+    // Alle akzeptieren
+    document.getElementById('cookieAcceptAll').addEventListener('click', function () {
+      var c = { necessary: true, analytics: true, marketing: true };
+      saveConsent(c);
+      applyConsent(c);
+      hideBanner();
+    });
+
+    // Nur notwendige
+    document.getElementById('cookieNecessary').addEventListener('click', function () {
+      var c = { necessary: true, analytics: false, marketing: false };
+      saveConsent(c);
+      applyConsent(c);
+      hideBanner();
+    });
+
+    // Einstellungen aufklappen
+    document.getElementById('cookieSettings').addEventListener('click', function () {
+      var detail = document.getElementById('cookieDetail');
+      detail.classList.toggle('open');
+      this.innerHTML = detail.classList.contains('open')
+        ? '<i class="fas fa-times"></i> Schließen'
+        : '<i class="fas fa-sliders-h"></i> Einstellungen';
+    });
+
+    // Auswahl speichern
+    document.getElementById('cookieSaveSettings').addEventListener('click', function () {
+      var c = {
+        necessary: true,
+        analytics: document.getElementById('cookieAnalytics').checked,
+        marketing: document.getElementById('cookieMarketing').checked
+      };
+      saveConsent(c);
+      applyConsent(c);
+      hideBanner();
+    });
+  }());
+  </script>
+</body>
+</html>

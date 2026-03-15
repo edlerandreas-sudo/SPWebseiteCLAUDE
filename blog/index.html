@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pellets Magazin – Ratgeber & Tipps | Steirer Pellets</title>
+  <meta name="description" content="Das Magazin von Steirer Pellets: Ratgeber, Tipps & Wissenswertes rund um Holzpellets, Nachhaltigkeit, Heizung und Energie." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+</head>
+<body class="blog-page">
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo">
+        <img src="../images/logo.png" alt="Steirer Pellets Logo" class="logo-img" />
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html#bestellung"><i class="fas fa-shopping-cart"></i> Bestellen</a>
+        <a href="../index.html#preise">Preise</a>
+        <a href="../index.html#produkt">Produkt</a>
+        <a href="../index.html#vorteile">Vorteile</a>
+        <a href="../index.html#nachhaltigkeit">Nachhaltigkeit</a>
+        <a href="index.html" class="active"><i class="fas fa-newspaper"></i> Magazin</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+      </nav>
+      <a href="../index.html#bestellung" class="btn btn-primary nav-cta">
+        <i class="fas fa-shopping-cart"></i> Jetzt bestellen
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== BLOG HERO ===== -->
+  <section class="blog-hero">
+    <div class="blog-hero-bg"></div>
+    <div class="container blog-hero-inner">
+      <div class="blog-breadcrumb">
+        <a href="../index.html"><i class="fas fa-home"></i> Startseite</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Magazin</span>
+      </div>
+      <span class="blog-tag-label"><i class="fas fa-newspaper"></i> Magazin</span>
+      <h1 class="blog-hero-title">Pellets-Wissen,<br/>das Ihnen nützt.</h1>
+      <p class="blog-hero-sub">Ratgeber, Tipps und Wissenswertes rund um Holzpellets, nachhaltige Wärme und Energieeffizienz – direkt vom steirischen Hersteller.</p>
+      <div class="blog-search-wrap">
+        <div class="blog-search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="blogSearch" placeholder="Artikel suchen …" autocomplete="off" />
+          <button type="button" id="blogSearchClear" class="blog-search-clear" style="display:none"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY FILTER ===== -->
+  <section class="blog-filter-bar">
+    <div class="container">
+      <div class="blog-filter-scroll">
+        <button class="blog-filter-btn active" data-cat="alle"><i class="fas fa-th"></i> Alle</button>
+        <button class="blog-filter-btn" data-cat="Ratgeber"><i class="fas fa-book-open"></i> Ratgeber</button>
+        <button class="blog-filter-btn" data-cat="Tipps &amp; Tricks"><i class="fas fa-lightbulb"></i> Tipps &amp; Tricks</button>
+        <button class="blog-filter-btn" data-cat="Nachhaltigkeit"><i class="fas fa-leaf"></i> Nachhaltigkeit</button>
+        <button class="blog-filter-btn" data-cat="Aktuell"><i class="fas fa-bolt"></i> Aktuell</button>
+        <button class="blog-filter-btn" data-cat="Produkt"><i class="fas fa-box"></i> Produkt</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG CONTENT ===== -->
+  <main class="blog-main">
+    <div class="container blog-layout">
+
+      <!-- Articles Grid -->
+      <div class="blog-articles-col">
+
+        <!-- Featured / Loading state -->
+        <div id="blogLoading" class="blog-loading">
+          <div class="blog-spinner"><i class="fas fa-circle-notch fa-spin"></i></div>
+          <p>Artikel werden geladen …</p>
+        </div>
+
+        <!-- Featured Article (dynamic) -->
+        <div id="featuredArticle" class="featured-article-wrap" style="display:none"></div>
+
+        <!-- No results -->
+        <div id="blogNoResults" class="blog-no-results" style="display:none">
+          <i class="fas fa-search"></i>
+          <h3>Keine Artikel gefunden</h3>
+          <p>Versuchen Sie einen anderen Suchbegriff oder wählen Sie eine andere Kategorie.</p>
+          <button class="btn btn-outline" onclick="resetFilters()">Alle Artikel anzeigen</button>
+        </div>
+
+        <!-- Articles Grid -->
+        <div id="articlesGrid" class="articles-grid"></div>
+
+        <!-- Load more -->
+        <div id="loadMoreWrap" class="load-more-wrap" style="display:none">
+          <button id="loadMoreBtn" class="btn btn-outline btn-load-more">
+            <i class="fas fa-plus"></i> Weitere Artikel laden
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="blog-sidebar">
+
+        <!-- Quick Order Box -->
+        <div class="sidebar-box sidebar-order-box">
+          <div class="sidebar-order-icon"><i class="fas fa-fire-alt"></i></div>
+          <h3>Pellets bestellen</h3>
+          <p>Direkt vom steirischen Hersteller. ENplus A1. Lose per Tankwagen.</p>
+          <div class="sidebar-price-teaser">
+            <span class="spt-label">Ab 4 Tonnen</span>
+            <span class="spt-price">398 €<small>/t</small></span>
+          </div>
+          <a href="../index.html#bestellung" class="btn btn-primary btn-full">
+            <i class="fas fa-shopping-cart"></i> Jetzt bestellen
+          </a>
+          <a href="tel:+436767060300" class="btn btn-outline btn-full sidebar-call-btn">
+            <i class="fas fa-phone"></i> 0676 7060300
+          </a>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="sidebar-box sidebar-newsletter">
+          <div class="sidebar-nl-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <h3>Pellets-Newsletter</h3>
+          <p>Preisalerts, Ratgeber &amp; saisonale Tipps direkt in Ihr Postfach.</p>
+          <form id="nlForm" class="nl-form">
+            <input type="email" id="nlEmail" placeholder="Ihre E-Mail-Adresse" required />
+            <button type="submit" class="btn btn-primary btn-full">
+              <i class="fas fa-paper-plane"></i> Anmelden
+            </button>
+          </form>
+          <div id="nlSuccess" class="nl-success" style="display:none">
+            <i class="fas fa-check-circle"></i> Danke! Sie erhalten bald unsere ersten News.
+          </div>
+        </div>
+
+        <!-- Popular Tags -->
+        <div class="sidebar-box">
+          <h3 class="sidebar-heading"><i class="fas fa-tags"></i> Beliebte Themen</h3>
+          <div class="tag-cloud" id="tagCloud"></div>
+        </div>
+
+        <!-- Quick Facts -->
+        <div class="sidebar-box sidebar-facts">
+          <h3 class="sidebar-heading"><i class="fas fa-star"></i> Steirer Pellets</h3>
+          <div class="fact-list">
+            <div class="fact-item"><div class="fact-icon"><i class="fas fa-award"></i></div><div><strong>ENplus A1</strong><span>Höchste Qualität</span></div></div>
+            <div class="fact-item"><div class="fact-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Köflach, Steiermark</strong><span>Direktlieferant</span></div></div>
+            <div class="fact-item"><div class="fact-icon"><i class="fas fa-leaf"></i></div><div><strong>CO₂-neutral</strong><span>Echte Nachhaltigkeit</span></div></div>
+            <div class="fact-item"><div class="fact-icon"><i class="fas fa-truck"></i></div><div><strong>Tankwagen</strong><span>Blasbefüllung</span></div></div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="../images/logo.png" alt="Steirer Pellets" class="footer-logo-img" /></div>
+        <p>Nachhaltige Holzpellets lose – direkt per Tankwagen aus dem Herzen der Steiermark.</p>
+        <div class="footer-certs">
+          <span class="footer-cert"><i class="fas fa-award"></i> ENplus A1</span>
+          <span class="footer-cert"><i class="fas fa-leaf"></i> CO₂-neutral</span>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <a href="../index.html#bestellung">Bestellen</a>
+        <a href="../index.html#preise">Preise</a>
+        <a href="../index.html#produkt">Produkt</a>
+        <a href="../index.html#vorteile">Vorteile</a>
+        <a href="index.html">Magazin</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 8580 Köflach, Alte Hauptstraße 9</p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+436767060300">0676 7060300</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:office@steirerpellets.at">office@steirerpellets.at</a></p>
+        <p><i class="fas fa-clock"></i> Mo–Fr 08:00–17:00 Uhr</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <span>© 2025 Steirer Pellets GmbH · Alle Rechte vorbehalten</span>
+        <div class="footer-links"><a href="../impressum.html">Impressum</a><a href="../datenschutz.html">Datenschutz</a><a href="../agb.html">AGB</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="../js/blog-fallback-data.js"></script>
+  <script src="../js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Steirer Pellets – Region</title>
+  <meta name="description" id="pageDesc" content="Steirer Pellets – ENplus A1 Holzpellets lose in Ihrer Region." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/region.css" />
+</head>
+<body class="region-page">
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo">
+        <img src="../images/logo.png" alt="Steirer Pellets Logo" class="logo-img" />
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html#bestellung" class="nav-cta-link"><i class="fas fa-calculator"></i> Bestellen</a>
+        <a href="../index.html#produkt">Produkt</a>
+        <a href="../index.html#vorteile">Vorteile</a>
+        <a href="../index.html#lieferung">Lieferung</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+      </nav>
+      <a href="../index.html#bestellung" class="btn btn-primary nav-cta">
+        <i class="fas fa-calculator"></i> Jetzt bestellen
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== REGION HERO ===== -->
+  <section class="region-hero">
+    <div class="region-hero-bg"></div>
+    <div class="container region-hero-inner">
+      <div class="region-breadcrumb">
+        <a href="../index.html"><i class="fas fa-home"></i> Start</a>
+        <i class="fas fa-chevron-right"></i>
+        <span id="breadcrumbRegion">Region</span>
+      </div>
+      <div class="region-hero-badge" id="regionBadge">
+        <i class="fas fa-map-marker-alt"></i>
+        <span id="regionName">Ihre Region</span>
+      </div>
+      <h1 class="region-hero-title" id="regionTitle">Holzpellets lose kaufen</h1>
+      <p class="region-hero-sub" id="regionTagline">Ihr lokaler Lieferpartner</p>
+      <div class="region-hero-facts" id="regionFacts">
+        <!-- wird per JS befüllt -->
+      </div>
+      <div class="region-hero-ctas">
+        <a href="../index.html#bestellung" class="btn btn-amber btn-large">
+          <i class="fas fa-calculator"></i> Jetzt Preis anfragen
+        </a>
+        <a href="tel:+436767060300" class="btn btn-outline-white btn-large">
+          <i class="fas fa-phone"></i> 0676 7060300
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REGION CONTENT ===== -->
+  <section class="region-content">
+    <div class="container">
+      <div class="region-layout">
+
+        <!-- Haupttext -->
+        <div class="region-main">
+          <div class="region-text-block">
+            <h2 id="regionHeadline">Pellets in Ihrer Region</h2>
+            <p class="region-intro" id="regionIntro"></p>
+            <p class="region-highlight" id="regionHighlight"></p>
+          </div>
+
+          <!-- PLZ Liste -->
+          <div class="region-plz-block">
+            <h3><i class="fas fa-map-marker-alt"></i> Wir liefern in diese Postleitzahlen</h3>
+            <div class="plz-tags" id="plzTags">
+              <!-- per JS -->
+            </div>
+          </div>
+
+          <!-- Warum Steirer Pellets -->
+          <div class="region-why">
+            <h3>Warum Steirer Pellets in <span id="whyRegion">Ihrer Region</span>?</h3>
+            <div class="why-grid">
+              <div class="why-item">
+                <div class="why-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div><strong>Regionaler Hersteller</strong><p>Produziert in Köflach, Steiermark – kurze Transportwege, frische Qualität.</p></div>
+              </div>
+              <div class="why-item">
+                <div class="why-icon"><i class="fas fa-award"></i></div>
+                <div><strong>ENplus A1 Zertifizierung</strong><p>Höchste europäische Qualitätsstufe – regelmäßig unabhängig geprüft.</p></div>
+              </div>
+              <div class="why-item">
+                <div class="why-icon"><i class="fas fa-truck"></i></div>
+                <div><strong>Komfort-Lieferung</strong><p>Direkt per Blasbefüllung in Ihren Pellettank – kein Aufwand für Sie.</p></div>
+              </div>
+              <div class="why-item">
+                <div class="why-icon"><i class="fas fa-recycle"></i></div>
+                <div><strong>Nachhaltig & CO₂-neutral</strong><p>Aus steirischen Sägespänen – echter Kreislauf, kein Abfall.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Anfrage -->
+        <div class="region-sidebar">
+          <div class="sidebar-anfrage">
+            <div class="sidebar-anfrage-header">
+              <i class="fas fa-calculator"></i>
+              <div>
+                <h3>Preisanfrage für <span id="sidebarRegion">Ihre Region</span></h3>
+                <p>Unverbindlich & kostenlos</p>
+              </div>
+            </div>
+
+            <form class="sidebar-form" id="regionForm">
+              <div class="form-group">
+                <label class="form-label">Menge (Tonnen)</label>
+                <div class="sidebar-slider-wrap">
+                  <div class="sidebar-menge-display">
+                    <span class="menge-val" id="sidebarMengeDisplay">10</span>
+                    <span class="menge-unit-big">t</span>
+                  </div>
+                  <input type="range" id="sidebarSlider" min="3" max="50" step="1" value="10" class="menge-slider" />
+                  <div class="slider-track-fill" id="sidebarSliderFill"></div>
+                  <input type="hidden" id="sidebarMenge" name="menge" value="10" />
+                </div>
+                <div class="sidebar-menge-hint" id="sidebarHint">10 t · Jahresbedarf Einfamilienhaus</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sbPlz">Postleitzahl *</label>
+                <input type="text" id="sbPlz" name="plz" placeholder="Ihre PLZ" maxlength="4" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sbName">Ihr Name *</label>
+                <input type="text" id="sbName" name="name" placeholder="Max Mustermann" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sbTel">Telefon *</label>
+                <input type="tel" id="sbTel" name="telefon" placeholder="+43 ..." required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sbEmail">E-Mail *</label>
+                <input type="email" id="sbEmail" name="email" placeholder="max@beispiel.at" required />
+              </div>
+
+              <div class="form-check-row">
+                <input type="checkbox" id="sbDatenschutz" required />
+                <label for="sbDatenschutz">Ich stimme der <a href="../datenschutz.html">Datenschutzerklärung</a> zu.</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full" id="sbSubmitBtn">
+                <i class="fas fa-paper-plane"></i> Anfrage senden
+              </button>
+
+              <div class="sidebar-success" id="sidebarSuccess">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>Vielen Dank!</strong>
+                  <p>Wir melden uns innerhalb von 24 Stunden.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Kontakt Box -->
+          <div class="sidebar-contact">
+            <h4>Direkt anrufen</h4>
+            <a href="tel:+436767060300" class="sidebar-phone">
+              <i class="fas fa-phone-volume"></i>
+              <div>
+                <span>0676 7060300</span>
+                <small>Mo–Fr 08:00–17:00 Uhr</small>
+              </div>
+            </a>
+            <a href="mailto:office@steirerpellets.at" class="sidebar-email">
+              <i class="fas fa-envelope"></i>
+              <span>office@steirerpellets.at</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALLE REGIONEN ===== -->
+  <section class="all-regions section-light" style="padding:70px 0">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:40px">
+        <span class="section-tag">Liefergebiete</span>
+        <h2 class="section-title">Alle Lieferregionen</h2>
+        <p class="section-subtitle">Wir liefern in die gesamte Steiermark und darüber hinaus.</p>
+      </div>
+      <div class="regions-grid" id="allRegionsGrid">
+        <!-- per JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../images/logo.png" alt="Steirer Pellets" class="footer-logo-img" />
+        </div>
+        <p>Nachhaltige Holzpellets lose – direkt per Tankwagen aus dem Herzen der Steiermark. ENplus A1, CO₂-neutral.</p>
+        <div class="footer-certs">
+          <span class="footer-cert"><i class="fas fa-award"></i> ENplus A1</span>
+          <span class="footer-cert"><i class="fas fa-leaf"></i> CO₂-neutral</span>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <a href="../index.html">Start</a>
+        <a href="../index.html#bestellung">Bestellen</a>
+        <a href="../index.html#produkt">Produkt</a>
+        <a href="../index.html#vorteile">Vorteile</a>
+        <a href="../index.html#lieferung">Lieferung</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 8580 Köflach, Alte Hauptstraße 9</p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+436767060300">0676 7060300</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:office@steirerpellets.at">office@steirerpellets.at</a></p>
+        <p><i class="fas fa-clock"></i> Mo–Fr 08:00–17:00 Uhr</p>
+        <div class="footer-social">
+          <a href="mailto:office@steirerpellets.at" aria-label="E-Mail an Steirer Pellets"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+436767060300" aria-label="Steirer Pellets anrufen"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <span>© 2025 Steirer Pellets GmbH · Alle Rechte vorbehalten</span>
+        <div class="footer-links">
+          <a href="../impressum.html">Impressum</a>
+          <a href="../datenschutz.html">Datenschutz</a>
+          <a href="../agb.html">AGB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="../js/plz-data.js"></script>
+  <script src="../js/region-data.js"></script>
+  <script src="../js/region.js"></script>
+</body>
+</html>
