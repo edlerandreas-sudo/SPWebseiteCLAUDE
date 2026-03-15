@@ -344,9 +344,56 @@ if (isArticlePage) {
   function renderArticle(art, allArticles) {
     document.getElementById('articleContent').style.display = 'block';
 
-    // Meta tags
-    document.getElementById('articlePageTitle').textContent = `${art.title} – Steirer Pellets Magazin`;
-    document.getElementById('articlePageDesc').setAttribute('content', art.teaser || '');
+    // Meta tags and structured data
+    const siteUrl = 'https://www.steirerpellets.at';
+    const articleUrl = `${siteUrl}/blog/artikel.html?slug=${encodeURIComponent(art.slug)}`;
+    const articleImage = getArticleImage(art)
+      ? `${siteUrl}/${getArticleImage(art).replace(/^\.\.\//, '')}`
+      : `${siteUrl}/images/blog-fahrer-befuellung.jpg`;
+    const articleTitle = `${art.title} | Holzpellets Ratgeber von Steirer Pellets`;
+    const articleDesc = art.teaser || 'Ratgeber, Tipps und Kaufwissen rund um Holzpellets, Lagerung, Lieferplanung und Heizen mit Pellets.';
+
+    document.getElementById('articlePageTitle').textContent = articleTitle;
+    document.getElementById('articlePageDesc').setAttribute('content', articleDesc);
+
+    const canonical = document.getElementById('articleCanonical');
+    if (canonical) canonical.setAttribute('href', articleUrl);
+    const ogTitle = document.getElementById('articleOgTitle');
+    if (ogTitle) ogTitle.setAttribute('content', articleTitle);
+    const ogDesc = document.getElementById('articleOgDesc');
+    if (ogDesc) ogDesc.setAttribute('content', articleDesc);
+    const ogUrl = document.getElementById('articleOgUrl');
+    if (ogUrl) ogUrl.setAttribute('content', articleUrl);
+    const ogImage = document.getElementById('articleOgImage');
+    if (ogImage) ogImage.setAttribute('content', articleImage);
+    const twitterTitle = document.getElementById('articleTwitterTitle');
+    if (twitterTitle) twitterTitle.setAttribute('content', articleTitle);
+    const twitterDesc = document.getElementById('articleTwitterDesc');
+    if (twitterDesc) twitterDesc.setAttribute('content', articleDesc);
+    const twitterImage = document.getElementById('articleTwitterImage');
+    if (twitterImage) twitterImage.setAttribute('content', articleImage);
+
+    const schema = document.getElementById('articleSchema');
+    if (schema) {
+      schema.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: art.title,
+        description: articleDesc,
+        image: [articleImage],
+        mainEntityOfPage: articleUrl,
+        datePublished: art.published_at || undefined,
+        author: {
+          '@type': 'Organization',
+          name: art.author || 'Steirer Pellets Team',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Steirer Pellets GmbH',
+          url: `${siteUrl}/`,
+        }
+      });
+    }
 
     // Hero
     document.getElementById('articleBreadcrumbTitle').textContent = art.title;
@@ -474,8 +521,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   if (hamburger && navLinks) {
+    const closeNav = () => {
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.querySelectorAll('span').forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+    };
     hamburger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
       const bars = hamburger.querySelectorAll('span');
       if (open) {
         bars[0].style.transform = 'rotate(45deg) translate(5px,5px)';
@@ -485,10 +538,10 @@ document.addEventListener('DOMContentLoaded', () => {
         bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
       }
     });
-    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      hamburger.querySelectorAll('span').forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
-    }));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeNav));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeNav();
+    });
   }
 
   // Newsletter form (sidebar)

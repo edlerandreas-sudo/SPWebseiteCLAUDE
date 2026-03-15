@@ -179,5 +179,26 @@ function searchPLZ(query) {
 function getLandingUrl(plzOrSlug) {
   const data = PLZ_DATA[plzOrSlug];
   const slug = data ? data.slug : plzOrSlug;
+  const staticRegionPages = new Set([
+    'bruck-mur',
+    'deutschlandsberg',
+    'fuerstenfeld',
+    'graz',
+    'graz-umgebung',
+    'hartberg',
+    'koeflach',
+    'leibnitz',
+    'leoben',
+    'liezen',
+    'muerzzuschlag',
+    'murau',
+    'murtal',
+    'suedoststeiermark',
+    'voitsberg',
+    'weiz'
+  ]);
+  if (staticRegionPages.has(slug)) {
+    return `region/${slug}.html`;
+  }
   return `region/index.html?region=${encodeURIComponent(slug)}`;
 }

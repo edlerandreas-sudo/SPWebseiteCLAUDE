@@ -90,6 +90,9 @@
   color: var(--gray-800);
   background: transparent;
 }
+.blog-search-box:focus-within {
+  box-shadow: 0 0 0 4px rgba(232,146,42,0.22), var(--shadow-lg);
+}
 .blog-search-clear {
   background: none;
   border: none;
@@ -99,6 +102,12 @@
   transition: var(--transition);
 }
 .blog-search-clear:hover { color: var(--gray-800); }
+.blog-search-clear:focus-visible,
+.share-btn:focus-visible,
+.blog-filter-btn:focus-visible {
+  outline: 3px solid rgba(232,146,42,0.95);
+  outline-offset: 3px;
+}
 
 /* ===== FILTER BAR ===== */
 .blog-filter-bar {

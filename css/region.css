@@ -365,5 +365,6 @@
   .region-hero-title { font-size: 2rem; }
   .why-grid { grid-template-columns: 1fr; }
   .region-hero-ctas { flex-direction: column; }
+  .region-hero-ctas .btn { width: 100%; justify-content: center; text-align: center; }
   .regions-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 }

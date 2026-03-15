@@ -3,14 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pellets Magazin – Ratgeber & Tipps | Steirer Pellets</title>
-  <meta name="description" content="Das Magazin von Steirer Pellets: Ratgeber, Tipps & Wissenswertes rund um Holzpellets, Nachhaltigkeit, Heizung und Energie." />
+  <title>Pellets Magazin: Ratgeber, Tipps und Kaufberatung | Steirer Pellets</title>
+  <meta name="description" content="Das Magazin von Steirer Pellets: Ratgeber, Tipps und Kaufberatung rund um Holzpellets, Lagerung, Heizsaison und nachhaltige Waerme." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.steirerpellets.at/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_AT" />
+  <meta property="og:site_name" content="Steirer Pellets" />
+  <meta property="og:title" content="Pellets Magazin: Ratgeber und Kaufberatung | Steirer Pellets" />
+  <meta property="og:description" content="Ratgeber, Tipps und Wissen rund um Pellets kaufen, Holzpellets lagern und nachhaltig heizen mit Steirer Pellets." />
+  <meta property="og:url" content="https://www.steirerpellets.at/blog/" />
+  <meta property="og:image" content="https://www.steirerpellets.at/images/blog-fahrer-befuellung.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pellets Magazin: Ratgeber und Kaufberatung | Steirer Pellets" />
+  <meta name="twitter:description" content="Wissen rund um Holzpellets, Lagerung, Lieferplanung und Pellets kaufen in der Steiermark." />
+  <meta name="twitter:image" content="https://www.steirerpellets.at/images/blog-fahrer-befuellung.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/blog.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Steirer Pellets Magazin",
+      "url": "https://www.steirerpellets.at/blog/",
+      "description": "Ratgeber, Tipps und Wissen rund um Holzpellets, Heizen und regionale Energie.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Steirer Pellets GmbH",
+        "url": "https://www.steirerpellets.at/"
+      }
+    }
+  </script>
 </head>
 <body class="blog-page">
 
@@ -20,7 +47,7 @@
       <a href="../index.html" class="logo">
         <img src="../images/logo.png" alt="Steirer Pellets Logo" class="logo-img" />
       </a>
-      <nav class="nav-links" id="navLinks">
+      <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
         <a href="../index.html#bestellung"><i class="fas fa-shopping-cart"></i> Bestellen</a>
         <a href="../index.html#preise">Preise</a>
         <a href="../index.html#produkt">Produkt</a>
@@ -32,7 +59,7 @@
       <a href="../index.html#bestellung" class="btn btn-primary nav-cta">
         <i class="fas fa-shopping-cart"></i> Jetzt bestellen
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -54,7 +81,7 @@
         <div class="blog-search-box">
           <i class="fas fa-search"></i>
           <input type="text" id="blogSearch" placeholder="Artikel suchen …" autocomplete="off" />
-          <button type="button" id="blogSearchClear" class="blog-search-clear" style="display:none"><i class="fas fa-times"></i></button>
+          <button type="button" id="blogSearchClear" class="blog-search-clear" style="display:none" aria-label="Suche löschen"><i class="fas fa-times"></i></button>
         </div>
       </div>
     </div>
@@ -202,7 +229,7 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+  <button class="back-to-top" id="backToTop" aria-label="Zurück nach oben"><i class="fas fa-chevron-up"></i></button>
 
   <script src="../js/blog-fallback-data.js"></script>
   <script src="../js/blog.js"></script>

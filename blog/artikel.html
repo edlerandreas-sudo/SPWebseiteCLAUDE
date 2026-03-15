@@ -3,14 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="articlePageTitle">Artikel – Steirer Pellets Magazin</title>
-  <meta name="description" id="articlePageDesc" content="Ratgeber und Tipps rund um Holzpellets von Steirer Pellets." />
+  <title id="articlePageTitle">Holzpellets Ratgeber – Steirer Pellets Magazin</title>
+  <meta name="description" id="articlePageDesc" content="Ratgeber, Tipps und Kaufwissen rund um Holzpellets, Lagerung, Lieferplanung und Heizen mit Pellets." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" id="articleCanonical" href="https://www.steirerpellets.at/blog/artikel.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="de_AT" />
+  <meta property="og:site_name" content="Steirer Pellets" />
+  <meta property="og:title" id="articleOgTitle" content="Holzpellets Ratgeber – Steirer Pellets Magazin" />
+  <meta property="og:description" id="articleOgDesc" content="Ratgeber, Tipps und Kaufwissen rund um Holzpellets, Lagerung, Lieferplanung und Heizen mit Pellets." />
+  <meta property="og:url" id="articleOgUrl" content="https://www.steirerpellets.at/blog/artikel.html" />
+  <meta property="og:image" id="articleOgImage" content="https://www.steirerpellets.at/images/blog-fahrer-befuellung.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="articleTwitterTitle" content="Holzpellets Ratgeber – Steirer Pellets Magazin" />
+  <meta name="twitter:description" id="articleTwitterDesc" content="Ratgeber, Tipps und Kaufwissen rund um Holzpellets, Lagerung, Lieferplanung und Heizen mit Pellets." />
+  <meta name="twitter:image" id="articleTwitterImage" content="https://www.steirerpellets.at/images/blog-fahrer-befuellung.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/blog.css" />
+  <script type="application/ld+json" id="articleSchema">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Artikel – Steirer Pellets Magazin",
+      "description": "Ratgeber und Tipps rund um Holzpellets von Steirer Pellets.",
+      "mainEntityOfPage": "https://www.steirerpellets.at/blog/artikel.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Steirer Pellets GmbH",
+        "url": "https://www.steirerpellets.at/"
+      }
+    }
+  </script>
 </head>
 <body class="blog-page article-page">
 
@@ -20,7 +47,7 @@
       <a href="../index.html" class="logo">
         <img src="../images/logo.png" alt="Steirer Pellets Logo" class="logo-img" />
       </a>
-      <nav class="nav-links" id="navLinks">
+      <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
         <a href="../index.html#bestellung"><i class="fas fa-shopping-cart"></i> Bestellen</a>
         <a href="../index.html#preise">Preise</a>
         <a href="../index.html#produkt">Produkt</a>
@@ -32,7 +59,7 @@
       <a href="../index.html#bestellung" class="btn btn-primary nav-cta">
         <i class="fas fa-shopping-cart"></i> Jetzt bestellen
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -112,11 +139,11 @@
           <div class="sidebar-box">
             <h3 class="sidebar-heading"><i class="fas fa-share-alt"></i> Teilen</h3>
             <div class="share-buttons">
-              <button class="share-btn" id="shareWhatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-              <button class="share-btn" id="shareFacebook"><i class="fab fa-facebook-f"></i> Facebook</button>
-              <button class="share-btn" id="shareCopy"><i class="fas fa-link"></i> Link kopieren</button>
+              <button class="share-btn" id="shareWhatsapp" aria-label="Artikel per WhatsApp teilen"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+              <button class="share-btn" id="shareFacebook" aria-label="Artikel auf Facebook teilen"><i class="fab fa-facebook-f"></i> Facebook</button>
+              <button class="share-btn" id="shareCopy" aria-label="Link zum Artikel kopieren"><i class="fas fa-link"></i> Link kopieren</button>
             </div>
-            <div id="shareCopySuccess" class="share-copy-success" style="display:none">
+            <div id="shareCopySuccess" class="share-copy-success" style="display:none" role="status" aria-live="polite">
               <i class="fas fa-check"></i> Link kopiert!
             </div>
           </div>
@@ -197,7 +224,7 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+  <button class="back-to-top" id="backToTop" aria-label="Zurück nach oben"><i class="fas fa-chevron-up"></i></button>
   <script src="../js/blog-fallback-data.js"></script>
   <script src="../js/blog.js"></script>
 </body>

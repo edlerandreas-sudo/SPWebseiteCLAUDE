@@ -49,6 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
   document.title = `${content.title} | Steirer Pellets`;
   const descEl = document.querySelector('meta[name="description"]');
   if (descEl) descEl.setAttribute('content', content.description);
+  const canonicalEl = document.getElementById('pageCanonical');
+  const pageUrl = `https://www.steirerpellets.at/region/index.html?region=${encodeURIComponent(slug)}`;
+  if (canonicalEl) canonicalEl.setAttribute('href', pageUrl);
+  const ogTitle = document.getElementById('pageOgTitle');
+  if (ogTitle) ogTitle.setAttribute('content', `${content.title} | Steirer Pellets`);
+  const ogDesc = document.getElementById('pageOgDesc');
+  if (ogDesc) ogDesc.setAttribute('content', content.description);
+  const ogUrl = document.getElementById('pageOgUrl');
+  if (ogUrl) ogUrl.setAttribute('content', pageUrl);
+  const twitterTitle = document.getElementById('pageTwitterTitle');
+  if (twitterTitle) twitterTitle.setAttribute('content', `${content.title} | Steirer Pellets`);
+  const twitterDesc = document.getElementById('pageTwitterDesc');
+  if (twitterDesc) twitterDesc.setAttribute('content', content.description);
 
   // ===== Hero füllen =====
   setText('regionName',       content.name);
@@ -209,6 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const error = document.createElement('div');
         error.id = 'sidebarError';
         error.className = 'form-message form-message-error';
+        error.setAttribute('role', 'alert');
+        error.setAttribute('aria-live', 'assertive');
         error.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Die Anfrage konnte gerade nicht uebertragen werden. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
         sbSubmit.insertAdjacentElement('afterend', error);
         sbSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Anfrage senden';
@@ -242,8 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== Hamburger =====
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('navLinks');
+  const closeNav = () => {
+    navLinks?.classList.remove('open');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    hamburger?.querySelectorAll('span').forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+  };
   hamburger?.addEventListener('click', () => {
     const open = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
     const bars = hamburger.querySelectorAll('span');
     if (open) {
       bars[0].style.transform = 'rotate(45deg) translate(5px,5px)';
@@ -252,6 +273,10 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
     }
+  });
+  navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks?.classList.contains('open')) closeNav();
   });
 
   // ===== Helpers =====
