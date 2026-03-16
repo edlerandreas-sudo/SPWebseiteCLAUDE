@@ -350,7 +350,7 @@ if (isArticlePage) {
     const articleImage = getArticleImage(art)
       ? `${siteUrl}/${getArticleImage(art).replace(/^\.\.\//, '')}`
       : `${siteUrl}/images/blog-fahrer-befuellung.jpg`;
-    const articleTitle = `${art.title} | Holzpellets Ratgeber von Steirer Pellets`;
+    const articleTitle = `${art.title} | Holzpellets News von Steirer Pellets`;
     const articleDesc = art.teaser || 'Ratgeber, Tipps und Kaufwissen rund um Holzpellets, Lagerung, Lieferplanung und Heizen mit Pellets.';
 
     document.getElementById('articlePageTitle').textContent = articleTitle;
@@ -442,7 +442,7 @@ if (isArticlePage) {
 
     // Share buttons
     const pageUrl = window.location.href;
-    const shareText = encodeURIComponent(art.title + ' – Steirer Pellets Magazin');
+    const shareText = encodeURIComponent(art.title + ' – Steirer Pellets News');
     document.getElementById('shareWhatsapp').addEventListener('click', () => {
       window.open(`https://wa.me/?text=${shareText}%20${encodeURIComponent(pageUrl)}`, '_blank');
     });

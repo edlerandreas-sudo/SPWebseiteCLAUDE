@@ -642,7 +642,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
         <i class="fas fa-tag"></i> Preise
       </button>
       <button class="nav-item" data-panel="artikel">
-        <i class="fas fa-newspaper"></i> Magazin-Artikel
+        <i class="fas fa-newspaper"></i> News-Artikel
       </button>
       <button class="nav-item" data-panel="editor">
         <i class="fas fa-edit"></i> Artikel schreiben
@@ -742,7 +742,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
     <div class="section-panel" id="panel-artikel">
       <div class="page-header">
         <div>
-          <h1><i class="fas fa-newspaper" style="color:var(--green);margin-right:8px"></i>Magazin-Artikel</h1>
+          <h1><i class="fas fa-newspaper" style="color:var(--green);margin-right:8px"></i>News-Artikel</h1>
           <p>Alle Artikel verwalten – veröffentlichen, bearbeiten oder löschen.</p>
         </div>
         <button class="btn btn-primary" id="newArtikelBtn">
@@ -776,7 +776,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
       <div class="page-header">
         <div>
           <h1 id="editorTitle"><i class="fas fa-edit" style="color:var(--green);margin-right:8px"></i>Neuer Artikel</h1>
-          <p id="editorSub">Schreiben Sie einen neuen Magazin-Beitrag.</p>
+          <p id="editorSub">Schreiben Sie einen neuen News-Beitrag.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn btn-outline" id="backToListBtn">
@@ -965,7 +965,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
           <div class="card-body" style="padding:20px">
             <div class="hilfe-quick-icon">📰</div>
             <h3>Artikel schreiben</h3>
-            <p>Neue Magazin-Beiträge erstellen – einfach wie in Word.</p>
+            <p>Neue News-Beiträge erstellen – einfach wie in Word.</p>
             <button class="btn btn-outline btn-sm" style="margin-top:12px" onclick="startNewArtikel()"><i class="fas fa-arrow-right"></i> Neuer Artikel</button>
           </div>
         </div>
@@ -1012,7 +1012,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
       <!-- Anleitung: Artikel schreiben -->
       <div class="card" style="margin-bottom:20px">
         <div class="card-header">
-          <h2><i class="fas fa-newspaper"></i> Anleitung: Neuen Magazin-Artikel schreiben</h2>
+          <h2><i class="fas fa-newspaper"></i> Anleitung: Neuen News-Artikel schreiben</h2>
           <span class="hilfe-badge hilfe-badge-blue">⏱ ca. 5–15 Minuten</span>
         </div>
         <div class="card-body">
@@ -1027,7 +1027,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
             </li>
             <li>
               <strong>Kurzbeschreibung (Teaser) eingeben</strong> <em>(Pflichtfeld)</em><br/>
-              <span>1–2 Sätze, die den Artikel zusammenfassen. Wird in der Magazin-Übersicht angezeigt.</span>
+              <span>1–2 Sätze, die den Artikel zusammenfassen. Wird in der News-Übersicht angezeigt.</span>
             </li>
             <li>
               <strong>Artikelinhalt schreiben</strong><br/>
@@ -1053,7 +1053,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
               <strong>Veröffentlichen oder als Entwurf speichern</strong><br/>
               <span>
                 <span class="hilfe-status-chip hilfe-chip-amber">Als Entwurf speichern</span> → Artikel ist noch nicht sichtbar, später fertigstellen.<br/>
-                <span class="hilfe-status-chip hilfe-chip-green" style="margin-top:5px;display:inline-block">Veröffentlichen</span> → Artikel erscheint sofort im Magazin.
+                <span class="hilfe-status-chip hilfe-chip-green" style="margin-top:5px;display:inline-block">Veröffentlichen</span> → Artikel erscheint sofort in den News.
               </span>
             </li>
           </ol>
@@ -1069,7 +1069,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
         <div class="card-body">
           <ol class="hilfe-steps">
             <li>
-              <strong>Klicken Sie links auf „Magazin-Artikel"</strong><br/>
+              <strong>Klicken Sie links auf „News-Artikel"</strong><br/>
               <span>Sie sehen eine Liste aller vorhandenen Artikel.</span>
             </li>
             <li>
@@ -1908,7 +1908,7 @@ function resetEditor() {
   document.getElementById('edStatusLabel').style.color = 'var(--gray-400)';
   document.getElementById('edPublishedInfo').style.display = 'none';
   document.getElementById('editorTitle').innerHTML = '<i class="fas fa-edit" style="color:var(--green);margin-right:8px"></i>Neuer Artikel';
-  document.getElementById('editorSub').textContent = 'Schreiben Sie einen neuen Magazin-Beitrag.';
+  document.getElementById('editorSub').textContent = 'Schreiben Sie einen neuen News-Beitrag.';
   switchImgTab('upload');
   renderTagChips();
 }
@@ -2405,9 +2405,10 @@ document.querySelector('.nav-item[data-panel="deployment"]').addEventListener('c
 // E-MAIL SETUP
 // ══════════════════════════════════════════════
 const W3F_KEY_STORAGE = 'sp_w3f_access_key';
+const DEFAULT_W3F_KEY = '8b18adc8-a507-499e-95a0-54c1485b341d';
 
 function initEmailSetup() {
-  const savedKey = localStorage.getItem(W3F_KEY_STORAGE) || '';
+  const savedKey = localStorage.getItem(W3F_KEY_STORAGE) || DEFAULT_W3F_KEY || '';
   const input    = document.getElementById('w3fKeyInput');
   const applyBtn = document.getElementById('applyW3fKeyBtn');
   const testBtn  = document.getElementById('sendTestEmailBtn');
@@ -2428,7 +2429,7 @@ function initEmailSetup() {
 }
 
 function checkEmailActive() {
-  const key = localStorage.getItem(W3F_KEY_STORAGE) || '';
+  const key = localStorage.getItem(W3F_KEY_STORAGE) || DEFAULT_W3F_KEY || '';
   const isActive = key && key.length > 20 && key !== 'PENDING_CONFIRMATION';
   const banner = document.getElementById('emailStatusBanner');
   if (isActive) {
@@ -2463,7 +2464,7 @@ document.getElementById('saveW3fKeyBtn').addEventListener('click', () => {
 
 // Key in main.js einbauen (wir patchen main.js dynamisch über den fetch-Aufruf)
 document.getElementById('applyW3fKeyBtn').addEventListener('click', async () => {
-  const key = localStorage.getItem(W3F_KEY_STORAGE) || '';
+  const key = localStorage.getItem(W3F_KEY_STORAGE) || DEFAULT_W3F_KEY || '';
   if (!key || key.length < 10) {
     showToast('Kein Key gespeichert.', 'error');
     return;
@@ -2491,7 +2492,7 @@ document.getElementById('applyW3fKeyBtn').addEventListener('click', async () => 
 
 // Test-E-Mail senden
 document.getElementById('sendTestEmailBtn').addEventListener('click', async () => {
-  const key = localStorage.getItem('sp_w3f_key_active') || localStorage.getItem(W3F_KEY_STORAGE) || '';
+  const key = localStorage.getItem('sp_w3f_key_active') || localStorage.getItem(W3F_KEY_STORAGE) || DEFAULT_W3F_KEY || '';
   if (!key || key.length < 10) {
     showToast('Bitte zuerst den Key aktivieren.', 'error');
     return;

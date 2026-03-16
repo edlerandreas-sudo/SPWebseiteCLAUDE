@@ -651,7 +651,6 @@ document.addEventListener('DOMContentLoaded', () => {
         plz:             document.getElementById('plz')?.value,
         ort:             document.getElementById('ort')?.value,
         strasse:         document.getElementById('strasse')?.value,
-        tankgroesse:     document.getElementById('tankgroesse')?.value,
         zufahrt:         document.getElementById('zufahrt')?.value,
         vorname:         document.getElementById('vorname')?.value,
         nachname:        document.getElementById('nachname')?.value,
@@ -669,7 +668,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Web3Forms Access Key – wird aus Admin-Bereich gesetzt
       // oder hier direkt eintragen: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-      const WEB3FORMS_KEY = localStorage.getItem('sp_w3f_key_active') || 'PENDING_CONFIRMATION';
+      const DEFAULT_WEB3FORMS_KEY = '8b18adc8-a507-499e-95a0-54c1485b341d';
+      const WEB3FORMS_KEY = localStorage.getItem('sp_w3f_key_active') || DEFAULT_WEB3FORMS_KEY || 'PENDING_CONFIRMATION';
 
       // Formspree Backup (optional – eigene ID eintragen)
       const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!sent && !stored) {
         setOrderError('Die Bestellung konnte gerade nicht uebertragen werden. Bitte versuchen Sie es erneut oder rufen Sie uns unter +43 3574 / 2200 an.');
         if (submitBtn) {
-          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Verbindlich bestellen';
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Bestellung absenden';
           submitBtn.disabled = false;
         }
         return;
@@ -807,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateMenge(5);
         if (slider) slider.value = 5;
         if (submitBtn) {
-          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Verbindlich bestellen';
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Bestellung absenden';
           submitBtn.disabled  = false;
         }
         setOrderError('');

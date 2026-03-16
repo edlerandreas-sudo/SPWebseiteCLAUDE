@@ -33,7 +33,6 @@ $lieferkw    = s($data['lieferkw'] ?? '');
 $plz         = s($data['plz'] ?? '');
 $ort         = s($data['ort'] ?? '');
 $strasse     = s($data['strasse'] ?? '');
-$tankgroesse = s($data['tankgroesse'] ?? '');
 $zufahrt     = s($data['zufahrt'] ?? '');
 $vorname     = s($data['vorname'] ?? '');
 $nachname    = s($data['nachname'] ?? '');
@@ -66,7 +65,6 @@ $nachricht .= "📍 LIEFERADRESSE\n";
 $nachricht .= "─────────────────────────────────────────────\n";
 $nachricht .= "Straße:          {$strasse}\n";
 $nachricht .= "Ort:             {$plz} {$ort}\n";
-$nachricht .= "Tankgröße:       {$tankgroesse}\n";
 $nachricht .= "Zufahrt:         {$zufahrt}\n\n";
 
 $nachricht .= "👤 KONTAKT\n";

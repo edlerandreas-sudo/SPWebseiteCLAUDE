@@ -1787,6 +1787,51 @@ textarea:focus-visible {
   overflow: hidden;
   background: linear-gradient(150deg, #052009 0%, #0a3510 20%, #0f4d18 50%, #1d6b28 75%, #0f4d18 100%);
 }
+.home-page .navbar {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 2px 24px rgba(23,43,27,0.08);
+  padding: 10px 0;
+}
+.home-page .navbar .logo-img,
+.home-page .navbar.scrolled .logo-img {
+  filter: none;
+}
+.home-page .navbar .nav-links a,
+.home-page .navbar.scrolled .nav-links a {
+  color: var(--gray-700);
+}
+.home-page .navbar .nav-links a:hover,
+.home-page .navbar.scrolled .nav-links a:hover {
+  background: var(--green-pale);
+  color: var(--green-logo);
+}
+.home-page .navbar .nav-links a.active,
+.home-page .navbar.scrolled .nav-links a.active {
+  background: var(--green-pale);
+  color: var(--green-logo);
+}
+.home-page .navbar .hamburger span,
+.home-page .navbar.scrolled .hamburger span {
+  background: var(--gray-700);
+}
+.home-page .nav-cta {
+  display: inline-flex;
+  background: linear-gradient(135deg, var(--green-logo), var(--green-dark));
+  color: white;
+  border-color: transparent;
+}
+.home-page .nav-cta:hover {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-logo));
+  color: white;
+  border-color: transparent;
+}
+.home-page .order-hero {
+  background:
+    radial-gradient(circle at top left, rgba(230,244,232,0.9) 0%, transparent 34%),
+    radial-gradient(circle at 88% 20%, rgba(90,191,106,0.12) 0%, transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f6fbf7 62%, #eef7f0 100%);
+}
 .order-hero-bg {
   position: absolute;
   inset: 0;
@@ -1794,6 +1839,11 @@ textarea:focus-visible {
     radial-gradient(ellipse at 10% 60%, rgba(90,191,106,0.1) 0%, transparent 55%),
     radial-gradient(ellipse at 85% 20%, rgba(29,107,40,0.15) 0%, transparent 50%);
   pointer-events: none;
+}
+.home-page .order-hero-bg {
+  background:
+    radial-gradient(ellipse at 12% 62%, rgba(230,244,232,0.95) 0%, transparent 54%),
+    radial-gradient(ellipse at 85% 18%, rgba(29,107,40,0.08) 0%, transparent 42%);
 }
 .order-hero-particles { position: absolute; inset: 0; overflow: hidden; }
 .order-hero-inner {
@@ -1830,6 +1880,9 @@ textarea:focus-visible {
   filter: brightness(0) invert(1);
   display: block;
 }
+.home-page .order-logo {
+  filter: none;
+}
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -1844,6 +1897,9 @@ textarea:focus-visible {
   line-height: 1.6;
   margin-bottom: 24px;
   animation: fadeInUp 0.7s ease 0.15s both;
+}
+.home-page .order-tagline {
+  color: var(--gray-700);
 }
 .order-pills {
   display: flex;
@@ -1863,6 +1919,12 @@ textarea:focus-visible {
   border-radius: var(--radius-full);
   font-size: 0.82rem;
   font-weight: 600;
+}
+.home-page .order-pills span {
+  background: white;
+  border: 1px solid rgba(29,107,40,0.14);
+  color: var(--green-dark);
+  box-shadow: 0 8px 20px rgba(23,43,27,0.05);
 }
 .order-pills i { color: var(--heart-green); }
 
@@ -1884,6 +1946,9 @@ textarea:focus-visible {
   /* Leichter Schlagschatten in Grün für Tiefe */
   filter: drop-shadow(0 12px 28px rgba(10,53,16,0.55));
 }
+.home-page .order-lkw {
+  filter: drop-shadow(0 18px 34px rgba(29,107,40,0.18));
+}
 .order-lkw-badges {
   display: flex;
   flex-wrap: wrap;
@@ -1902,6 +1967,11 @@ textarea:focus-visible {
   padding: 4px 10px;
   border-radius: var(--radius-full);
 }
+.home-page .order-lkw-badges span {
+  color: var(--green-dark);
+  background: rgba(255,255,255,0.94);
+  border: 1px solid rgba(29,107,40,0.14);
+}
 .order-lkw-badges i {
   color: var(--heart-green);
   font-size: 0.7rem;
@@ -1915,6 +1985,12 @@ textarea:focus-visible {
   padding: 20px 24px;
   animation: fadeInUp 0.7s ease 0.35s both;
   backdrop-filter: blur(6px);
+}
+.home-page .order-price-teaser {
+  background: rgba(255,255,255,0.88);
+  border: 1px solid rgba(29,107,40,0.12);
+  box-shadow: 0 18px 44px rgba(23,43,27,0.08);
+  backdrop-filter: blur(10px);
 }
 .price-teaser-row {
   display: grid;
@@ -1936,10 +2012,22 @@ textarea:focus-visible {
   background: rgba(90,191,106,0.15);
   border-color: rgba(90,191,106,0.4);
 }
+.home-page .price-teaser-item {
+  background: #f9fcf9;
+  border: 1px solid rgba(29,107,40,0.08);
+}
+.home-page .price-teaser-item.best {
+  background: var(--green-ultra);
+  border-color: rgba(29,107,40,0.2);
+}
 .pt-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 .pt-price { font-size: 1.6rem; font-weight: 800; color: white; line-height: 1.1; }
 .pt-price small { font-size: 0.75rem; font-weight: 400; color: rgba(255,255,255,0.65); }
 .pt-hint { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+.home-page .pt-label { color: var(--gray-500); }
+.home-page .pt-price { color: var(--green-dark); }
+.home-page .pt-price small { color: var(--gray-500); }
+.home-page .pt-hint { color: var(--gray-500); }
 .pt-link {
   display: inline-flex;
   align-items: center;
@@ -1959,6 +2047,10 @@ textarea:focus-visible {
   overflow: hidden;
   animation: fadeInRight 0.8s ease 0.1s both;
 }
+.home-page .order-form-card {
+  border: 1px solid rgba(29,107,40,0.1);
+  box-shadow: 0 26px 80px rgba(23,43,27,0.12), 0 10px 28px rgba(23,43,27,0.06);
+}
 @keyframes fadeInRight {
   from { opacity: 0; transform: translateX(30px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -1972,6 +2064,11 @@ textarea:focus-visible {
   gap: 14px;
   color: white;
 }
+.home-page .order-form-header {
+  background: linear-gradient(180deg, #ffffff 0%, #f4faf5 100%);
+  border-bottom: 1px solid rgba(29,107,40,0.1);
+  color: var(--green-dark);
+}
 .order-form-icon {
   width: 44px; height: 44px;
   background: rgba(255,255,255,0.2);
@@ -1980,9 +2077,22 @@ textarea:focus-visible {
   font-size: 1.2rem;
   flex-shrink: 0;
 }
+.home-page .order-form-icon {
+  background: linear-gradient(135deg, var(--green-logo), var(--green-dark));
+  color: white;
+  box-shadow: 0 10px 20px rgba(29,107,40,0.2);
+}
 .order-form-header h1,
 .order-form-header h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 2px; color: white; }
 .order-form-header p  { font-size: 0.78rem; opacity: 0.8; }
+.home-page .order-form-header h1,
+.home-page .order-form-header h2 {
+  color: var(--green-dark);
+}
+.home-page .order-form-header p {
+  color: var(--gray-600);
+  opacity: 1;
+}
 
 .order-form {
   padding: 24px 28px 20px;
@@ -2096,6 +2206,11 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+.home-page .price-calc-box {
+  background: linear-gradient(180deg, #ffffff 0%, #f6fbf7 100%);
+  border: 1px solid rgba(29,107,40,0.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 12px 26px rgba(23,43,27,0.05);
 }
 .pc-row {
   display: flex;

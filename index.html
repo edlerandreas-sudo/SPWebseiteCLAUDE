@@ -51,7 +51,7 @@
     }
   </script>
 </head>
-<body>
+<body class="home-page">
 
   <!-- ===== NAVIGATION ===== -->
   <header class="navbar" id="navbar">
@@ -66,7 +66,7 @@
         <a href="#vorteile">Vorteile</a>
         <a href="#nachhaltigkeit">Nachhaltigkeit</a>
         <a href="#lieferung">Lieferung</a>
-        <a href="blog/index.html"><i class="fas fa-newspaper"></i> Magazin</a>
+        <a href="blog/index.html"><i class="fas fa-newspaper"></i> News</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="navLinks" aria-expanded="false">
@@ -90,18 +90,20 @@
         <div class="order-logo-wrap">
           <img src="images/logo.png" alt="Steirer Pellets" class="order-logo" />
         </div>
-        <p class="order-tagline">Lose Holzpellets per Tankwagen -<br/>direkt vom steirischen Hersteller, persoenlich geliefert.</p>
+        <p class="order-tagline">Lose Holzpellets per Tankwagen -<br/>direkt vom steirischen Hersteller, persönlich geliefert.</p>
         <div class="order-pills">
           <span><i class="fas fa-award"></i> ENplus A1</span>
           <span><i class="fas fa-leaf"></i> regional produziert</span>
           <span><i class="fas fa-truck"></i> Blasbefüllung</span>
         </div>
-        <div class="order-top-actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+        <div class="order-top-actions" style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-top:18px">
           <a href="https://wa.me/436767060300" class="btn btn-primary" target="_blank" rel="noopener">
             <i class="fab fa-whatsapp"></i> Bestellung per WhatsApp: 0676 7060300
           </a>
+          <a href="tel:+436767060300" class="btn btn-outline">
+            <i class="fas fa-phone"></i> oder telefonisch bestellen: 0676 7060300
+          </a>
         </div>
-        <p style="margin-top:10px;font-size:0.95rem;color:var(--gray-600);font-weight:600">oder telefonisch bestellen: <a href="tel:+436767060300" style="color:var(--green-logo)">0676 7060300</a></p>
 
         <!-- LKW-Bild freigestellt -->
         <div class="order-lkw-wrap">
@@ -240,19 +242,6 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="tankgroesse">Tankgröße</label>
-              <select id="tankgroesse" name="tankgroesse">
-                <option value="">Bitte wählen</option>
-                <option value="bis 3 Tonnen">bis 3 Tonnen</option>
-                <option value="3 bis 5 Tonnen">3 bis 5 Tonnen</option>
-                <option value="5 bis 8 Tonnen">5 bis 8 Tonnen</option>
-                <option value="8 bis 12 Tonnen">8 bis 12 Tonnen</option>
-                <option value="ueber 12 Tonnen">über 12 Tonnen</option>
-                <option value="unbekannt">unbekannt</option>
-              </select>
-            </div>
-
-            <div class="form-group">
               <label class="form-label" for="zufahrt">Zufahrtshinweise</label>
               <textarea id="zufahrt" name="zufahrt" rows="2" placeholder="z.B. Einfahrt links, Parkplatz vorhanden, Kellerabgang …"></textarea>
             </div>
@@ -306,7 +295,7 @@
             <div class="step-buttons">
               <button type="button" class="step-back" id="backBtn2"><i class="fas fa-arrow-left"></i> Zurück</button>
               <button type="submit" class="btn btn-primary" id="submitBtn">
-                <i class="fas fa-paper-plane"></i> Verbindlich bestellen
+                <i class="fas fa-paper-plane"></i> Bestellung absenden
               </button>
             </div>
           </div>
@@ -766,7 +755,7 @@
             <a href="tel:+436767060300" class="social-btn" aria-label="Steirer Pellets anrufen"><i class="fas fa-phone"></i></a>
             <a href="https://www.facebook.com/steirerpellets" class="social-btn" aria-label="Steirer Pellets auf Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/steirerpellets/" class="social-btn" aria-label="Steirer Pellets auf Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-            <a href="blog/index.html" class="social-btn" aria-label="Zum Magazin"><i class="fas fa-newspaper"></i></a>
+            <a href="blog/index.html" class="social-btn" aria-label="Zu den News"><i class="fas fa-newspaper"></i></a>
           </div>
         </div>
         <div class="contact-cta-box">
@@ -808,7 +797,7 @@
         <a href="#vorteile">Vorteile</a>
         <a href="#nachhaltigkeit">Nachhaltigkeit</a>
         <a href="#lieferung">Lieferung</a>
-        <a href="blog/index.html">Magazin</a>
+        <a href="blog/index.html">News</a>
         <a href="#kontakt">Kontakt</a>
       </div>
       <div class="footer-contact">
@@ -822,7 +811,7 @@
           <a href="tel:+436767060300" aria-label="Steirer Pellets anrufen"><i class="fas fa-phone"></i></a>
           <a href="https://www.facebook.com/steirerpellets" aria-label="Steirer Pellets auf Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/steirerpellets/" aria-label="Steirer Pellets auf Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-          <a href="blog/index.html" aria-label="Zum Magazin"><i class="fas fa-newspaper"></i></a>
+          <a href="blog/index.html" aria-label="Zu den News"><i class="fas fa-newspaper"></i></a>
         </div>
       </div>
     </div>

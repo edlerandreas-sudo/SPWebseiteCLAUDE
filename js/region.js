@@ -174,7 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let sent = false;
 
-      const WEB3FORMS_KEY = localStorage.getItem('sp_w3f_key_active') || '';
+      const DEFAULT_WEB3FORMS_KEY = '8b18adc8-a507-499e-95a0-54c1485b341d';
+      const WEB3FORMS_KEY = localStorage.getItem('sp_w3f_key_active') || DEFAULT_WEB3FORMS_KEY || '';
       if (WEB3FORMS_KEY && WEB3FORMS_KEY !== 'PENDING_CONFIRMATION') {
         try {
           const response = await fetch('https://api.web3forms.com/submit', {
