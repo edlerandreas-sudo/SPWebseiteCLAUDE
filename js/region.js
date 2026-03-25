@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
               email: data.email,
               sent_at: data.sent_at,
               message: [
-                `Neue Regionsanfrage fuer ${content.name}`,
+                `Neue Regionsanfrage für ${content.name}`,
                 `Menge: ${data.menge} Tonnen`,
                 `PLZ: ${data.plz}`,
                 `Name: ${data.name}`,
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         error.className = 'form-message form-message-error';
         error.setAttribute('role', 'alert');
         error.setAttribute('aria-live', 'assertive');
-        error.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Die Anfrage konnte gerade nicht uebertragen werden. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
+        error.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Die Anfrage konnte gerade nicht übertragen werden. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
         sbSubmit.insertAdjacentElement('afterend', error);
         sbSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Anfrage senden';
         sbSubmit.disabled = false;

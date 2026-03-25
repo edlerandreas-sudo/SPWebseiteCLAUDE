@@ -41,7 +41,7 @@
 │   ├── pellets-hero.jpg        ← Hero-Hintergrundbild
 │   ├── lkw-freigestellt.png    ← LKW-Foto (freigestellt)
 │   ├── lkw-original.jpg        ← LKW-Originalfoto
-│   └── blog-fahrer-befuellung.jpg ← Blog-Titelbild
+│   └── blog-fahrer-befüllung.jpg ← Blog-Titelbild
 │
 ├── blog/
 │   ├── index.html              ← Magazin-Übersicht

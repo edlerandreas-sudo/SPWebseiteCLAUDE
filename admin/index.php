@@ -55,7 +55,7 @@ if (!$isConfigured) {
 <body>
   <div class="card">
     <h1>Admin noch nicht konfiguriert</h1>
-    <p>Der Admin-Bereich verwendet jetzt serverseitige Authentifizierung und benoetigt Zugangsdaten als Umgebungsvariablen.</p>
+    <p>Der Admin-Bereich verwendet jetzt serverseitige Authentifizierung und benötigt Zugangsdaten als Umgebungsvariablen.</p>
     <p>Bitte setzen Sie <code>SP_ADMIN_USER</code> sowie entweder <code>SP_ADMIN_PASS_HASH</code> oder <code>SP_ADMIN_PASS</code> auf dem Server.</p>
   </div>
 </body>
@@ -1109,7 +1109,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
             <details class="faq-item">
               <summary>Was passiert wenn ich das Passwort vergesse? <i class="fas fa-chevron-down"></i></summary>
               <div class="faq-body">
-                Der Login wird serverseitig verwaltet. Benutzername und Passwort koennen ueber die Server-Variablen <code>SP_ADMIN_USER</code> und <code>SP_ADMIN_PASS_HASH</code> neu gesetzt werden.
+                Der Login wird serverseitig verwaltet. Benutzername und Passwort können über die Server-Variablen <code>SP_ADMIN_USER</code> und <code>SP_ADMIN_PASS_HASH</code> neu gesetzt werden.
               </div>
             </details>
 
@@ -1305,7 +1305,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
 │   ├── logo.png               ← Firmenlogo
 │   ├── pellets-hero.jpg       ← Hintergrundbild
 │   ├── lkw-freigestellt.png   ← LKW-Foto
-│   └── blog-fahrer-befuellung.jpg
+│   └── blog-fahrer-befüllung.jpg
 │
 ├── 📁 blog/
 │   ├── index.html             ← Magazin-Übersicht

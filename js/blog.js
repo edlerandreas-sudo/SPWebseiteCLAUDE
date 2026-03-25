@@ -68,7 +68,7 @@ function cacheArticles(articles) {
 // Slugs → relative Bildpfade (von blog/ aus)
 // ──────────────────────────────────────────────
 const ARTICLE_IMAGES = {
-  'wie-nachhaltig-sind-holzpellets-wirklich': '../images/blog-fahrer-befuellung.jpg',
+  'wie-nachhaltig-sind-holzpellets-wirklich': '../images/blog-fahrer-befüllung.jpg',
 };
 
 function getArticleImage(art) {
@@ -349,7 +349,7 @@ if (isArticlePage) {
     const articleUrl = `${siteUrl}/blog/artikel.html?slug=${encodeURIComponent(art.slug)}`;
     const articleImage = getArticleImage(art)
       ? `${siteUrl}/${getArticleImage(art).replace(/^\.\.\//, '')}`
-      : `${siteUrl}/images/blog-fahrer-befuellung.jpg`;
+      : `${siteUrl}/images/blog-fahrer-befüllung.jpg`;
     const articleTitle = `${art.title} | Holzpellets News von Steirer Pellets`;
     const articleDesc = art.teaser || 'Ratgeber, Tipps und Kaufwissen rund um Holzpellets, Lagerung, Lieferplanung und Heizen mit Pellets.';
 

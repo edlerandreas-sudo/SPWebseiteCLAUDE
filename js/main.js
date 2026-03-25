@@ -780,7 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (_) {}
 
       if (!sent && !stored) {
-        setOrderError('Die Bestellung konnte gerade nicht uebertragen werden. Bitte versuchen Sie es erneut oder rufen Sie uns unter +43 3574 / 2200 an.');
+        setOrderError('Die Bestellung konnte gerade nicht übertragen werden. Bitte versuchen Sie es erneut oder rufen Sie uns unter +43 3574 / 2200 an.');
         if (submitBtn) {
           submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Bestellung absenden';
           submitBtn.disabled = false;
@@ -859,6 +859,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .summary-total-val { font-size: 1.1rem; color: var(--green-logo); }
     .summary-note { font-size: 0.72rem; color: var(--gray-500); text-align: right; margin-top: 6px; }
     .form-message { border-radius: 10px; padding: 12px 14px; font-size: 0.875rem; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .form-message[hidden] { display: none !important; }
     .form-message-error { background: #fff1f2; border: 1px solid #fecdd3; color: #9f1239; }
   `;
   document.head.appendChild(styleEl);
