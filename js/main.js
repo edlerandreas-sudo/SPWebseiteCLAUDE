@@ -190,13 +190,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   if (hamburger && navLinks) {
+    const syncBodyLock = (open) => {
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
     const closeNav = () => {
       navLinks.classList.remove('open');
+      syncBodyLock(false);
       hamburger.setAttribute('aria-expanded', 'false');
       hamburger.querySelectorAll('span').forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
     };
     hamburger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
+      syncBodyLock(open);
       hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
       const bars = hamburger.querySelectorAll('span');
       if (open) {
@@ -207,7 +212,16 @@ document.addEventListener('DOMContentLoaded', () => {
         bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
       }
     });
-    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeNav));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+      const href = l.getAttribute('href') || '';
+      closeNav();
+      if (href.startsWith('#')) {
+        const target = document.querySelector(href);
+        if (target) {
+          setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
+        }
+      }
+    }));
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navLinks.classList.contains('open')) closeNav();
     });
