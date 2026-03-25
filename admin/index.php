@@ -1,9 +1,24 @@
 <?php
 session_start();
 
-$adminUser = getenv('SP_ADMIN_USER') ?: '';
-$adminPassHash = getenv('SP_ADMIN_PASS_HASH') ?: '';
-$adminPassPlain = getenv('SP_ADMIN_PASS') ?: '';
+$adminUser = '';
+$adminPassHash = '';
+$adminPassPlain = '';
+
+$configPath = __DIR__ . '/config.php';
+if (is_file($configPath)) {
+    require $configPath;
+}
+
+if ($adminUser === '') {
+    $adminUser = getenv('SP_ADMIN_USER') ?: '';
+}
+if ($adminPassHash === '') {
+    $adminPassHash = getenv('SP_ADMIN_PASS_HASH') ?: '';
+}
+if ($adminPassPlain === '') {
+    $adminPassPlain = getenv('SP_ADMIN_PASS') ?: '';
+}
 
 if (isset($_GET['logout'])) {
     $_SESSION = [];
@@ -55,8 +70,8 @@ if (!$isConfigured) {
 <body>
   <div class="card">
     <h1>Admin noch nicht konfiguriert</h1>
-    <p>Der Admin-Bereich verwendet jetzt serverseitige Authentifizierung und benötigt Zugangsdaten als Umgebungsvariablen.</p>
-    <p>Bitte setzen Sie <code>SP_ADMIN_USER</code> sowie entweder <code>SP_ADMIN_PASS_HASH</code> oder <code>SP_ADMIN_PASS</code> auf dem Server.</p>
+    <p>Der Admin-Bereich benötigt Zugangsdaten in <code>admin/config.php</code> oder alternativ als Server-Umgebungsvariablen.</p>
+    <p>Bitte setzen Sie <code>$adminUser</code> sowie entweder <code>$adminPassHash</code> oder <code>$adminPassPlain</code> in der Konfigurationsdatei.</p>
   </div>
 </body>
 </html>

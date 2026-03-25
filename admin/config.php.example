@@ -1,0 +1,13 @@
+<?php
+/**
+ * Admin-Konfiguration für Shared Hosting.
+ * Diese Datei als "config.php" kopieren und Zugangsdaten eintragen.
+ */
+
+$adminUser = 'admin';
+
+// Entweder ein Klartext-Passwort eintragen:
+$adminPassPlain = 'bitte-sicheres-passwort-eintragen';
+
+// Oder stattdessen einen Passwort-Hash verwenden:
+$adminPassHash = '';
