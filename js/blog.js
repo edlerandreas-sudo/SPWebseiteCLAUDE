@@ -162,10 +162,10 @@ if (isBlogIndex) {
   // ── FETCH articles ──
   async function loadArticles() {
     try {
-      const res = await fetch('../tables/blog_articles?limit=100&sort=published_at');
+      const res = await fetch('../data/blog_articles.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
-      allArticles = (json.data || []).sort((a,b) =>
+      allArticles = (Array.isArray(json) ? json : []).filter(a => a.status !== 'draft').sort((a,b) =>
         new Date(b.published_at) - new Date(a.published_at)
       );
       cacheArticles(allArticles);
@@ -173,7 +173,7 @@ if (isBlogIndex) {
       buildTagCloud();
     } catch(e) {
       console.error('Blog load error:', e);
-      allArticles = getCachedArticles().sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+      allArticles = getCachedArticles().filter(a => a.status !== 'draft').sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
       if (allArticles.length) {
         renderAll();
         buildTagCloud();
@@ -316,10 +316,10 @@ if (isArticlePage) {
     try {
       let all = [];
       try {
-        const res  = await fetch(`../tables/blog_articles?limit=100`);
+        const res  = await fetch('../data/blog_articles.json');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
-        all = json.data || [];
+        all = Array.isArray(json) ? json.filter(a => a.status !== 'draft') : []; 
         cacheArticles(all);
       } catch (_) {
         all = getCachedArticles();

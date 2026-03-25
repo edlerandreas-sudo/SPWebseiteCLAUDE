@@ -1743,10 +1743,12 @@ function switchTo(panel) {
 let preisRowId = null;
 const PREIS_CACHE_KEY = 'sp_preise_cache';
 const BLOG_CACHE_KEY = 'sp_blog_articles_cache';
+const PREIS_API_URL = 'api-preise.php';
+const ARTIKEL_API_URL = 'api-artikel.php';
 
 async function loadPreise() {
   try {
-    const json = await apiFetch('../tables/preise?limit=1');
+    const json = await apiFetch(PREIS_API_URL);
     const row  = (json.data || [])[0];
     if (!row) return;
     preisRowId = row.id;
@@ -1790,9 +1792,9 @@ document.getElementById('savePreiseBtn').addEventListener('click', async () => {
   try {
     const payload = { preis_gross: gross, preis_klein: klein, abschlauch: absch, updated_at_label: now };
     if (preisRowId) {
-      await apiFetch(`../tables/preise/${preisRowId}`, { method: 'PUT', body: JSON.stringify({ id: preisRowId, ...payload }) });
+      await apiFetch(PREIS_API_URL, { method: 'POST', body: JSON.stringify({ id: preisRowId, ...payload }) });
     } else {
-      const created = await apiFetch('../tables/preise', { method: 'POST', body: JSON.stringify({ id: 'aktuell', ...payload }) });
+      const created = await apiFetch(PREIS_API_URL, { method: 'POST', body: JSON.stringify({ id: 'aktuell', ...payload }) });
       preisRowId = created.id;
     }
     document.getElementById('prev-gross').textContent = gross;
@@ -1813,8 +1815,8 @@ let allArtikel = [];
 
 async function loadArtikel() {
   try {
-    const json = await apiFetch('../tables/blog_articles?limit=200');
-    allArtikel = (json.data || []).sort((a,b) => (b.created_at || 0) - (a.created_at || 0));
+    const json = await apiFetch(ARTIKEL_API_URL);
+    allArtikel = (json.data || []).sort((a,b) => new Date(b.published_at || 0) - new Date(a.published_at || 0));
     localStorage.setItem(BLOG_CACHE_KEY, JSON.stringify(allArtikel));
     renderArtikelTable(allArtikel);
   } catch(e) {
@@ -1852,7 +1854,9 @@ function renderArtikelTable(list) {
         <td><span class="cat-badge ${catBadgeClass(a.category)}">${a.category || '–'}</span></td>
         <td style="font-size:0.8rem;color:var(--gray-500)">${a.author || '–'}</td>
         <td style="font-size:0.8rem;color:var(--gray-500)">${fmtDate(a.published_at)}</td>
-        <td><span class="status-dot published"></span><span style="font-size:0.78rem">Aktiv</span></td>
+        <td>${a.status === 'draft'
+          ? '<span class="status-dot" style="background:var(--gray-400)"></span><span style="font-size:0.78rem">Entwurf</span>'
+          : '<span class="status-dot published"></span><span style="font-size:0.78rem">Veröffentlicht</span>'}</td>
         <td><div class="table-actions">
           <button class="btn btn-sm btn-outline" onclick="editArtikel('${a.id}')"><i class="fas fa-edit"></i></button>
           <button class="btn btn-sm btn-danger" onclick="deleteArtikel('${a.id}','${(a.title||'').replace(/'/g,"\\'")}')"><i class="fas fa-trash"></i></button>
@@ -1886,7 +1890,7 @@ async function deleteArtikel(id, title) {
   const ok = await confirm('Artikel löschen?', `"${title}" wird dauerhaft gelöscht. Fortfahren?`);
   if (!ok) return;
   try {
-    await apiFetch(`../tables/blog_articles/${id}`, { method: 'DELETE' });
+    await apiFetch(`${ARTIKEL_API_URL}?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
     allArtikel = allArtikel.filter(a => a.id !== id);
     localStorage.setItem(BLOG_CACHE_KEY, JSON.stringify(allArtikel));
     renderArtikelTable(allArtikel);
@@ -1944,9 +1948,10 @@ function editArtikel(id) {
   editorTags = Array.isArray(art.tags) ? [...art.tags] : [];
   renderTagChips();
   updateSlugPreview();
-  document.getElementById('edStatusLabel').textContent = 'Veröffentlicht';
-  document.getElementById('edStatusLabel').style.color = '#22c55e';
-  document.getElementById('edPublishedInfo').style.display = 'block';
+  const isDraft = art.status === 'draft';
+  document.getElementById('edStatusLabel').textContent = isDraft ? 'Entwurf' : 'Veröffentlicht';
+  document.getElementById('edStatusLabel').style.color = isDraft ? 'var(--gray-400)' : '#22c55e';
+  document.getElementById('edPublishedInfo').style.display = art.published_at ? 'block' : 'none';
   document.getElementById('edPublishedDate').textContent = fmtDate(art.published_at);
   document.getElementById('editorTitle').innerHTML = '<i class="fas fa-edit" style="color:var(--green);margin-right:8px"></i>Artikel bearbeiten';
   document.getElementById('editorSub').textContent = art.title || '';
@@ -2331,6 +2336,7 @@ async function saveArtikel(publish) {
                 || '';
 
   const slug = slugify(title);
+  const currentArtikel = editingId ? allArtikel.find(a => a.id === editingId) : null;
   const payload = {
     title,
     teaser,
@@ -2342,19 +2348,20 @@ async function saveArtikel(publish) {
     tags:         editorTags,
     image:        imageVal,
     slug,
-    published_at: publish ? Date.now() : (editingId ? undefined : Date.now()),
+    status:       publish ? 'published' : 'draft',
+    published_at: publish ? (currentArtikel?.published_at || new Date().toISOString()) : (currentArtikel?.published_at || null),
   };
 
   try {
     let saved;
     if (editingId) {
-      saved = await apiFetch(`../tables/blog_articles/${editingId}`, {
+      saved = await apiFetch(`${ARTIKEL_API_URL}?id=${encodeURIComponent(editingId)}`, {
         method: 'PUT',
         body: JSON.stringify({ id: editingId, ...payload })
       });
       allArtikel = allArtikel.map(a => a.id === editingId ? { ...a, ...saved } : a);
     } else {
-      saved = await apiFetch('../tables/blog_articles', {
+      saved = await apiFetch(ARTIKEL_API_URL, {
         method: 'POST',
         body: JSON.stringify({ ...payload, id: slug || undefined })
       });

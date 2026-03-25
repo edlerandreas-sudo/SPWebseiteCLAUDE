@@ -872,9 +872,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ══════════════════════════════════════════════
   async function loadPreise() {
     try {
-      const res  = await fetch('tables/preise?limit=1');
-      const json = await res.json();
-      const row  = (json.data || [])[0];
+      const res  = await fetch('data/preise.json');
+      const row  = await res.json();
       if (!row) return;
 
       if (row.preis_gross) PREIS_GROSS = Number(row.preis_gross);
