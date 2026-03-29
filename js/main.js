@@ -552,8 +552,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Ort → PLZ Reverse Lookup ──
+  if (ortInput) {
+    ortInput.addEventListener('input', () => {
+      const val = ortInput.value.trim();
+      clearTimeout(plzTimeout);
+      hidePlzInfo();
+      setPlzStatus('');
+      if (val.length < 2) { plzDropdown && plzDropdown.classList.remove('open'); return; }
+
+      if (typeof searchPLZ === 'function') {
+        const results = searchPLZ(val);
+        showPlzDropdown(results);
+      }
+    });
+    ortInput.addEventListener('keydown', e => {
+      if (e.key === 'Escape') plzDropdown && plzDropdown.classList.remove('open');
+    });
+  }
+
   document.addEventListener('click', e => {
-    if (!e.target.closest('.plz-group') && plzDropdown) plzDropdown.classList.remove('open');
+    if (!e.target.closest('.plz-group') && e.target !== ortInput && plzDropdown) plzDropdown.classList.remove('open');
   });
 
   // ══════════════════════════════════════════════
