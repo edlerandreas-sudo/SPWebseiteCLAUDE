@@ -478,8 +478,8 @@ const PLZ_DATA = {
   "7474": { ort: "Deutsch Schützen-Eisenberg", region: "Oberwart", slug: "oberwart" },
 
   // ── Jennersdorf ──
-  "7540": { ort: "Güssing", region: "Jennersdorf", slug: "jennersdorf" },
-  "7542": { ort: "Gerersdorf-Sulz", region: "Jennersdorf", slug: "jennersdorf" },
+  "7540": { ort: "Güssing", region: "Güssing", slug: "guessing" },
+  "7542": { ort: "Gerersdorf-Sulz", region: "Güssing", slug: "guessing" },
 
   // ══════════════════════════════════════════════
   // KÄRNTEN (Auswahl)
