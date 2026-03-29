@@ -3,6 +3,13 @@
    Liest den slug aus der URL und füllt die Seite
    ============================================= */
 
+/** Escapet HTML-Zeichen in User-Daten */
+function escHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = String(str ?? '');
+  return d.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const LEGAL_LINKS = {
     impressum: '../impressum.html',
@@ -78,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const factsEl = document.getElementById('regionFacts');
   if (factsEl && content.facts) {
     factsEl.innerHTML = content.facts.map(f =>
-      `<span class="region-fact"><i class="fas fa-check"></i>${f}</span>`
+      `<span class="region-fact"><i class="fas fa-check"></i>${escHtml(f)}</span>`
     ).join('');
   }
 
@@ -88,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     plzTagsEl.innerHTML = content.plzList.map(plz => {
       const plzData = PLZ_DATA[plz];
       const ortName = plzData ? plzData.ort : '';
-      return `<span class="plz-tag"><span>${plz}</span>${ortName ? ' · ' + ortName : ''}</span>`;
+      return `<span class="plz-tag"><span>${escHtml(plz)}</span>${ortName ? ' · ' + escHtml(ortName) : ''}</span>`;
     }).join('');
   }
 
@@ -99,10 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const examplePlz = r.plzList?.[0] || '';
       const isActive   = s === slug ? ' active' : '';
       return `
-        <a href="${s}.html" class="region-card${isActive}">
+        <a href="${escHtml(s)}.html" class="region-card${isActive}">
           <i class="fas fa-map-marker-alt"></i>
-          <span class="region-card-name">${r.name}</span>
-          ${examplePlz ? `<span class="region-card-plz">z.B. ${examplePlz}</span>` : ''}
+          <span class="region-card-name">${escHtml(r.name)}</span>
+          ${examplePlz ? `<span class="region-card-plz">z.B. ${escHtml(examplePlz)}</span>` : ''}
         </a>
       `;
     }).join('');

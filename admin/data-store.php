@@ -39,4 +39,29 @@ function sp_require_admin(): void {
     if (empty($_SESSION['sp_admin_auth'])) {
         sp_json_response(['error' => 'unauthorized'], 401);
     }
+    // CSRF-Schutz für state-ändernde Requests
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+    if (in_array($method, ['POST', 'PUT', 'DELETE'], true)) {
+        $token = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+        if (!sp_verify_csrf($token)) {
+            sp_json_response(['error' => 'invalid_csrf_token'], 403);
+        }
+    }
+}
+
+function sp_generate_csrf(): string {
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    if (empty($_SESSION['sp_csrf_token'])) {
+        $_SESSION['sp_csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['sp_csrf_token'];
+}
+
+function sp_verify_csrf(string $token): bool {
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    return !empty($token) && hash_equals($_SESSION['sp_csrf_token'] ?? '', $token);
 }

@@ -229,7 +229,7 @@
               <div class="form-group plz-group">
                 <label class="form-label" for="plz">Postleitzahl *</label>
                 <div class="plz-input-wrap">
-                  <input type="text" id="plz" name="plz" placeholder="z.B. 8580" maxlength="4" required autocomplete="off" />
+                  <input type="text" id="plz" name="plz" placeholder="z.B. 8580" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" required autocomplete="off" />
                   <div class="plz-status" id="plzStatus"></div>
                 </div>
                 <div class="plz-dropdown" id="plzDropdown"></div>
@@ -279,7 +279,7 @@
 
             <div class="form-group">
               <label class="form-label" for="telefon">Telefon *</label>
-              <input type="tel" id="telefon" name="telefon" placeholder="+43 …" required />
+              <input type="tel" id="telefon" name="telefon" placeholder="+43 …" pattern="[\+0-9\s\-\/]{6,20}" required />
             </div>
 
             <!-- Bestellzusammenfassung -->
@@ -374,7 +374,6 @@
             <li><i class="fas fa-check"></i> Beispiel 5 t: <strong>2.048,– €</strong></li>
             <li><i class="fas fa-check"></i> Beispiel 10 t: <strong>4.038,– €</strong></li>
             <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
-            <li><i class="fas fa-check"></i> Blasbefüllung inklusive</li>
           </ul>
           <a href="#bestellung" class="btn btn-primary btn-full">Preis berechnen & bestellen</a>
         </div>
@@ -392,7 +391,6 @@
             <li><i class="fas fa-check"></i> Abschlauchgebühr: <strong><span class="price-abschlauch-val">58</span>,– €</strong> (einmalig)</li>
             <li><i class="fas fa-check"></i> Beispiel 3 t: <strong>1.312,– €</strong></li>
             <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
-            <li><i class="fas fa-check"></i> Blasbefüllung inklusive</li>
             <li><i class="fas fa-info-circle" style="color:var(--amber)"></i> Mindestbestellung: 2 Tonnen</li>
           </ul>
           <a href="#bestellung" class="btn btn-outline btn-full">Lieferpreis anfragen</a>
@@ -413,7 +411,7 @@
               <i class="fas fa-map-marker-alt"></i>
               <div>
                 <strong>Liefergebiet</strong>
-                <p>Steiermark, südl. Niederösterreich, Südburgenland &amp; Ost-Kärnten.</p>
+                <p>Steiermark, südl. Niederösterreich, Burgenland &amp; Ost-Kärnten.</p>
               </div>
             </div>
             <div class="price-info-item">
@@ -529,11 +527,11 @@
         <p class="section-subtitle">Regional produziert, zertifiziert geprüft, direkt geliefert.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Direkt vom Hersteller</h3><p>Kein Zwischenhändler. Sie kaufen direkt bei uns – dem Produzenten in Köflach.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Direkt vom Hersteller</h3><p>Kein Zwischenhändler. Sie kaufen direkt bei uns. Wir produzieren die Steirer Pellets in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz.</p></div>
         <div class="feature-card"><div class="feature-icon"><i class="fas fa-medal"></i></div><h3>ENplus A1 Qualität</h3><p>Die höchste europäische Qualitätsstufe. Regelmäßig durch unabhängige Labore geprüft.</p></div>
         <div class="feature-card"><div class="feature-icon"><i class="fas fa-recycle"></i></div><h3>Echte Kreislaufwirtschaft</h3><p>Aus Sägespänen der steirischen Holzindustrie hergestellt und als Reststoff sinnvoll weitergenutzt.</p></div>
         <div class="feature-card"><div class="feature-icon"><i class="fas fa-route"></i></div><h3>Kurze Wege</h3><p>Regionale Produktion und Lieferung aus einer Hand helfen, den Transportaufwand gering zu halten.</p></div>
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-euro-sign"></i></div><h3>Faire Preise</h3><p>398 €/t ab 4 Tonnen. Stabile Preise, kein Zwischenhändler, direkt kalkulierbar.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-euro-sign"></i></div><h3>Faire Preise</h3><p>Stabile Preise, kein Zwischenhändler, direkt kalkulierbar.</p></div>
         <div class="feature-card"><div class="feature-icon"><i class="fas fa-truck-fast"></i></div><h3>Komfort-Lieferung</h3><p>Unser Tankwagen kommt zu Ihnen. Per Blasbefüllung direkt in den Tank.</p></div>
         <div class="feature-card"><div class="feature-icon"><i class="fas fa-headset"></i></div><h3>Persönliche Beratung</h3><p>Wir helfen bei Menge, Tankanforderungen und Lieferplanung. Familiär und direkt.</p></div>
         <div class="feature-card"><div class="feature-icon"><i class="fas fa-people-group"></i></div><h3>Wertschöpfung in der Region</h3><p>Forstwirtschaft, Produktion, Logistik und Service bleiben stärker in der Heimat als bei importiertem Öl und Gas.</p></div>
@@ -546,7 +544,7 @@
     <div class="container">
       <div class="section-header sustain-section-header">
         <span class="section-tag">Nachhaltigkeit</span>
-        <h2 class="section-title">Warum Pellets für viele Haushalte<br/>eine sinnvolle Entscheidung sind</h2>
+        <h2 class="section-title">Warum Pellets für Sie<br/>eine sinnvolle Entscheidung sind</h2>
         <p class="section-subtitle">Erneuerbarer Energieträger, regionale Wertschöpfung und kurze Wege: So verbindet Steirer Pellets ökologische Vorteile mit verlässlicher Versorgung aus der Heimat.</p>
       </div>
 
@@ -609,7 +607,7 @@
         <div class="delivery-step"><div class="step-number">04</div><div class="step-content"><div class="step-icon"><i class="fas fa-fire-flame-curved"></i></div><h3>Verlässliche Lieferung</h3><p>Per Blasbefüllung direkt in Ihren Tank – sauber, schnell, ohne Aufwand.</p></div></div>
       </div>
       <div class="delivery-info">
-        <div class="delivery-info-item"><i class="fas fa-map-marked-alt"></i><div><strong>Liefergebiet</strong><span>Steiermark · Südl. NÖ · Südburgenland · Ost-Kärnten</span></div></div>
+        <div class="delivery-info-item"><i class="fas fa-map-marked-alt"></i><div><strong>Liefergebiet</strong><span>Steiermark · Südl. NÖ · Burgenland · Ost-Kärnten</span></div></div>
         <div class="delivery-info-item"><i class="fas fa-weight-hanging"></i><div><strong>Mindestbestellung</strong><span>2 Tonnen lose</span></div></div>
         <div class="delivery-info-item"><i class="fas fa-calendar-week"></i><div><strong>Lieferzeit</strong><span>Wunsch-Kalenderwoche wählen</span></div></div>
         <div class="delivery-info-item"><i class="fas fa-blender"></i><div><strong>Befüllmethode</strong><span>Blasbefüllung per Schlauch</span></div></div>

@@ -7,6 +7,13 @@
 
 const BLOG_CACHE_KEY = 'sp_blog_articles_cache';
 
+/** Escapet HTML-Zeichen in User-Daten */
+function escHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = String(str ?? '');
+  return d.innerHTML;
+}
+
 // ──────────────────────────────────────────────
 // HELPERS
 // ──────────────────────────────────────────────
@@ -87,13 +94,14 @@ function renderCard(art) {
   const cc   = catClass(art.category);
   const icon = catIcon(art.category);
   const img  = getArticleImage(art);
+  const safeTitle = escHtml(art.title);
   const headerContent = img
-    ? `<img src="${img}" alt="${art.title}" class="article-card-img" />`
+    ? `<img src="${escHtml(img)}" alt="${safeTitle}" class="article-card-img" />`
     : `<i class="${icon} article-card-icon"></i>`;
   return `
-    <a class="article-card" href="${articleUrl(art)}" aria-label="${art.title}">
+    <a class="article-card" href="${articleUrl(art)}" aria-label="${safeTitle}">
       <div class="article-card-header ${cc} ${img ? 'has-image' : ''}">
-        <span class="article-card-cat">${art.category || 'Allgemein'}</span>
+        <span class="article-card-cat">${escHtml(art.category || 'Allgemein')}</span>
         ${headerContent}
       </div>
       <div class="article-card-body">
@@ -101,11 +109,11 @@ function renderCard(art) {
           <span><i class="fas fa-calendar-alt"></i> ${fmt(art.published_at)}</span>
           <span><i class="fas fa-clock"></i> ${art.reading_time || '–'} Min.</span>
         </div>
-        <h2 class="article-card-title">${art.title}</h2>
-        <p class="article-card-teaser">${art.teaser}</p>
+        <h2 class="article-card-title">${safeTitle}</h2>
+        <p class="article-card-teaser">${escHtml(art.teaser)}</p>
         <div class="article-card-footer">
           <span class="article-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></span>
-          <span class="article-card-meta">${(art.tags || []).slice(0,2).map(t => `<span class="tag-pill" style="padding:2px 8px;font-size:0.7rem">${t}</span>`).join('')}</span>
+          <span class="article-card-meta">${(art.tags || []).slice(0,2).map(t => `<span class="tag-pill" style="padding:2px 8px;font-size:0.7rem">${escHtml(t)}</span>`).join('')}</span>
         </div>
       </div>
     </a>`;
@@ -118,20 +126,21 @@ function renderFeatured(art) {
   const cc   = catClass(art.category);
   const icon = catIcon(art.category);
   const img  = getArticleImage(art);
+  const safeTitle = escHtml(art.title);
   const visualContent = img
-    ? `<img src="${img}" alt="${art.title}" class="featured-art-img" />`
+    ? `<img src="${escHtml(img)}" alt="${safeTitle}" class="featured-art-img" />`
     : `<i class="${icon} featured-art-icon"></i><i class="${icon} featured-art-main-icon"></i>`;
   return `
     <a class="featured-article" href="${articleUrl(art)}">
       <div class="featured-art-visual ${cc} ${img ? 'has-image' : ''}">
-        <span class="featured-art-cat">${art.category}</span>
+        <span class="featured-art-cat">${escHtml(art.category)}</span>
         <span class="featured-badge"><i class="fas fa-star"></i> Empfohlen</span>
         ${visualContent}
       </div>
       <div class="featured-art-body">
         <div class="featured-art-reading"><i class="fas fa-clock"></i> ${art.reading_time || '–'} Min. Lesezeit · ${fmt(art.published_at)}</div>
-        <h2 class="featured-art-title">${art.title}</h2>
-        <p class="featured-art-teaser">${art.teaser}</p>
+        <h2 class="featured-art-title">${safeTitle}</h2>
+        <p class="featured-art-teaser">${escHtml(art.teaser)}</p>
         <span class="featured-art-cta">Jetzt lesen <i class="fas fa-arrow-right"></i></span>
       </div>
     </a>`;
@@ -236,7 +245,7 @@ if (isBlogIndex) {
     const tagSet = new Set();
     allArticles.forEach(a => (a.tags || []).forEach(t => tagSet.add(t)));
     tagCloud.innerHTML = [...tagSet].map(t =>
-      `<span class="tag-pill" data-tag="${t}">${t}</span>`
+      `<span class="tag-pill" data-tag="${escHtml(t)}">${escHtml(t)}</span>`
     ).join('');
     tagCloud.querySelectorAll('.tag-pill').forEach(pill => {
       pill.addEventListener('click', () => {
@@ -419,7 +428,7 @@ if (isArticlePage) {
     if (heroImg) {
       const imgWrap = document.getElementById('articleHeroImage');
       if (imgWrap) {
-        imgWrap.innerHTML = `<img src="${heroImg}" alt="${art.title}" class="article-hero-img" />`;
+        imgWrap.innerHTML = `<img src="${escHtml(heroImg)}" alt="${escHtml(art.title)}" class="article-hero-img" />`;
         imgWrap.style.display = 'block';
       }
     }
@@ -434,7 +443,7 @@ if (isArticlePage) {
     const tags = art.tags || [];
     if (tags.length && tagsBox) {
       tagsBox.innerHTML = tags.map(t =>
-        `<span class="tag-pill">${t}</span>`
+        `<span class="tag-pill">${escHtml(t)}</span>`
       ).join('');
     } else {
       document.getElementById('articleTagsBox').style.display = 'none';

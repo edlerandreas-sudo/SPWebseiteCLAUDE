@@ -111,6 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return `region/index.html?region=${encodeURIComponent(slugOrPlz)}`;
   }
 
+  /** Escapet HTML-Zeichen in User-Daten */
+  function escHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
   function setOrderError(message) {
     const errorBox = document.getElementById('orderError');
     if (!errorBox) return;
@@ -120,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     errorBox.hidden = false;
-    errorBox.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+    errorBox.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${escHtml(message)}`;
   }
 
   function getMengeHint(t) {
@@ -456,9 +463,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!plzDropdown) return;
     if (!results.length) { plzDropdown.classList.remove('open'); return; }
     plzDropdown.innerHTML = results.map(r => `
-      <div class="plz-option" data-plz="${r.plz}" data-ort="${r.ort}" data-slug="${r.slug}">
-        <span><span class="plz-opt-code">${r.plz}</span> <span class="plz-opt-name">${r.ort}</span></span>
-        <span class="plz-opt-region">${r.region || ''}</span>
+      <div class="plz-option" data-plz="${escHtml(r.plz)}" data-ort="${escHtml(r.ort)}" data-slug="${escHtml(r.slug)}">
+        <span><span class="plz-opt-code">${escHtml(r.plz)}</span> <span class="plz-opt-name">${escHtml(r.ort)}</span></span>
+        <span class="plz-opt-region">${escHtml(r.region || '')}</span>
       </div>
     `).join('');
     plzDropdown.classList.add('open');
@@ -482,15 +489,15 @@ document.addEventListener('DOMContentLoaded', () => {
     plzInfo.className = 'plz-info found';
     plzInfo.innerHTML = `
       <i class="fas fa-map-marker-alt"></i>
-      <span><strong>${plz} ${ort}</strong> · Lieferung möglich</span>
-      <a href="${url}"><i class="fas fa-external-link-alt"></i> Regionseite</a>
+      <span><strong>${escHtml(plz)} ${escHtml(ort)}</strong> · Lieferung möglich</span>
+      <a href="${escHtml(url)}"><i class="fas fa-external-link-alt"></i> Regionseite</a>
     `;
   }
 
   function showPlzNotFound(plz) {
     if (!plzInfo) return;
     plzInfo.className = 'plz-info not-found';
-    plzInfo.innerHTML = `<i class="fas fa-info-circle"></i> PLZ <strong>${plz}</strong> nicht im System – Anfrage trotzdem möglich!`;
+    plzInfo.innerHTML = `<i class="fas fa-info-circle"></i> PLZ <strong>${escHtml(plz)}</strong> nicht im System – Anfrage trotzdem möglich!`;
     currentPlzData = null;
   }
 
@@ -634,9 +641,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     box.innerHTML = `
       <div class="summary-title"><i class="fas fa-receipt"></i> Bestellübersicht</div>
-      <div class="summary-row"><span><i class="fas fa-fire"></i> Menge</span><strong>${t} Tonnen lose</strong></div>
-      <div class="summary-row"><span><i class="fas fa-calendar-week"></i> Lieferwoche</span><strong>${kwStr}</strong></div>
-      <div class="summary-row"><span><i class="fas fa-map-marker-alt"></i> Lieferort</span><strong>${plzVal} ${ortVal}${strVal ? ', ' + strVal : ''}</strong></div>
+      <div class="summary-row"><span><i class="fas fa-fire"></i> Menge</span><strong>${escHtml(String(t))} Tonnen lose</strong></div>
+      <div class="summary-row"><span><i class="fas fa-calendar-week"></i> Lieferwoche</span><strong>${escHtml(kwStr)}</strong></div>
+      <div class="summary-row"><span><i class="fas fa-map-marker-alt"></i> Lieferort</span><strong>${escHtml(plzVal)} ${escHtml(ortVal)}${strVal ? ', ' + escHtml(strVal) : ''}</strong></div>
       <div class="summary-divider"></div>
       <div class="summary-row"><span>Pellets (${preis} €/t × ${t} t)</span><strong>${fmtEur(pellets)}</strong></div>
       <div class="summary-row"><span>Abschlauchgebühr (einmalig)</span><strong>${ABSCHLAUCH} €</strong></div>
@@ -806,9 +813,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const successSum = document.getElementById('successSummary');
       if (successSum) {
         successSum.innerHTML = `
-          <p><i class="fas fa-fire" style="color:var(--green-logo);margin-right:6px"></i><strong>Menge:</strong> ${t} Tonnen lose</p>
-          <p><i class="fas fa-calendar-week" style="color:var(--green-logo);margin-right:6px"></i><strong>Lieferwoche:</strong> ${data.lieferkw}</p>
-          <p><i class="fas fa-map-marker-alt" style="color:var(--green-logo);margin-right:6px"></i><strong>Lieferort:</strong> ${data.plz} ${data.ort}, ${data.strasse}</p>
+          <p><i class="fas fa-fire" style="color:var(--green-logo);margin-right:6px"></i><strong>Menge:</strong> ${escHtml(String(t))} Tonnen lose</p>
+          <p><i class="fas fa-calendar-week" style="color:var(--green-logo);margin-right:6px"></i><strong>Lieferwoche:</strong> ${escHtml(data.lieferkw || '')}</p>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--green-logo);margin-right:6px"></i><strong>Lieferort:</strong> ${escHtml(data.plz || '')} ${escHtml(data.ort || '')}, ${escHtml(data.strasse || '')}</p>
           <p><i class="fas fa-receipt" style="color:var(--green-logo);margin-right:6px"></i><strong>Geschätzter Gesamtpreis:</strong> ${fmtEur(gesamt)}</p>
         `;
       }

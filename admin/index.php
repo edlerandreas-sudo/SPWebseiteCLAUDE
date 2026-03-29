@@ -38,7 +38,12 @@ if ($isConfigured && $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] 
     if ($adminPassHash !== '') {
         $isValidPassword = password_verify($pass, $adminPassHash);
     } elseif ($adminPassPlain !== '') {
+        // Klartext-Fallback: nur für initiale Einrichtung, bcrypt-Hash empfohlen!
         $isValidPassword = hash_equals($adminPassPlain, $pass);
+        // Bei erfolgreichem Login: Hash-Hinweis loggen
+        if ($isValidPassword) {
+            error_log('SP-Admin: Klartext-Passwort aktiv – bitte auf password_hash() umstellen!');
+        }
     }
 
     if (hash_equals($adminUser, $user) && $isValidPassword) {
@@ -1656,6 +1661,8 @@ if (empty($_SESSION['sp_admin_auth'])) {
 <script>
 'use strict';
 
+const CSRF_TOKEN = '<?php require_once __DIR__ . "/data-store.php"; echo sp_generate_csrf(); ?>';
+
 // ══════════════════════════════════════════════
 // ══════════════════════════════════════════════
 // HELPERS
@@ -1682,7 +1689,8 @@ function fmtDate(ms) {
 }
 
 async function apiFetch(url, opts = {}) {
-  const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...opts });
+  const headers = { 'Content-Type': 'application/json', 'X-CSRF-Token': CSRF_TOKEN, ...(opts.headers || {}) };
+  const res = await fetch(url, { ...opts, headers });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   if (res.status === 204) return null;
   return res.json();

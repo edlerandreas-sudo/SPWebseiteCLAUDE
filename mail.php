@@ -5,7 +5,7 @@
  */
 
 header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: https://www.steirerpellets.at');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
@@ -37,14 +37,38 @@ $zufahrt     = s($data['zufahrt'] ?? '');
 $vorname     = s($data['vorname'] ?? '');
 $nachname    = s($data['nachname'] ?? '');
 $email       = filter_var(trim($data['email'] ?? ''), FILTER_VALIDATE_EMAIL) ?: '';
+$email       = str_replace(["\r", "\n", "%0a", "%0d"], '', $email);
 $telefon     = s($data['telefon'] ?? '');
 $gesamtpreis = s($data['gesamtpreis'] ?? '');
 $sent_at     = date('d.m.Y H:i') . ' Uhr';
+
+// Rate-Limiting (einfach via Session)
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+$now = time();
+$lastSubmit = $_SESSION['sp_last_order'] ?? 0;
+if ($now - $lastSubmit < 30) {
+    http_response_code(429);
+    echo json_encode(['ok' => false, 'error' => 'Bitte warten Sie 30 Sekunden zwischen Bestellungen']);
+    exit;
+}
+$_SESSION['sp_last_order'] = $now;
 
 // Pflichtfelder prüfen
 if (!$menge || !$vorname || !$nachname || !$email || !$telefon || !$plz) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'error' => 'Pflichtfelder fehlen']);
+    exit;
+}
+
+// Format-Validierung
+if (!preg_match('/^[0-9]{4}$/', $plz)) {
+    http_response_code(400);
+    echo json_encode(['ok' => false, 'error' => 'Ungültige PLZ']);
+    exit;
+}
+if (mb_strlen($vorname) > 100 || mb_strlen($nachname) > 100 || mb_strlen($strasse) > 200 || mb_strlen($ort) > 100) {
+    http_response_code(400);
+    echo json_encode(['ok' => false, 'error' => 'Feldlänge überschritten']);
     exit;
 }
 
