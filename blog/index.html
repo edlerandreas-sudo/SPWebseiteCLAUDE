@@ -146,7 +146,7 @@
           <p>Direkt vom steirischen Hersteller. ENplus A1. Lose per Tankwagen.</p>
           <div class="sidebar-price-teaser">
             <span class="spt-label">Ab 4 Tonnen</span>
-            <span class="spt-price">398 €<small>/t</small></span>
+            <span class="spt-price"><span class="price-big-gross">398</span> €<small>/t</small></span>
           </div>
           <a href="../index.html#bestellung" class="btn btn-primary btn-full">
             <i class="fas fa-shopping-cart"></i> Jetzt bestellen
@@ -233,5 +233,18 @@
 
   <script src="../js/blog-fallback-data.js"></script>
   <script src="../js/blog.js"></script>
+  <script>
+(async function(){
+  try {
+    const r = await fetch('../data/preise.json');
+    const d = await r.json();
+    if(d && d.preis_gross) {
+      document.querySelectorAll('.price-big-gross').forEach(el => el.textContent = d.preis_gross);
+      document.querySelectorAll('.price-big-klein').forEach(el => el.textContent = d.preis_klein);
+      document.querySelectorAll('.price-abschlauch-val').forEach(el => el.textContent = d.abschlauch);
+    }
+  } catch(_){}
+})();
+</script>
 </body>
 </html>

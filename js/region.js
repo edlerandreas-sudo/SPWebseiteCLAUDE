@@ -305,4 +305,49 @@ document.addEventListener('DOMContentLoaded', () => {
   document.head.appendChild(styleEl);
 
   console.log(`🌲 Region-Seite geladen: ${slug} (${content.name})`);
+
+  // ===== Preise dynamisch laden =====
+  async function loadPreise() {
+    try {
+      const res = await fetch('../data/preise.json');
+      const d   = await res.json();
+      if (!d) return;
+
+      if (d.preis_gross) {
+        document.querySelectorAll('.pt-price-gross').forEach(el => el.textContent = d.preis_gross);
+        document.querySelectorAll('.price-big-gross').forEach(el => el.textContent = d.preis_gross);
+      }
+      if (d.preis_klein) {
+        document.querySelectorAll('.price-big-klein').forEach(el => el.textContent = d.preis_klein);
+      }
+      if (d.abschlauch) {
+        document.querySelectorAll('.price-abschlauch-val').forEach(el => el.textContent = d.abschlauch);
+      }
+
+      // Cache in localStorage
+      try { localStorage.setItem('sp_preise_cache', JSON.stringify(d)); } catch(_) {}
+
+      console.log(`💶 Region-Preise geladen: ${d.preis_gross} €/t`);
+    } catch (_) {
+      // Fallback: aus Cache laden
+      try {
+        const cached = JSON.parse(localStorage.getItem('sp_preise_cache'));
+        if (cached) {
+          if (cached.preis_gross) {
+            document.querySelectorAll('.pt-price-gross').forEach(el => el.textContent = cached.preis_gross);
+            document.querySelectorAll('.price-big-gross').forEach(el => el.textContent = cached.preis_gross);
+          }
+          if (cached.preis_klein) {
+            document.querySelectorAll('.price-big-klein').forEach(el => el.textContent = cached.preis_klein);
+          }
+          if (cached.abschlauch) {
+            document.querySelectorAll('.price-abschlauch-val').forEach(el => el.textContent = cached.abschlauch);
+          }
+          console.log('💶 Region-Preise aus Cache geladen');
+        }
+      } catch(_) {}
+    }
+  }
+
+  loadPreise();
 });
