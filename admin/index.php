@@ -694,6 +694,15 @@ if (empty($_SESSION['sp_admin_auth'])) {
         </div>
       </div>
 
+      <?php
+        $currentPreise = sp_read_json('preise.json', [
+          'preis_gross' => 398, 'preis_klein' => 418, 'abschlauch' => 58, 'updated_at_label' => ''
+        ]);
+        $pg = htmlspecialchars($currentPreise['preis_gross'] ?? 398);
+        $pk = htmlspecialchars($currentPreise['preis_klein'] ?? 418);
+        $pa = htmlspecialchars($currentPreise['abschlauch'] ?? 58);
+        $pu = htmlspecialchars($currentPreise['updated_at_label'] ?? '');
+      ?>
       <div class="card" style="margin-bottom:20px">
         <div class="card-header">
           <h2><i class="fas fa-eye"></i> Aktuelle Preise (Vorschau)</h2>
@@ -701,19 +710,19 @@ if (empty($_SESSION['sp_admin_auth'])) {
         <div class="card-body">
           <div class="price-preview">
             <div class="preview-badge">
-              <span class="val" id="prev-gross">–</span>
+              <span class="val" id="prev-gross"><?= $pg ?></span>
               <span class="lbl">€/t · Ab 4 Tonnen</span>
             </div>
             <div class="preview-badge">
-              <span class="val" id="prev-klein">–</span>
+              <span class="val" id="prev-klein"><?= $pk ?></span>
               <span class="lbl">€/t · Unter 4 Tonnen</span>
             </div>
             <div class="preview-badge">
-              <span class="val" id="prev-absch">–</span>
+              <span class="val" id="prev-absch"><?= $pa ?></span>
               <span class="lbl">€ Abschlauchgebühr</span>
             </div>
           </div>
-          <p style="font-size:0.78rem;color:var(--gray-400);text-align:right" id="preisUpdatedAt"></p>
+          <p style="font-size:0.78rem;color:var(--gray-400);text-align:right" id="preisUpdatedAt"><?= $pu ? "Zuletzt geändert: $pu" : '' ?></p>
         </div>
       </div>
 
@@ -727,7 +736,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
               <label>Preis ab 4 Tonnen (€/t) *</label>
               <div class="input-prefix">
                 <span>€</span>
-                <input type="number" id="inp-gross" placeholder="398" min="100" max="999" step="1" />
+                <input type="number" id="inp-gross" placeholder="398" min="100" max="999" step="1" value="<?= $pg ?>" />
               </div>
               <span class="hint">Großlieferung · empfohlener Angebotspreis</span>
             </div>
@@ -735,7 +744,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
               <label>Preis unter 4 Tonnen (€/t) *</label>
               <div class="input-prefix">
                 <span>€</span>
-                <input type="number" id="inp-klein" placeholder="418" min="100" max="999" step="1" />
+                <input type="number" id="inp-klein" placeholder="418" min="100" max="999" step="1" value="<?= $pk ?>" />
               </div>
               <span class="hint">Kleinlieferung · höherer Preis gerechtfertigt</span>
             </div>
@@ -743,7 +752,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
               <label>Abschlauchgebühr (€, einmalig) *</label>
               <div class="input-prefix">
                 <span>€</span>
-                <input type="number" id="inp-absch" placeholder="58" min="0" max="500" step="1" />
+                <input type="number" id="inp-absch" placeholder="58" min="0" max="500" step="1" value="<?= $pa ?>" />
               </div>
               <span class="hint">Einmalige Gebühr pro Lieferung</span>
             </div>
