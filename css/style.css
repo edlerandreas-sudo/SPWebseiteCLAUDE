@@ -895,6 +895,16 @@ textarea:focus-visible {
 .section-dark .section-subtitle { color: rgba(255,255,255,0.6); }
 .white-sub { color: rgba(255,255,255,0.75) !important; }
 
+/* ===== BILD-TRENNER ===== */
+.section-image-break { padding: 0; }
+.section-image-break .container { max-width: 1000px; }
+.full-width-image {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  display: block;
+}
+
 /* ===== PRODUKT ===== */
 .produkt-layout {
   display: grid;
