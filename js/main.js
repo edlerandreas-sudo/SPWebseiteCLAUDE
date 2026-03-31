@@ -968,5 +968,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadPreise();
 
+  // ── FAQ Akkordeon ──
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      // Alle schließen
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      // Aktuelles öffnen (wenn es nicht schon offen war)
+      if (!wasOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
   console.log('🌲 Steirer Pellets v5 – Slider & Marks synchron, E-Mail-Versand aktiv!');
 });
