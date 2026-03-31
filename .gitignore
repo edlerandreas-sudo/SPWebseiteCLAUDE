@@ -1,0 +1,3 @@
+admin/config.php
+data/*.json
+.DS_Store
