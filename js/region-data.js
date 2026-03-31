@@ -13,7 +13,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für die steirische Landeshauptstadt",
     intro:       "Ob Eggenberg, St. Peter, Andritz oder Liebenau – Steirer Pellets liefert ENplus A1 Holzpellets lose per Tankwagen direkt zu Ihrem Haus, Mehrparteienobjekt oder Betrieb in Graz. Produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz garantieren unsere Pellets höchste Qualität aus steirischer Produktion.",
     highlight:   "Grazer Kundinnen und Kunden profitieren von kurzen Lieferwegen, planbaren Lieferwochen und persönlicher Betreuung durch unser Team. Die Blasbefüllung sorgt für eine saubere und staubfreie Einlagerung direkt in Ihren Pellettank.",
-    facts:       ["Alle Grazer Stadtbezirke", "2–3 Tage Lieferzeit", "Ab 3 Tonnen lose", "Saubere Tankwagen-Blasbefüllung"],
+    facts:       ["Alle Grazer Stadtbezirke", "2–3 Tage Lieferzeit", "Ab 2 Tonnen lose", "Saubere Tankwagen-Blasbefüllung"],
     plzList:     ["8010", "8020", "8036", "8041", "8042", "8043", "8044", "8045", "8046", "8047", "8051", "8052", "8053", "8054", "8055", "8063"],
   },
   "graz-umgebung": {
@@ -23,7 +23,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für die Graz-Umgebung",
     intro:       "Von Feldkirchen bei Graz über Hart bei Graz, Seiersberg-Pirka und Grambach bis nach Premstätten und Fernitz-Mellach – wir beliefern den gesamten Bezirk Graz-Umgebung mit losen ENplus A1 Holzpellets. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und liefert direkt per Tankwagen zu Ihnen.",
     highlight:   "Die Nähe zu unserem Kerngebiet macht die Lieferung in die Graz-Umgebung besonders effizient. Kurze Wege, gute Erreichbarkeit und flexible Liefertermine sind für viele Haushalte in der Region ein klarer Vorteil.",
-    facts:       ["Bezirk Graz-Umgebung komplett", "2–4 Tage Lieferzeit", "Ab 3 Tonnen", "Direkt ab Hersteller"],
+    facts:       ["Bezirk Graz-Umgebung komplett", "2–4 Tage Lieferzeit", "Ab 2 Tonnen", "Direkt ab Hersteller"],
     plzList:     ["8061", "8062", "8063", "8071", "8072", "8073", "8074", "8075", "8076", "8081", "8082", "8083", "8101", "8103", "8111", "8112", "8113", "8114", "8120", "8121", "8122", "8124", "8130", "8131", "8141", "8142", "8143", "8144", "8301", "8302"],
   },
   "voitsberg": {
@@ -33,7 +33,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets direkt aus unserer Heimatregion",
     intro:       "Im Bezirk Voitsberg sind wir zu Hause. Von Voitsberg über Köflach, Bärnbach und Maria Lankowitz bis Stallhofen und Rosental liefern wir ENplus A1 Holzpellets direkt per Tankwagen. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und kennt die Region aus dem täglichen Betrieb.",
     highlight:   "Als Hersteller aus der Region sind wir im Bezirk Voitsberg besonders nah dran. Das bedeutet kürzeste Lieferwege, persönliche Abstimmung und oft auch die Möglichkeit einer besonders schnellen Lieferung oder Werksabholung.",
-    facts:       ["Heimatbezirk Voitsberg", "1–2 Tage Lieferzeit", "Ab 3 Tonnen", "Persönliche Beratung vor Ort"],
+    facts:       ["Heimatbezirk Voitsberg", "1–2 Tage Lieferzeit", "Ab 2 Tonnen", "Persönliche Beratung vor Ort"],
     plzList:     ["8530", "8541", "8542", "8543", "8544", "8550", "8551", "8552", "8553", "8554", "8555", "8570", "8572", "8573", "8580", "8582", "8583", "8591", "8592"],
   },
   "deutschlandsberg": {
@@ -43,7 +43,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für den Bezirk Deutschlandsberg",
     intro:       "Von Deutschlandsberg über Stainz und Schwanberg bis Frauental an der Laßnitz – Steirer Pellets beliefert den gesamten Bezirk Deutschlandsberg mit losen ENplus A1 Holzpellets. Produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz, kommen die Pellets direkt per Tankwagen zu Ihnen.",
     highlight:   "Die Weststeiermark rund um Deutschlandsberg ist gut an unser Liefergebiet angebunden. Viele Zufahrten und Anforderungen vor Ort kennen wir bereits aus der Praxis und liefern ohne Umwege über Zwischenhändler.",
-    facts:       ["Bezirk Deutschlandsberg", "2–4 Tage Lieferzeit", "Ab 3 Tonnen", "ENplus A1 Qualität"],
+    facts:       ["Bezirk Deutschlandsberg", "2–4 Tage Lieferzeit", "Ab 2 Tonnen", "ENplus A1 Qualität"],
     plzList:     ["8501", "8503", "8504", "8505", "8510", "8511", "8521", "8522", "8523", "8524", "8530", "8541", "8542", "8543"],
   },
   "leibnitz": {
@@ -53,7 +53,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für die Südsteiermark rund um Leibnitz",
     intro:       "Im Bezirk Leibnitz beliefern wir Haushalte und Betriebe in Leibnitz, Gamlitz, Ehrenhausen, Wagna, Arnfels und vielen weiteren Gemeinden der Südsteiermark mit losen Holzpellets. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und liefert direkt per Tankwagen-Blasbefüllung.",
     highlight:   "Die Südsteiermark rund um Leibnitz ist bekannt für ihre Weinkultur und ländliche Struktur. Gerade hier schätzen viele Haushalte die Unabhängigkeit einer Pelletheizung mit regionaler Versorgung und persönlicher Beratung.",
-    facts:       ["Bezirk Leibnitz komplett", "3–5 Tage Lieferzeit", "Ab 3 Tonnen", "Regionale Südsteiermark-Lieferung"],
+    facts:       ["Bezirk Leibnitz komplett", "3–5 Tage Lieferzeit", "Ab 2 Tonnen", "Regionale Südsteiermark-Lieferung"],
     plzList:     ["8410", "8411", "8412", "8413", "8421", "8422", "8423", "8424", "8430", "8434", "8435", "8442", "8443", "8444", "8451", "8452", "8453", "8454", "8461", "8462", "8463"],
   },
   "weiz": {
@@ -63,7 +63,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für den Bezirk Weiz",
     intro:       "Von Weiz über Gleisdorf und Birkfeld bis Anger und Passail – wir liefern ENplus A1 Holzpellets lose in den gesamten Bezirk Weiz. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und bringt die Pellets direkt per Blasbefüllung in Ihren Lagerraum oder Pellettank.",
     highlight:   "Im Bezirk Weiz zählen zuverlässige Lieferzeiten, saubere Befüllung und regionale Qualität. Unsere Tankwagen-Lieferung ist für viele Haushalte in der oststeirischen Region eine bequeme und planbare Lösung.",
-    facts:       ["Bezirk Weiz komplett", "2–4 Tage Lieferzeit", "Ab 3 Tonnen", "ENplus A1 zertifiziert"],
+    facts:       ["Bezirk Weiz komplett", "2–4 Tage Lieferzeit", "Ab 2 Tonnen", "ENplus A1 zertifiziert"],
     plzList:     ["8160", "8162", "8163", "8171", "8172", "8173", "8181", "8182", "8183", "8184", "8190", "8192", "8200", "8211", "8212", "8221", "8222", "8224", "8225"],
   },
   "hartberg-fuerstenfeld": {
@@ -73,7 +73,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für die Oststeiermark",
     intro:       "Im Bezirk Hartberg-Fürstenfeld liefern wir lose Holzpellets nach Hartberg, Fürstenfeld, Bad Waltersdorf, Bad Blumau, Kaindorf und in zahlreiche weitere Gemeinden der Oststeiermark. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz – also direkt in der Region.",
     highlight:   "Da unser Kooperationspartner Rubner Holzindustrie in Rohrbach a.d.Lafnitz im Bezirk Hartberg-Fürstenfeld sitzt, profitieren Kundinnen und Kunden hier von besonders kurzen Wegen und einer schnellen Versorgung.",
-    facts:       ["Bezirk Hartberg-Fürstenfeld", "2–4 Tage Lieferzeit", "Ab 3 Tonnen", "Produktion direkt im Bezirk"],
+    facts:       ["Bezirk Hartberg-Fürstenfeld", "2–4 Tage Lieferzeit", "Ab 2 Tonnen", "Produktion direkt im Bezirk"],
     plzList:     ["8222", "8223", "8224", "8225", "8230", "8232", "8233", "8234", "8240", "8241", "8242", "8243", "8250", "8252", "8253", "8254", "8255", "8261", "8262", "8263", "8264", "8265", "8271", "8272", "8273", "8274", "8280", "8282", "8283", "8284", "8291", "8292", "8293", "8294", "8295"],
   },
   "suedoststeiermark": {
@@ -83,7 +83,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für die Südoststeiermark",
     intro:       "Von Feldbach über Bad Gleichenberg und Riegersburg bis Bad Radkersburg – Steirer Pellets liefert ENplus A1 Holzpellets lose in den gesamten Bezirk Südoststeiermark. Produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz, kommen die Pellets direkt per Tankwagen zu Ihnen.",
     highlight:   "In der Südoststeiermark spielen regionale Herkunft, persönlicher Service und eine planbare Heizsaison eine wichtige Rolle. Unsere Lieferung ist bequem und erspart das Hantieren mit Sackware.",
-    facts:       ["Bezirk Südoststeiermark", "3–5 Tage Lieferzeit", "Ab 3 Tonnen", "Thermenregion Steiermark"],
+    facts:       ["Bezirk Südoststeiermark", "3–5 Tage Lieferzeit", "Ab 2 Tonnen", "Thermenregion Steiermark"],
     plzList:     ["8330", "8331", "8332", "8333", "8334", "8341", "8342", "8343", "8344", "8345", "8350", "8353", "8354", "8355", "8361", "8362", "8380", "8382", "8383", "8384", "8385", "8490", "8491", "8492", "8493"],
   },
   "leoben": {
@@ -93,7 +93,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für den Bezirk Leoben",
     intro:       "Im Bezirk Leoben beliefern wir Haushalte und Betriebe in Leoben, Trofaiach, Niklasdorf, Eisenerz, St. Michael in der Obersteiermark und vielen weiteren Gemeinden. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und liefert ENplus A1 Pellets direkt per Tankwagen.",
     highlight:   "In der Obersteiermark rund um Leoben ist eine verlässliche Pelletversorgung für Einfamilienhäuser, Mehrparteienobjekte und gewerbliche Abnehmer besonders wichtig. Wir planen Lieferwochen transparent und beraten bei größeren Mengen.",
-    facts:       ["Bezirk Leoben komplett", "3–5 Tage Lieferzeit", "Ab 3 Tonnen", "Gewerbe- und Privatlieferung"],
+    facts:       ["Bezirk Leoben komplett", "3–5 Tage Lieferzeit", "Ab 2 Tonnen", "Gewerbe- und Privatlieferung"],
     plzList:     ["8700", "8701", "8712", "8713", "8714", "8720", "8724", "8731", "8732", "8733", "8734", "8740", "8741", "8742", "8750", "8753", "8755", "8756", "8770", "8773", "8775", "8782", "8783", "8784", "8785", "8786", "8790", "8792", "8793", "8794", "8795"],
   },
   "bruck-muerzzuschlag": {
@@ -103,7 +103,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für den Bezirk Bruck-Mürzzuschlag",
     intro:       "Von Bruck an der Mur über Kapfenberg und Kindberg bis Mürzzuschlag, Langenwang und Krieglach – wir liefern ENplus A1 Holzpellets lose in den gesamten Bezirk Bruck-Mürzzuschlag. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und bringt regionale Qualität direkt zu Ihnen.",
     highlight:   "Der Bezirk Bruck-Mürzzuschlag erstreckt sich über die obere Mur- und Mürzregion mit vielen Tälern und Höhenlagen. Gerade hier zählen pünktliche Lieferung, ausreichende Vorratshaltung und eine verlässliche Versorgung vor der Heizsaison.",
-    facts:       ["Bezirk Bruck-Mürzzuschlag", "3–5 Tage Lieferzeit", "Ab 3 Tonnen", "Mur- und Mürztal-Lieferung"],
+    facts:       ["Bezirk Bruck-Mürzzuschlag", "3–5 Tage Lieferzeit", "Ab 2 Tonnen", "Mur- und Mürztal-Lieferung"],
     plzList:     ["8600", "8605", "8611", "8612", "8613", "8614", "8616", "8621", "8622", "8623", "8624", "8625", "8630", "8632", "8634", "8635", "8636", "8641", "8642", "8643", "8644", "8650", "8652", "8653", "8654", "8655", "8661", "8662", "8663", "8664", "8665", "8670", "8671", "8672", "8673", "8674", "8680", "8682", "8684", "8685", "8691", "8692", "8693"],
   },
   "murtal": {
@@ -113,7 +113,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für das Murtal",
     intro:       "Im Murtal beliefern wir Haushalte und Betriebe in Judenburg, Knittelfeld, Zeltweg, Fohnsdorf, Spielberg und den umliegenden Gemeinden mit losen ENplus A1 Holzpellets. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und liefert per Tankwagen direkt in Ihren Pellettank.",
     highlight:   "Wer im Murtal Holzpellets kaufen will, achtet auf Zuverlässigkeit und faire Preise. Mit regionaler Produktion, persönlicher Abstimmung und planbaren Lieferwochen bieten wir eine solide Versorgung für die gesamte Region.",
-    facts:       ["Gesamtes Murtal", "3–5 Tage Lieferzeit", "Ab 3 Tonnen", "Gewerbe- und Privatkunden"],
+    facts:       ["Gesamtes Murtal", "3–5 Tage Lieferzeit", "Ab 2 Tonnen", "Gewerbe- und Privatkunden"],
     plzList:     ["8720", "8721", "8724", "8725", "8741", "8742", "8750", "8753", "8755", "8756", "8760", "8761", "8762", "8763", "8764", "8765", "8770", "8773", "8775", "8782", "8783", "8784", "8785", "8786"],
   },
   "murau": {
@@ -123,7 +123,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für den Bezirk Murau",
     intro:       "Im Bezirk Murau ist Heizen mit Holz seit jeher vertraut. Wir liefern ENplus A1 Holzpellets lose nach Murau, Oberwölz, Stadl an der Mur, Neumarkt in der Steiermark und in die umliegenden Gemeinden. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz.",
     highlight:   "Gerade in einer traditionsreichen Holzregion wie dem Bezirk Murau passen Pellets gut zum Wunsch nach erneuerbarer Wärme, regionaler Wertschöpfung und unabhängiger Energieversorgung.",
-    facts:       ["Bezirk Murau komplett", "4–6 Tage Lieferzeit", "Ab 3 Tonnen", "Holzregion Obersteiermark"],
+    facts:       ["Bezirk Murau komplett", "4–6 Tage Lieferzeit", "Ab 2 Tonnen", "Holzregion Obersteiermark"],
     plzList:     ["8800", "8811", "8812", "8813", "8820", "8822", "8823", "8831", "8832", "8833", "8834", "8842", "8843", "8844", "8850", "8851", "8852", "8853", "8854", "8861", "8862", "8863"],
   },
   "liezen": {
@@ -133,7 +133,7 @@ const REGION_CONTENT = {
     tagline:     "Lose Pellets für das Ennstal und den Bezirk Liezen",
     intro:       "Von Liezen über Schladming und Gröbming bis Bad Aussee und Rottenmann – wir liefern ENplus A1 Holzpellets lose in den gesamten Bezirk Liezen. Steirer Pellets produziert in Kooperation mit der Rubner Holzindustrie in Rohrbach a.d.Lafnitz und versorgt auch das Ennstal und das Ausseerland zuverlässig.",
     highlight:   "Ob Privathaus, Pension oder größeres Objekt im Ennstal: In Regionen mit längerer Heizperiode kommt es auf passende Mengen, saubere Befüllung und gut abgestimmte Liefertermine an. Genau dabei unterstützen wir Sie.",
-    facts:       ["Ennstal und Ausseerland", "4–6 Tage Lieferzeit", "Ab 3 Tonnen", "Ideal für Tourismusregion"],
+    facts:       ["Ennstal und Ausseerland", "4–6 Tage Lieferzeit", "Ab 2 Tonnen", "Ideal für Tourismusregion"],
     plzList:     ["8900", "8903", "8904", "8911", "8912", "8913", "8920", "8921", "8922", "8923", "8924", "8930", "8931", "8932", "8933", "8934", "8940", "8942", "8943", "8950", "8951", "8952", "8953", "8954", "8960", "8961", "8962", "8966", "8967", "8970", "8971", "8972", "8982", "8983", "8984", "8990", "8992", "8993"],
   },
   "eisenstadt": {

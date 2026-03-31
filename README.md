@@ -137,7 +137,7 @@ images/
 | Großlieferung | 398 €/t | Ab 4 Tonnen |
 | Kleinlieferung | 418 €/t | Unter 4 Tonnen |
 | Abschlauchgebühr | 58 € | Einmalig pro Lieferung |
-| Mindestbestellung | 3 Tonnen | – |
+| Mindestbestellung | 2 Tonnen | – |
 
 ---
 
