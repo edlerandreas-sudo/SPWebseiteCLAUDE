@@ -1,75 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Hauptseite -->
   <url>
     <loc>https://www.steirerpellets.at/</loc>
+    <priority>1.0</priority>
   </url>
+
+  <!-- Blog -->
   <url>
     <loc>https://www.steirerpellets.at/blog/</loc>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/blog/artikel.html?slug=pellets-richtig-lagern</loc>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/blog/artikel.html?slug=pellets-sommer-kaufen</loc>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/blog/artikel.html?slug=nachhaltigkeit-von-holzpellets</loc>
+    <priority>0.6</priority>
   </url>
+
+  <!-- Region: Steiermark (13 Bezirke) -->
   <url>
     <loc>https://www.steirerpellets.at/region/graz.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/region/graz-umgebung.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/koeflach.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/region/voitsberg.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/weiz.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/leoben.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/murtal.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/bruck-mur.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/muerzzuschlag.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/leibnitz.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/region/deutschlandsberg.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.steirerpellets.at/region/hartberg.html</loc>
+    <loc>https://www.steirerpellets.at/region/leibnitz.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.steirerpellets.at/region/fuerstenfeld.html</loc>
+    <loc>https://www.steirerpellets.at/region/weiz.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.steirerpellets.at/region/murau.html</loc>
-  </url>
-  <url>
-    <loc>https://www.steirerpellets.at/region/liezen.html</loc>
+    <loc>https://www.steirerpellets.at/region/hartberg-fuerstenfeld.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/region/suedoststeiermark.html</loc>
+    <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.steirerpellets.at/region/leoben.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/bruck-muerzzuschlag.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/murtal.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/murau.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/liezen.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Region: Burgenland (9 Bezirke) -->
+  <url>
+    <loc>https://www.steirerpellets.at/region/eisenstadt.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/eisenstadt-umgebung.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/rust.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/mattersburg.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/oberpullendorf.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/neusiedl-am-see.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/guessing.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/oberwart.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/jennersdorf.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Region: Kärnten (5 Bezirke) -->
+  <url>
+    <loc>https://www.steirerpellets.at/region/wolfsberg.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/voelkermarkt.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/sankt-veit-an-der-glan.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/klagenfurt.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/klagenfurt-land.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Region: Niederösterreich (5 Bezirke) -->
+  <url>
+    <loc>https://www.steirerpellets.at/region/baden.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/bruck-an-der-leitha.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/wiener-neustadt.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/moedling.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.steirerpellets.at/region/neunkirchen.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Rechtliches -->
+  <url>
     <loc>https://www.steirerpellets.at/impressum.html</loc>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/datenschutz.html</loc>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.steirerpellets.at/agb.html</loc>
+    <priority>0.3</priority>
   </url>
 </urlset>
