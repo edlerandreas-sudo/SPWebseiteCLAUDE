@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/data-store.php';
 
 $adminUser = '';
 $adminPassHash = '';
@@ -1670,7 +1671,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
 <script>
 'use strict';
 
-const CSRF_TOKEN = '<?php require_once __DIR__ . "/data-store.php"; echo sp_generate_csrf(); ?>';
+const CSRF_TOKEN = '<?php echo sp_generate_csrf(); ?>';
 
 // ══════════════════════════════════════════════
 // ══════════════════════════════════════════════
