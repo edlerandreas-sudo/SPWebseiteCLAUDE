@@ -1,0 +1,52 @@
+# ── Security Headers ──
+<IfModule mod_headers.c>
+  # Clickjacking-Schutz
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # MIME-Sniffing verhindern
+  Header always set X-Content-Type-Options "nosniff"
+
+  # XSS-Schutz (Legacy-Browser)
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Referrer nur Origin senden
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # HTTPS erzwingen (HSTS)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # Kamera, Mikrofon etc. einschraenken
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ── HTTPS erzwingen ──
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ── Directory Listing verhindern ──
+Options -Indexes
+
+# ── Sensible Dateien blockieren ──
+<FilesMatch "\.(json|lock|log|bak|sql|env)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ── .htaccess und .git blockieren ──
+<FilesMatch "^\.">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>

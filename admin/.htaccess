@@ -1,1 +1,38 @@
+# ── Admin-Bereich absichern ──
 DirectoryIndex index.php
+
+# Directory Listing verhindern
+Options -Indexes
+
+# Nur PHP-Dateien erlauben, alles andere blockieren
+<FilesMatch "\.(?!php$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# config.php direkt blockieren (darf nie per HTTP erreichbar sein)
+<Files "config.php">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</Files>
+
+# data-store.php direkt blockieren
+<Files "data-store.php">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</Files>

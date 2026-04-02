@@ -5,10 +5,53 @@
  * POST /api/newsletter.php  -> Speichert Subscriber + sendet Benachrichtigung via Web3Forms
  */
 
+// ── CORS ──
+header('Access-Control-Allow-Origin: https://www.steirerpellets.at');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
 require_once __DIR__ . '/../admin/data-store.php';
 
 define('WEB3FORMS_KEY', '8b18adc8-a507-499e-95a0-54c1485b341d');
+
+// ── Rate Limiting (max 3 Anmeldungen pro IP / 5 Min) ──
+function nl_check_rate_limit(): bool {
+    $rateFile = dirname(__DIR__) . '/data/nl_rate.json';
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    $now = time();
+    $window = 300; // 5 Minuten
+    $maxAttempts = 3;
+
+    $data = [];
+    if (is_file($rateFile)) {
+        $raw = file_get_contents($rateFile);
+        $data = json_decode($raw, true) ?: [];
+    }
+
+    // Alte Einträge bereinigen
+    foreach ($data as $k => $timestamps) {
+        $data[$k] = array_values(array_filter($timestamps, fn($t) => $t > $now - $window));
+        if (empty($data[$k])) unset($data[$k]);
+    }
+
+    // Prüfen
+    $attempts = $data[$ip] ?? [];
+    if (count($attempts) >= $maxAttempts) {
+        file_put_contents($rateFile, json_encode($data));
+        return false;
+    }
+
+    // Eintragen
+    $data[$ip][] = $now;
+    file_put_contents($rateFile, json_encode($data));
+    return true;
+}
 
 // ── Hilfsfunktionen ──
 function nl_read(): array {
@@ -44,6 +87,14 @@ function nl_notify_web3forms(string $email): bool {
 
 // ── POST: Neue Anmeldung ──
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Rate Limit prüfen
+    if (!nl_check_rate_limit()) {
+        http_response_code(429);
+        echo json_encode(['error' => 'Zu viele Anfragen. Bitte versuchen Sie es in einigen Minuten erneut.']);
+        exit;
+    }
+
     $input = json_decode(file_get_contents('php://input'), true);
     $email = trim($input['email'] ?? '');
 
