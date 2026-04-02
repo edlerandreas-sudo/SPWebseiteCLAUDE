@@ -1315,67 +1315,72 @@ textarea:focus-visible {
   height: auto;
 }
 .map-region {
-  fill: rgba(255,255,255,0.08);
-  stroke: rgba(255,255,255,0.25);
-  stroke-width: 1.5;
+  fill: rgba(255,255,255,0.06);
+  stroke: rgba(255,255,255,0.18);
+  stroke-width: 0.8;
   transition: fill 0.3s, stroke 0.3s;
 }
+.map-region.map-wien {
+  fill: rgba(255,255,255,0.12);
+  stroke: rgba(255,255,255,0.3);
+}
 .map-region.map-active {
-  fill: rgba(90,191,106,0.35);
-  stroke: var(--heart-green);
-  stroke-width: 2;
+  stroke: rgba(255,255,255,0.4);
+  stroke-width: 1.2;
 }
 .map-region.map-active:hover {
-  fill: rgba(90,191,106,0.55);
+  filter: brightness(1.3);
   cursor: pointer;
 }
-.map-active.map-stmk { fill: rgba(90,191,106,0.45); }
-.map-active.map-bgld { fill: rgba(90,191,106,0.3); }
-.map-active.map-ktn  { fill: rgba(90,191,106,0.3); }
-.map-active.map-noe  { fill: rgba(90,191,106,0.3); }
+.map-active.map-stmk { fill: #2E7D32; }
+.map-active.map-bgld { fill: #43A047; }
+.map-active.map-ktn  { fill: #66BB6A; }
+.map-active.map-noe  { fill: #81C784; }
 .map-marker-outer {
   fill: var(--amber);
-  opacity: 0.4;
+  opacity: 0.5;
   animation: map-pulse 2s ease infinite;
 }
 .map-marker-inner {
   fill: var(--amber);
 }
 @keyframes map-pulse {
-  0%, 100% { r: 8; opacity: 0.4; }
-  50% { r: 12; opacity: 0.15; }
+  0%, 100% { r: 6; opacity: 0.5; }
+  50% { r: 10; opacity: 0.15; }
 }
 .map-label-main {
   fill: #fff;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 700;
   font-family: inherit;
 }
 .map-label-sub {
   fill: var(--amber-light);
-  font-size: 8px;
+  font-size: 6.5px;
   font-weight: 500;
   font-family: inherit;
 }
 .map-label-state {
   fill: rgba(255,255,255,0.3);
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 600;
   font-family: inherit;
   text-anchor: middle;
 }
 .map-label-active {
-  fill: rgba(255,255,255,0.85);
-  font-size: 11px;
+  fill: #fff;
+  font-size: 9px;
   font-weight: 700;
   font-family: inherit;
   text-anchor: middle;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 .delivery-map-legend {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 16px 24px;
   margin-top: 16px;
+  flex-wrap: wrap;
 }
 .legend-item {
   display: flex;
@@ -1388,12 +1393,11 @@ textarea:focus-visible {
   width: 12px;
   height: 12px;
   border-radius: 3px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.15);
 }
-.legend-dot.active {
-  background: rgba(90,191,106,0.4);
-  border-color: var(--heart-green);
+.legend-dot.inactive {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
 }
 .legend-dot.marker {
   background: var(--amber);
