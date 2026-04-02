@@ -998,7 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.disabled = true;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet…';
 
-      let msg = 'Bitte prüfen Sie Ihr Postfach und bestätigen Sie Ihre Anmeldung.';
+      let msg = 'Vielen Dank! Sie wurden erfolgreich für unseren Newsletter angemeldet.';
       try {
         const res = await fetch('/api/newsletter.php', {
           method: 'POST',
@@ -1009,7 +1009,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.message) msg = data.message;
       } catch (_) {}
 
-      form.innerHTML = '<p class="newsletter-success"><i class="fas fa-envelope"></i> ' + msg + '</p>';
+      form.innerHTML = '<p class="newsletter-success"><i class="fas fa-check-circle"></i> ' + msg + '</p>';
     });
   });
 
