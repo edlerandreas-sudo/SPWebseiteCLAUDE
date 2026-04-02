@@ -206,6 +206,16 @@
           </a>
         </div>
 
+        <!-- Newsletter CTA -->
+        <div class="newsletter-hero">
+          <p class="newsletter-hero-text"><i class="fas fa-bell"></i> Verpasse keine Aktionen. Melde dich bequem bei unserem Newsletter an.</p>
+          <form class="newsletter-form" id="newsletterHeroForm">
+            <input type="email" placeholder="Ihre E-Mail-Adresse" required class="newsletter-input" />
+            <button type="submit" class="btn btn-amber"><i class="fas fa-paper-plane"></i> Anmelden</button>
+          </form>
+          <p class="newsletter-hint">Kein Spam. Jederzeit abmeldbar.</p>
+        </div>
+
         <!-- LKW-Bild freigestellt -->
         <div class="order-lkw-wrap">
           <img src="images/lkw-freigestellt.png" alt="Steirer Pellets Tankwagen" class="order-lkw" />
@@ -718,27 +728,69 @@
       <!-- Liefergebiet-Karte -->
       <div class="delivery-regions">
         <h3 class="delivery-regions-title"><i class="fas fa-map-marked-alt"></i> Unsere Liefergebiete</h3>
-        <div class="region-cards">
-          <div class="region-card">
-            <div class="region-card-icon"><i class="fas fa-mountain"></i></div>
-            <h4>Steiermark</h4>
-            <p>Gesamte Steiermark – unser Heimmarkt. Von Graz bis Leoben, von Liezen bis Leibnitz.</p>
-                      </div>
-          <div class="region-card">
-            <div class="region-card-icon"><i class="fas fa-city"></i></div>
-            <h4>Südl. Niederösterreich</h4>
-            <p>Niederösterreich südlich von Wien – Wiener Neustadt, Baden, Neunkirchen und Umgebung.</p>
-                      </div>
-          <div class="region-card">
-            <div class="region-card-icon"><i class="fas fa-sun"></i></div>
-            <h4>Burgenland</h4>
-            <p>Wir liefern in das gesamte Burgenland – von Nordburgenland bis Südburgenland.</p>
-                      </div>
-          <div class="region-card">
-            <div class="region-card-icon"><i class="fas fa-water"></i></div>
-            <h4>Ost-Kärnten</h4>
-            <p>Wolfsberg, Völkermarkt, Klagenfurt-Umgebung und der östliche Teil Kärntens.</p>
-                      </div>
+        <div class="delivery-map-wrap">
+          <div class="delivery-map" id="deliveryMap">
+            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" class="austria-map">
+              <!-- Vorarlberg -->
+              <path class="map-region" d="M32,195 L45,170 L60,165 L68,180 L65,200 L50,210 L35,208Z" />
+              <!-- Tirol -->
+              <path class="map-region" d="M68,180 L90,155 L130,140 L170,145 L200,160 L220,170 L210,195 L180,205 L150,200 L120,195 L90,200 L65,200Z" />
+              <!-- Salzburg -->
+              <path class="map-region" d="M220,170 L250,150 L280,145 L300,155 L310,180 L300,210 L270,220 L240,215 L210,195Z" />
+              <!-- Oberösterreich -->
+              <path class="map-region" d="M280,145 L310,120 L350,105 L390,100 L420,110 L430,140 L420,170 L390,180 L360,185 L330,185 L310,180 L300,155Z" />
+              <!-- Niederösterreich (nicht Liefergebiet) -->
+              <path class="map-region" d="M420,110 L460,80 L510,60 L560,55 L600,65 L620,90 L630,120 L620,155 L590,175 L560,185 L530,180 L500,175 L470,170 L440,170 L430,140Z" />
+              <!-- Niederösterreich Süd (Liefergebiet) -->
+              <path class="map-region map-active map-noe" d="M470,170 L500,175 L530,180 L560,185 L570,210 L555,230 L530,235 L500,230 L475,220 L460,200Z">
+                <title>Südl. Niederösterreich: Baden, Bruck/Leitha, Wr. Neustadt, Mödling, Neunkirchen</title>
+              </path>
+              <!-- Wien -->
+              <path class="map-region" d="M560,120 L575,115 L585,125 L580,140 L565,140Z" />
+              <!-- Burgenland (Liefergebiet) -->
+              <path class="map-region map-active map-bgld" d="M590,140 L610,135 L625,155 L635,180 L640,210 L635,250 L625,280 L610,305 L590,315 L575,300 L570,270 L565,240 L555,230 L570,210 L590,175Z">
+                <title>Burgenland: Alle 9 Bezirke</title>
+              </path>
+              <!-- Steiermark (Liefergebiet) -->
+              <path class="map-region map-active map-stmk" d="M310,180 L330,185 L360,185 L390,180 L420,170 L440,170 L460,200 L475,220 L500,230 L530,235 L555,230 L565,240 L570,270 L575,300 L560,320 L530,335 L500,340 L470,335 L440,325 L410,310 L380,295 L350,280 L330,260 L310,240 L300,210Z">
+                <title>Steiermark: Alle 13 Bezirke – unser Heimmarkt</title>
+              </path>
+              <!-- Kärnten (nicht Liefergebiet) -->
+              <path class="map-region" d="M150,200 L180,205 L210,195 L240,215 L270,220 L300,210 L310,240 L330,260 L320,280 L290,300 L260,310 L230,305 L200,290 L170,275 L150,255 L140,230Z" />
+              <!-- Ost-Kärnten (Liefergebiet) -->
+              <path class="map-region map-active map-ktn" d="M310,240 L330,260 L350,280 L380,295 L410,310 L440,325 L420,340 L390,345 L360,340 L330,330 L310,315 L290,300 L320,280Z">
+                <title>Ost-Kärnten: Wolfsberg, Völkermarkt, St. Veit, Klagenfurt, Klagenfurt-Land</title>
+              </path>
+              <!-- Standort-Marker Köflach -->
+              <circle cx="385" cy="255" r="8" class="map-marker-outer" />
+              <circle cx="385" cy="255" r="5" class="map-marker-inner" />
+              <text x="395" y="250" class="map-label-main">Köflach</text>
+              <text x="395" y="264" class="map-label-sub">Unser Standort</text>
+              <!-- Bundesland-Labels -->
+              <text x="50" y="195" class="map-label-state">V</text>
+              <text x="148" y="185" class="map-label-state">Tirol</text>
+              <text x="258" y="190" class="map-label-state">Sbg.</text>
+              <text x="365" y="145" class="map-label-state">OÖ</text>
+              <text x="510" y="130" class="map-label-state">NÖ</text>
+              <text x="568" y="132" class="map-label-state">W</text>
+              <text x="500" y="210" class="map-label-active">Südl. NÖ</text>
+              <text x="610" y="230" class="map-label-active">Bgld.</text>
+              <text x="420" y="275" class="map-label-active">Steiermark</text>
+              <text x="230" y="275" class="map-label-state">Kärnten</text>
+              <text x="350" y="315" class="map-label-active">Ost-Ktn.</text>
+            </svg>
+          </div>
+          <div class="delivery-map-legend">
+            <div class="legend-item legend-active"><span class="legend-dot active"></span> Liefergebiet</div>
+            <div class="legend-item"><span class="legend-dot"></span> Kein Liefergebiet</div>
+            <div class="legend-item legend-marker"><span class="legend-dot marker"></span> Standort Köflach</div>
+          </div>
+        </div>
+        <div class="delivery-map-details">
+          <div class="map-detail"><i class="fas fa-mountain"></i><div><strong>Steiermark</strong><span>Alle 13 Bezirke – unser Heimmarkt</span></div></div>
+          <div class="map-detail"><i class="fas fa-sun"></i><div><strong>Burgenland</strong><span>Alle 9 Bezirke</span></div></div>
+          <div class="map-detail"><i class="fas fa-water"></i><div><strong>Ost-Kärnten</strong><span>Wolfsberg, Völkermarkt, St. Veit, Klagenfurt, Klagenfurt-Land</span></div></div>
+          <div class="map-detail"><i class="fas fa-city"></i><div><strong>Südl. Niederösterreich</strong><span>Baden, Bruck/Leitha, Wr. Neustadt, Mödling, Neunkirchen</span></div></div>
         </div>
         <p class="region-hint"><i class="fas fa-info-circle"></i> Nicht sicher ob wir in Ihre Region liefern? <a href="tel:+436767060300">Rufen Sie uns an</a> – wir helfen gerne!</p>
       </div>
@@ -990,6 +1042,23 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER BOTTOM ===== -->
+  <section class="newsletter-bottom">
+    <div class="container">
+      <div class="newsletter-bottom-inner">
+        <div class="newsletter-bottom-text">
+          <h2><i class="fas fa-bell"></i> Verpasse keine Aktionen</h2>
+          <p>Melde dich bequem bei unserem Newsletter an und erhalte exklusive Angebote, Preis-Updates und Tipps rund um Pellets.</p>
+        </div>
+        <form class="newsletter-form newsletter-form-bottom" id="newsletterBottomForm">
+          <input type="email" placeholder="Ihre E-Mail-Adresse" required class="newsletter-input" />
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Anmelden</button>
+        </form>
+        <p class="newsletter-hint">Kein Spam. Jederzeit abmeldbar. Wir respektieren Ihre Daten.</p>
       </div>
     </div>
   </section>

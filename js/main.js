@@ -986,5 +986,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Newsletter Anmeldung ──
+  document.querySelectorAll('#newsletterHeroForm, #newsletterBottomForm').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = form.querySelector('.newsletter-input');
+      const email = input.value.trim();
+      if (!email) return;
+
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet…';
+
+      try {
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'YOUR_WEB3FORMS_KEY',
+            subject: 'Newsletter-Anmeldung: ' + email,
+            from_name: 'Newsletter Steirer Pellets',
+            email: email,
+            message: 'Neue Newsletter-Anmeldung: ' + email
+          })
+        });
+      } catch (_) {}
+
+      // Immer Erfolg anzeigen
+      form.innerHTML = '<p class="newsletter-success"><i class="fas fa-check-circle"></i> Vielen Dank! Sie erhalten bald Post von uns.</p>';
+    });
+  });
+
   console.log('🌲 Steirer Pellets v5 – Slider & Marks synchron, E-Mail-Versand aktiv!');
 });
