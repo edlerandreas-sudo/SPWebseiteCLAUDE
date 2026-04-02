@@ -1003,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            access_key: 'YOUR_WEB3FORMS_KEY',
+            access_key: '8b18adc8-a507-499e-95a0-54c1485b341d',
             subject: 'Newsletter-Anmeldung: ' + email,
             from_name: 'Newsletter Steirer Pellets',
             email: email,
