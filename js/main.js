@@ -986,8 +986,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Newsletter Anmeldung ──
-  document.querySelectorAll('#newsletterHeroForm, #newsletterBottomForm').forEach(form => {
+  // ── Newsletter Anmeldung (Double Opt-In) ──
+  document.querySelectorAll('#newsletterBottomForm').forEach(form => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const input = form.querySelector('.newsletter-input');
@@ -998,22 +998,18 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.disabled = true;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet…';
 
+      let msg = 'Bitte prüfen Sie Ihr Postfach und bestätigen Sie Ihre Anmeldung.';
       try {
-        await fetch('https://api.web3forms.com/submit', {
+        const res = await fetch('/api/newsletter.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            access_key: '8b18adc8-a507-499e-95a0-54c1485b341d',
-            subject: 'Newsletter-Anmeldung: ' + email,
-            from_name: 'Newsletter Steirer Pellets',
-            email: email,
-            message: 'Neue Newsletter-Anmeldung: ' + email
-          })
+          body: JSON.stringify({ email })
         });
+        const data = await res.json();
+        if (data.message) msg = data.message;
       } catch (_) {}
 
-      // Immer Erfolg anzeigen
-      form.innerHTML = '<p class="newsletter-success"><i class="fas fa-check-circle"></i> Vielen Dank! Sie erhalten bald Post von uns.</p>';
+      form.innerHTML = '<p class="newsletter-success"><i class="fas fa-envelope"></i> ' + msg + '</p>';
     });
   });
 

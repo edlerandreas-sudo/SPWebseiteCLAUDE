@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /data/
+Disallow: /api/
 
 Sitemap: https://www.steirerpellets.at/sitemap.xml
