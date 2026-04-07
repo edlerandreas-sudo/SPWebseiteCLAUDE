@@ -1926,7 +1926,6 @@ textarea:focus-visible {
   width: 100%;
   height: auto;
   display: block;
-  mix-blend-mode: screen;
 }
 .about-text p {
   font-size: 1.08rem;
