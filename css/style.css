@@ -1913,7 +1913,7 @@ textarea:focus-visible {
 /* ===== ÜBER UNS + INSTAGRAM ===== */
 .about-intro {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 520px 1fr;
   gap: 48px;
   align-items: center;
   margin-bottom: 56px;
