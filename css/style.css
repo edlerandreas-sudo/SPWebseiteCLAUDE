@@ -1913,48 +1913,22 @@ textarea:focus-visible {
 /* ===== ÜBER UNS + INSTAGRAM ===== */
 .about-intro {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 420px 1fr;
   gap: 48px;
-  align-items: start;
+  align-items: center;
   margin-bottom: 56px;
 }
 .about-photo {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/3;
   background: var(--green-pale);
 }
 .about-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-}
-.about-photo img[src*="placeholder"]:not([src$=".jpg"]),
-.about-photo img:not([src]) {
-  display: none;
-}
-.about-photo-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--green-logo);
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-.about-photo-placeholder i {
-  font-size: 3rem;
-  opacity: 0.5;
-}
-/* Hide placeholder when real image loads */
-.about-photo img[src$=".jpg"] + .about-photo-placeholder,
-.about-photo img[src$=".png"] + .about-photo-placeholder,
-.about-photo img[src$=".webp"] + .about-photo-placeholder {
-  display: none;
 }
 .about-text p {
   font-size: 1.08rem;
