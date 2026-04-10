@@ -952,7 +952,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('admin/api-discounts.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ redeem_code: activeDiscount.code })
+          body: JSON.stringify({ action: 'redeem', redeem_code: activeDiscount.code })
         }).catch(() => {});
       }
 

@@ -2759,9 +2759,10 @@ document.getElementById('discountForm')?.addEventListener('submit', async (e) =>
 
   try {
     const r = await fetch('api-discounts.php', {
-      method: 'PUT',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
       body: JSON.stringify({
+        action:           'save',
         code,
         label:            document.getElementById('dc_label').value.trim() || code,
         discount_percent: pct,
@@ -2789,9 +2790,9 @@ document.getElementById('discountForm')?.addEventListener('submit', async (e) =>
 
 async function toggleDiscount(code, active) {
   await fetch('api-discounts.php', {
-    method: 'PUT',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
-    body: JSON.stringify({ code, active })
+    body: JSON.stringify({ action: 'save', code, active })
   });
   loadDiscounts();
 }
@@ -2799,9 +2800,9 @@ async function toggleDiscount(code, active) {
 async function deleteDiscount(code) {
   if (!confirm(`Rabattcode "${code}" wirklich löschen?`)) return;
   await fetch('api-discounts.php', {
-    method: 'DELETE',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
-    body: JSON.stringify({ code })
+    body: JSON.stringify({ action: 'delete', code })
   });
   loadDiscounts();
 }
