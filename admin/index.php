@@ -2694,7 +2694,7 @@ async function loadDiscounts() {
   const list = document.getElementById('discountList');
   if (!list) return;
   try {
-    const r = await fetch('api-discounts.php', { headers: { 'X-CSRF-TOKEN': CSRF } });
+    const r = await fetch('api-discounts.php', { headers: { 'X-CSRF-TOKEN': CSRF_TOKEN } });
     const j = await r.json();
     const codes = j.data || [];
     if (!codes.length) {
@@ -2760,7 +2760,7 @@ document.getElementById('discountForm')?.addEventListener('submit', async (e) =>
   try {
     const r = await fetch('api-discounts.php', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
+      headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF_TOKEN },
       body: JSON.stringify({
         action:           'save',
         code,
@@ -2791,7 +2791,7 @@ document.getElementById('discountForm')?.addEventListener('submit', async (e) =>
 async function toggleDiscount(code, active) {
   await fetch('api-discounts.php', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
+    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF_TOKEN },
     body: JSON.stringify({ action: 'save', code, active })
   });
   loadDiscounts();
@@ -2801,7 +2801,7 @@ async function deleteDiscount(code) {
   if (!confirm(`Rabattcode "${code}" wirklich löschen?`)) return;
   await fetch('api-discounts.php', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
+    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF_TOKEN },
     body: JSON.stringify({ action: 'delete', code })
   });
   loadDiscounts();
