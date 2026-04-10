@@ -290,7 +290,24 @@
                   <span class="pc-item-label"><strong>Gesamtpreis</strong></span>
                   <span class="pc-item-val total-val" id="pcTotal">2.048 €</span>
                 </div>
+                <div class="pc-discount-row" id="pcDiscountRow" style="display:none">
+                  <span class="pc-item-label"><i class="fas fa-tag"></i> Rabatt (<span id="pcDiscountLabel">–</span>)</span>
+                  <span class="pc-item-val discount-val" id="pcDiscountVal">– 0 €</span>
+                </div>
+                <div class="pc-row total" id="pcTotalRowDiscounted" style="display:none">
+                  <span class="pc-item-label"><strong>Gesamtpreis mit Rabatt</strong></span>
+                  <span class="pc-item-val total-val" id="pcTotalDiscount">0 €</span>
+                </div>
                 <div class="pc-note">inkl. MwSt. · unverbindliche Schätzung</div>
+
+                <!-- Rabattcode-Eingabe -->
+                <div class="discount-input-wrap">
+                  <div class="discount-field">
+                    <input type="text" id="discountCode" placeholder="Rabattcode eingeben" maxlength="30" autocomplete="off" />
+                    <button type="button" id="discountApplyBtn" class="discount-apply-btn">Einlösen</button>
+                  </div>
+                  <div class="discount-status" id="discountStatus"></div>
+                </div>
               </div>
             </div>
 

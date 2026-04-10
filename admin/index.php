@@ -665,6 +665,9 @@ if (empty($_SESSION['sp_admin_auth'])) {
       <button class="nav-item active" data-panel="preise">
         <i class="fas fa-tag"></i> Preise
       </button>
+      <button class="nav-item" data-panel="rabattcodes">
+        <i class="fas fa-percent"></i> Rabattcodes
+      </button>
       <button class="nav-item" data-panel="artikel">
         <i class="fas fa-newspaper"></i> News-Artikel
       </button>
@@ -768,6 +771,73 @@ if (empty($_SESSION['sp_admin_auth'])) {
             <span id="preisSaveHint" style="font-size:0.8rem;color:var(--gray-400)"></span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ══ RABATTCODES ══ -->
+    <div class="section-panel" id="panel-rabattcodes">
+      <div class="page-header">
+        <div>
+          <h1><i class="fas fa-percent" style="color:var(--green);margin-right:8px"></i>Rabattcodes verwalten</h1>
+          <p>Erstellen und verwalten Sie Rabattcodes für das Bestellformular.</p>
+        </div>
+      </div>
+
+      <!-- Neuen Code erstellen -->
+      <div class="card" style="margin-bottom:24px">
+        <h3 style="margin:0 0 16px"><i class="fas fa-plus-circle"></i> Neuen Rabattcode erstellen</h3>
+        <form id="discountForm" autocomplete="off">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">Code *</label>
+              <input type="text" id="dc_code" placeholder="z.B. SOMMER25" required style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem;text-transform:uppercase" />
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">Bezeichnung</label>
+              <input type="text" id="dc_label" placeholder="z.B. Sommeraktion 2026" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">Rabatt in %</label>
+              <input type="number" id="dc_percent" placeholder="z.B. 5" min="0" max="100" step="0.5" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">oder Fixbetrag €</label>
+              <input type="number" id="dc_fixed" placeholder="z.B. 50" min="0" step="1" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">Max. Einlösungen</label>
+              <input type="number" id="dc_max" placeholder="0 = unbegrenzt" min="0" step="1" value="0" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">Min. Tonnen</label>
+              <input type="number" id="dc_min_menge" placeholder="0 = keine" min="0" step="1" value="0" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">Gültig ab</label>
+              <input type="date" id="dc_from" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+            </div>
+            <div>
+              <label style="display:block;font-weight:600;margin-bottom:4px;font-size:0.85rem">Gültig bis</label>
+              <input type="date" id="dc_to" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+            </div>
+            <div style="display:flex;align-items:end">
+              <button type="submit" class="btn" style="width:100%;padding:10px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer">
+                <i class="fas fa-plus"></i> Code erstellen
+              </button>
+            </div>
+          </div>
+        </form>
+        <div id="dcFormMsg" style="margin-top:8px;font-size:0.9rem"></div>
+      </div>
+
+      <!-- Liste bestehender Codes -->
+      <div class="card">
+        <h3 style="margin:0 0 16px"><i class="fas fa-list"></i> Bestehende Rabattcodes</h3>
+        <div id="discountList" style="font-size:0.9rem">Lade…</div>
       </div>
     </div>
 
@@ -2615,6 +2685,133 @@ document.getElementById('sendTestEmailBtn').addEventListener('click', async () =
   btn.disabled = false;
   btn.innerHTML = '<i class="fas fa-paper-plane"></i> Test-E-Mail senden an andreas.edler@bioenergie.at';
 });
+
+// ══════════════════════════════════════════════
+// RABATTCODES
+// ══════════════════════════════════════════════
+
+async function loadDiscounts() {
+  const list = document.getElementById('discountList');
+  if (!list) return;
+  try {
+    const r = await fetch('api-discounts.php', { headers: { 'X-CSRF-TOKEN': CSRF } });
+    const j = await r.json();
+    const codes = j.data || [];
+    if (!codes.length) {
+      list.innerHTML = '<p style="color:#999">Noch keine Rabattcodes erstellt.</p>';
+      return;
+    }
+    list.innerHTML = `
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="border-bottom:2px solid #e5e7eb;text-align:left">
+            <th style="padding:8px 6px">Code</th>
+            <th style="padding:8px 6px">Rabatt</th>
+            <th style="padding:8px 6px">Gültig</th>
+            <th style="padding:8px 6px">Eingelöst</th>
+            <th style="padding:8px 6px">Status</th>
+            <th style="padding:8px 6px">Aktionen</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${codes.map(c => {
+            const rabatt = c.discount_percent > 0 ? c.discount_percent + ' %' : c.discount_fixed + ' €';
+            const von = c.valid_from || '–';
+            const bis = c.valid_to || '–';
+            const used = c.max_uses > 0 ? `${c.used_count}/${c.max_uses}` : `${c.used_count || 0}/∞`;
+            const status = c.active
+              ? '<span style="color:#16a34a;font-weight:600"><i class="fas fa-check-circle"></i> Aktiv</span>'
+              : '<span style="color:#dc2626;font-weight:600"><i class="fas fa-times-circle"></i> Inaktiv</span>';
+            return `<tr style="border-bottom:1px solid #f3f4f6">
+              <td style="padding:10px 6px"><code style="background:#f3f4f6;padding:4px 8px;border-radius:4px;font-weight:700">${esc(c.code)}</code></td>
+              <td style="padding:10px 6px">${rabatt}</td>
+              <td style="padding:10px 6px;font-size:0.82rem">${esc(von)} – ${esc(bis)}</td>
+              <td style="padding:10px 6px">${used}</td>
+              <td style="padding:10px 6px">${status}</td>
+              <td style="padding:10px 6px">
+                <button onclick="toggleDiscount('${esc(c.code)}', ${!c.active})" style="background:none;border:none;cursor:pointer;color:#6b7280;font-size:0.85rem;margin-right:8px" title="${c.active ? 'Deaktivieren' : 'Aktivieren'}">
+                  <i class="fas fa-${c.active ? 'pause' : 'play'}"></i>
+                </button>
+                <button onclick="deleteDiscount('${esc(c.code)}')" style="background:none;border:none;cursor:pointer;color:#dc2626;font-size:0.85rem" title="Löschen">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>`;
+  } catch (e) {
+    list.innerHTML = '<p style="color:#dc2626">Fehler beim Laden der Rabattcodes.</p>';
+  }
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+document.getElementById('discountForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('dcFormMsg');
+  const code = document.getElementById('dc_code').value.trim().toUpperCase();
+  const pct  = parseFloat(document.getElementById('dc_percent').value) || 0;
+  const fix  = parseFloat(document.getElementById('dc_fixed').value) || 0;
+
+  if (!code) { msg.innerHTML = '<span style="color:#dc2626">Bitte Code eingeben.</span>'; return; }
+  if (pct <= 0 && fix <= 0) { msg.innerHTML = '<span style="color:#dc2626">Bitte Rabatt in % oder Fixbetrag angeben.</span>'; return; }
+
+  try {
+    const r = await fetch('api-discounts.php', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
+      body: JSON.stringify({
+        code,
+        label:            document.getElementById('dc_label').value.trim() || code,
+        discount_percent: pct,
+        discount_fixed:   fix,
+        max_uses:         parseInt(document.getElementById('dc_max').value) || 0,
+        min_menge:        parseInt(document.getElementById('dc_min_menge').value) || 0,
+        valid_from:       document.getElementById('dc_from').value || '',
+        valid_to:         document.getElementById('dc_to').value || '',
+        active:           true
+      })
+    });
+    if (r.ok) {
+      msg.innerHTML = '<span style="color:#16a34a"><i class="fas fa-check"></i> Rabattcode erstellt!</span>';
+      document.getElementById('discountForm').reset();
+      loadDiscounts();
+      setTimeout(() => msg.innerHTML = '', 3000);
+    } else {
+      const j = await r.json();
+      msg.innerHTML = `<span style="color:#dc2626">${j.error || 'Fehler'}</span>`;
+    }
+  } catch (e) {
+    msg.innerHTML = '<span style="color:#dc2626">Netzwerkfehler.</span>';
+  }
+});
+
+async function toggleDiscount(code, active) {
+  await fetch('api-discounts.php', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
+    body: JSON.stringify({ code, active })
+  });
+  loadDiscounts();
+}
+
+async function deleteDiscount(code) {
+  if (!confirm(`Rabattcode "${code}" wirklich löschen?`)) return;
+  await fetch('api-discounts.php', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF },
+    body: JSON.stringify({ code })
+  });
+  loadDiscounts();
+}
+
+// Initial laden wenn Panel sichtbar
+const dcObserver = new MutationObserver(() => {
+  const panel = document.getElementById('panel-rabattcodes');
+  if (panel && panel.classList.contains('active')) loadDiscounts();
+});
+dcObserver.observe(document.querySelector('.admin-main'), { subtree: true, attributes: true, attributeFilter: ['class'] });
 </script>
 </body>
 </html>

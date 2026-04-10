@@ -66,6 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const plzDropdown = document.getElementById('plzDropdown');
   const plzInfo     = document.getElementById('plzInfo');
 
+  // Rabattcode
+  const discountCodeInput = document.getElementById('discountCode');
+  const discountApplyBtn  = document.getElementById('discountApplyBtn');
+  const discountStatus    = document.getElementById('discountStatus');
+  const pcDiscountRow     = document.getElementById('pcDiscountRow');
+  const pcDiscountLabel   = document.getElementById('pcDiscountLabel');
+  const pcDiscountVal     = document.getElementById('pcDiscountVal');
+  const pcTotalRowDisc    = document.getElementById('pcTotalRowDiscounted');
+  const pcTotalDiscount   = document.getElementById('pcTotalDiscount');
+
+  // Rabatt-State
+  let activeDiscount = null; // { code, type, value, label }
+
   // Formular-Schritte
   const step1       = document.getElementById('step1');
   const step2       = document.getElementById('step2');
@@ -94,12 +107,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // HILFSFUNKTIONEN
   // ══════════════════════════════════════════════
 
-  function calcPrice(t) {
+  function calcPrice(t, discount) {
     const ton     = parseFloat(t);
     const preis   = ton >= 4 ? PREIS_GROSS : PREIS_KLEIN;
     const pellets = ton * preis;
     const gesamt  = pellets + ABSCHLAUCH;
-    return { ton, preis, pellets, gesamt };
+
+    let rabatt = 0;
+    if (discount) {
+      if (discount.type === 'percent') {
+        rabatt = Math.round(pellets * discount.value / 100);
+      } else {
+        rabatt = discount.value;
+      }
+    }
+    const gesamtRabatt = gesamt - rabatt;
+
+    return { ton, preis, pellets, gesamt, rabatt, gesamtRabatt };
   }
 
   function fmtEur(n) {
@@ -321,11 +345,24 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightMark(mengeMarks, t);
 
     // Live-Preisberechnung
-    const { ton, preis, pellets, gesamt } = calcPrice(t);
+    const { ton, preis, pellets, gesamt, rabatt, gesamtRabatt } = calcPrice(t, activeDiscount);
     if (pcPreisProT)   pcPreisProT.textContent   = preis;
     if (pcTonnen)      pcTonnen.textContent       = ton;
     if (pcPelletTotal) pcPelletTotal.textContent  = fmtEur(pellets);
     if (pcTotal)       pcTotal.textContent        = fmtEur(gesamt);
+
+    // Rabatt-Zeilen ein-/ausblenden
+    if (activeDiscount && rabatt > 0) {
+      if (pcDiscountRow)   pcDiscountRow.style.display = '';
+      if (pcTotalRowDisc)  pcTotalRowDisc.style.display = '';
+      if (pcDiscountLabel) pcDiscountLabel.textContent = activeDiscount.type === 'percent'
+        ? `${activeDiscount.value}%` : `${activeDiscount.value} € fix`;
+      if (pcDiscountVal)   pcDiscountVal.textContent = '– ' + fmtEur(rabatt);
+      if (pcTotalDiscount) pcTotalDiscount.textContent = fmtEur(gesamtRabatt);
+    } else {
+      if (pcDiscountRow)  pcDiscountRow.style.display = 'none';
+      if (pcTotalRowDisc) pcTotalRowDisc.style.display = 'none';
+    }
 
     // Quick-Rechner synchron halten (ohne Rekursion)
     syncQcToMenge(t);
@@ -336,6 +373,76 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('input', () => updateMenge(slider.value));
     updateMenge(slider.value); // Initialwert setzen
   }
+
+  // ══════════════════════════════════════════════
+  // RABATTCODE-VALIDIERUNG
+  // ══════════════════════════════════════════════
+
+  async function validateDiscount() {
+    const code = (discountCodeInput?.value || '').trim().toUpperCase();
+    if (!code) return;
+
+    const menge = parseInt(mengeInput?.value || slider?.value || 5, 10);
+    if (discountApplyBtn) {
+      discountApplyBtn.disabled = true;
+      discountApplyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    }
+
+    try {
+      const r = await fetch(`admin/api-discounts.php?code=${encodeURIComponent(code)}&menge=${menge}`);
+      const j = await r.json();
+
+      if (j.valid) {
+        activeDiscount = { code: j.code, type: j.discount.type, value: j.discount.value, label: j.label };
+        if (discountStatus) {
+          discountStatus.className = 'discount-status discount-ok';
+          const label = j.discount.type === 'percent' ? `${j.discount.value}% Rabatt` : `${j.discount.value} € Rabatt`;
+          discountStatus.innerHTML = `<i class="fas fa-check-circle"></i> ${escHtml(label)} angewendet`;
+        }
+        if (discountCodeInput) discountCodeInput.readOnly = true;
+        if (discountApplyBtn) {
+          discountApplyBtn.textContent = 'Entfernen';
+          discountApplyBtn.classList.add('discount-remove');
+          discountApplyBtn.onclick = removeDiscount;
+        }
+        updateMenge(mengeInput?.value || slider?.value || 5);
+      } else {
+        activeDiscount = null;
+        if (discountStatus) {
+          discountStatus.className = 'discount-status discount-err';
+          discountStatus.innerHTML = `<i class="fas fa-times-circle"></i> ${escHtml(j.error || 'Ungültiger Code')}`;
+        }
+        updateMenge(mengeInput?.value || slider?.value || 5);
+      }
+    } catch (_) {
+      if (discountStatus) {
+        discountStatus.className = 'discount-status discount-err';
+        discountStatus.innerHTML = '<i class="fas fa-times-circle"></i> Fehler bei der Prüfung.';
+      }
+    }
+
+    if (discountApplyBtn) {
+      discountApplyBtn.disabled = false;
+      if (!activeDiscount) discountApplyBtn.textContent = 'Einlösen';
+    }
+  }
+
+  function removeDiscount() {
+    activeDiscount = null;
+    if (discountCodeInput) { discountCodeInput.value = ''; discountCodeInput.readOnly = false; }
+    if (discountStatus) { discountStatus.className = 'discount-status'; discountStatus.innerHTML = ''; }
+    if (discountApplyBtn) {
+      discountApplyBtn.textContent = 'Einlösen';
+      discountApplyBtn.classList.remove('discount-remove');
+      discountApplyBtn.onclick = null;
+    }
+    updateMenge(mengeInput?.value || slider?.value || 5);
+  }
+
+  if (discountApplyBtn) discountApplyBtn.addEventListener('click', validateDiscount);
+  if (discountCodeInput) discountCodeInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); validateDiscount(); }
+  });
 
   // ══════════════════════════════════════════════
   // SCHNELLRECHNER (#preise)
@@ -653,10 +760,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!box) return;
     const t      = parseInt(mengeInput?.value || 5, 10);
     const kwStr  = lieferkw?.value || '–';
-    const { preis, pellets, gesamt } = calcPrice(t);
+    const { preis, pellets, gesamt, rabatt, gesamtRabatt } = calcPrice(t, activeDiscount);
     const plzVal = document.getElementById('plz')?.value || '';
     const ortVal = document.getElementById('ort')?.value || '';
     const strVal = document.getElementById('strasse')?.value || '';
+
+    const discountLine = activeDiscount && rabatt > 0
+      ? `<div class="summary-row summary-discount"><span><i class="fas fa-tag"></i> Rabatt (${escHtml(activeDiscount.label)})</span><strong>– ${fmtEur(rabatt)}</strong></div>`
+      : '';
+    const totalLabel = activeDiscount && rabatt > 0 ? 'Gesamtpreis mit Rabatt' : 'Geschätzter Gesamtpreis';
+    const totalValue = activeDiscount && rabatt > 0 ? gesamtRabatt : gesamt;
 
     box.innerHTML = `
       <div class="summary-title"><i class="fas fa-receipt"></i> Bestellübersicht</div>
@@ -666,7 +779,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="summary-divider"></div>
       <div class="summary-row"><span>Pellets (${preis} €/t × ${t} t)</span><strong>${fmtEur(pellets)}</strong></div>
       <div class="summary-row"><span>Abschlauchgebühr (einmalig)</span><strong>${ABSCHLAUCH} €</strong></div>
-      <div class="summary-row summary-total"><span><strong>Geschätzter Gesamtpreis</strong></span><strong class="summary-total-val">${fmtEur(gesamt)}</strong></div>
+      ${discountLine}
+      <div class="summary-row summary-total"><span><strong>${totalLabel}</strong></span><strong class="summary-total-val">${fmtEur(totalValue)}</strong></div>
       <div class="summary-note">inkl. MwSt. · unverbindliche Schätzung · Bestätigung per Telefon/E-Mail</div>
     `;
   }
@@ -677,7 +791,8 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const submitBtn = document.getElementById('submitBtn');
       const t = parseInt(mengeInput?.value || 5, 10);
-      const { preis, pellets, gesamt } = calcPrice(t);
+      const { preis, pellets, gesamt, rabatt, gesamtRabatt } = calcPrice(t, activeDiscount);
+      const finalPreis = activeDiscount && rabatt > 0 ? gesamtRabatt : gesamt;
       setOrderError('');
 
       if (submitBtn) {
@@ -697,8 +812,10 @@ document.addEventListener('DOMContentLoaded', () => {
         email:           document.getElementById('email')?.value,
         telefon:         document.getElementById('telefon')?.value,
         marketing_ok:    document.getElementById('marketing')?.checked ? 'Ja' : 'Nein',
-        gesamtpreis:     fmtEur(gesamt),
+        gesamtpreis:     fmtEur(finalPreis),
         preis_pro_tonne: preis + ' €/t',
+        rabattcode:      activeDiscount?.code || '',
+        rabatt_betrag:   activeDiscount && rabatt > 0 ? fmtEur(rabatt) : '',
         sent_at:         new Date().toLocaleString('de-AT')
       };
 
@@ -729,6 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `  Menge:         ${data.menge} Tonnen (lose)`,
             `  Lieferwoche:   ${data.lieferkw}`,
             `  Preis/Tonne:   ${data.preis_pro_tonne}`,
+            ...(data.rabattcode ? [`  Rabattcode:    ${data.rabattcode} (${data.rabatt_betrag})`] : []),
             `  Gesamtpreis:   ${data.gesamtpreis}`,
             ``,
             `📍 LIEFERADRESSE`,
@@ -757,6 +875,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Lieferwoche:     data.lieferkw,
             'Preis pro Tonne': data.preis_pro_tonne,
             Gesamtpreis:     data.gesamtpreis,
+            ...(data.rabattcode ? { Rabattcode: data.rabattcode, Rabatt: data.rabatt_betrag } : {}),
             Straße:          data.strasse,
             PLZ_Ort:         data.plz + ' ' + data.ort,
             Zufahrt:         data.zufahrt || '–',
@@ -828,6 +947,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      // ── Rabattcode einlösen (used_count hochzählen) ──
+      if (activeDiscount?.code) {
+        fetch('admin/api-discounts.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ redeem_code: activeDiscount.code })
+        }).catch(() => {});
+      }
+
       // ── Erfolgs-Anzeige ──
       const successSum = document.getElementById('successSummary');
       if (successSum) {
@@ -835,7 +963,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <p><i class="fas fa-fire" style="color:var(--green-logo);margin-right:6px"></i><strong>Menge:</strong> ${escHtml(String(t))} Tonnen lose</p>
           <p><i class="fas fa-calendar-week" style="color:var(--green-logo);margin-right:6px"></i><strong>Lieferwoche:</strong> ${escHtml(data.lieferkw || '')}</p>
           <p><i class="fas fa-map-marker-alt" style="color:var(--green-logo);margin-right:6px"></i><strong>Lieferort:</strong> ${escHtml(data.plz || '')} ${escHtml(data.ort || '')}, ${escHtml(data.strasse || '')}</p>
-          <p><i class="fas fa-receipt" style="color:var(--green-logo);margin-right:6px"></i><strong>Geschätzter Gesamtpreis:</strong> ${fmtEur(gesamt)}</p>
+          ${data.rabattcode ? `<p><i class="fas fa-tag" style="color:var(--green-logo);margin-right:6px"></i><strong>Rabattcode:</strong> ${escHtml(data.rabattcode)} (${escHtml(data.rabatt_betrag)})</p>` : ''}
+          <p><i class="fas fa-receipt" style="color:var(--green-logo);margin-right:6px"></i><strong>Geschätzter Gesamtpreis:</strong> ${fmtEur(finalPreis)}</p>
         `;
       }
 
@@ -851,6 +980,7 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.disabled  = false;
         }
         setOrderError('');
+        removeDiscount();
         hidePlzInfo();
         setPlzStatus('');
         currentPlzData = null;

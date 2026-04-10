@@ -2888,6 +2888,48 @@ textarea:focus-visible {
 .total-val { font-size: 1rem; color: var(--green-logo) !important; }
 .pc-note { font-size: 0.7rem; color: var(--gray-400); text-align: right; margin-top: 2px; }
 
+/* ─ Rabatt-Zeilen im Preisrechner ─ */
+.pc-discount-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 4px 0; color: var(--green-logo);
+}
+.pc-discount-row .discount-val { font-weight: 600; color: var(--green-logo); }
+
+/* ─ Rabattcode-Eingabe ─ */
+.discount-input-wrap {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--gray-200);
+}
+.discount-field {
+  display: flex; gap: 6px;
+}
+.discount-field input {
+  flex: 1; padding: 7px 10px; border: 1.5px solid var(--gray-200);
+  border-radius: 8px; font-size: 0.85rem; text-transform: uppercase;
+  background: var(--white); transition: border-color .2s;
+}
+.discount-field input:focus { border-color: var(--green-logo); outline: none; }
+.discount-field input[readonly] { background: var(--gray-50); color: var(--gray-500); }
+.discount-apply-btn {
+  padding: 7px 14px; border: none; border-radius: 8px;
+  background: var(--green-logo); color: var(--white);
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  white-space: nowrap; transition: background .2s;
+}
+.discount-apply-btn:hover { background: var(--green-dark); }
+.discount-apply-btn.discount-remove {
+  background: var(--gray-400);
+}
+.discount-apply-btn.discount-remove:hover { background: var(--gray-500); }
+.discount-status {
+  font-size: 0.78rem; margin-top: 5px; min-height: 1.2em;
+}
+.discount-ok { color: var(--green-logo); }
+.discount-err { color: #c0392b; }
+
+/* ─ Rabatt in Bestellübersicht ─ */
+.summary-discount { color: var(--green-logo); }
+
 /* ─ Kalenderwoche-Picker ─ */
 .kw-picker-wrap { display: flex; flex-direction: column; gap: 6px; }
 .kw-picker {
