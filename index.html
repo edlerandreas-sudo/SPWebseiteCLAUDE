@@ -156,8 +156,9 @@
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
         <a href="#bestellung" class="nav-cta-link"><i class="fas fa-shopping-cart"></i> Bestellen</a>
-        <a href="#preise">Preise</a>
+        <a href="#kundenstimmen">Kundenstimmen</a>
         <a href="#lieferung">Lieferung</a>
+        <a href="#preise">Preise</a>
         <a href="#produkt">Produkt</a>
         <a href="#vorteile">Vorteile</a>
         <a href="#herstellung">Herstellung</a>
@@ -463,90 +464,150 @@
       <div class="trust-item"><i class="fas fa-seedling"></i><span>Erneuerbarer Energieträger</span></div>
     </div>
   </section>
-
-  <!-- ===== PREISLISTE ===== -->
-  <section class="section section-light" id="preise">
+  <!-- ===== GOOGLE BEWERTUNGEN ===== -->
+  <section class="section" id="kundenstimmen">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Transparente Preise</span>
-        <h2 class="section-title">Aktuelle Pellets-Preise</h2>
-        <p class="section-subtitle">Alle Preise inkl. MwSt. · Lieferung per Tankwagen (Blasbefüllung) · direkt online kalkulieren und bestellen</p>
+        <span class="section-tag">Kundenstimmen</span>
+        <h2 class="section-title">Was unsere Kunden sagen</h2>
+        <p class="section-subtitle">Aus öffentlich sichtbaren Kundenrezensionen und Erfahrungsberichten zu Steirer Pellets.</p>
       </div>
 
-      <div class="price-table-wrap">
-        <div class="price-card best-price">
-          <div class="price-card-badge">Bestes Preis-Leistungs-Verhältnis</div>
-          <div class="price-card-icon"><i class="fas fa-truck-moving"></i></div>
-          <h3>Großlieferung</h3>
-          <p class="price-card-sub">Ab 4 Tonnen lose</p>
-          <div class="price-card-amount">
-            <span class="price-big price-big-gross">398 €</span>
-            <span class="price-per">/ Tonne</span>
+      <!-- Google Bewertungs-Badge + Widget -->
+      <div class="google-reviews-wrap">
+
+        <!-- Gesamt-Score links -->
+        <div class="google-score-card">
+          <div class="google-logo-row">
+            <svg class="google-logo-svg" viewBox="0 0 74 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.24 8.19v2.46h5.88c-.18 1.38-.64 2.39-1.34 3.1-.86.86-2.2 1.8-4.54 1.8-3.62 0-6.45-2.92-6.45-6.54s2.83-6.54 6.45-6.54c1.95 0 3.38.77 4.43 1.76L15.4 2.5C13.94 1.08 11.98 0 9.24 0 4.28 0 .11 4.04.11 9s4.17 9 9.13 9c2.68 0 4.7-.88 6.28-2.52 1.62-1.62 2.13-3.91 2.13-5.75 0-.57-.04-1.1-.13-1.54H9.24z" fill="#4285F4"/>
+              <path d="M25 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z" fill="#EA4335"/>
+              <path d="M53.58 7.49h-.09c-.57-.68-1.67-1.3-3.06-1.3C47.53 6.19 45 8.72 45 12c0 3.26 2.53 5.81 5.43 5.81 1.39 0 2.49-.62 3.06-1.32h.09v.81c0 2.22-1.19 3.41-3.1 3.41-1.56 0-2.53-1.12-2.93-2.07l-2.22.92c.64 1.54 2.33 3.43 5.15 3.43 2.99 0 5.52-1.76 5.52-6.05V6.49h-2.42v1zm-2.93 8.03c-1.76 0-3.1-1.5-3.1-3.52 0-2.05 1.34-3.52 3.1-3.52 1.74 0 3.1 1.5 3.1 3.54-.01 2.03-1.36 3.5-3.1 3.5z" fill="#4285F4"/>
+              <path d="M38 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z" fill="#FBBC05"/>
+              <path d="M58.78 .24h2.55v17.57h-2.55z" fill="#34A853"/>
+              <path d="M63.81 12.18c-.05-3.68 2.84-5.99 5.57-5.99 1.65 0 3.16.82 3.65 2.01l-8.61 3.57-.61-1.59zm9.33 2.56c-.59 1.63-2.38 2.57-3.78 2.57-1.27 0-2.35-.59-3.06-1.48l8.72-3.61-.44-1.06c-.8-2.17-2.89-3.97-5.67-3.97-3.42 0-6.19 2.72-6.19 5.81 0 3.26 2.74 5.81 6.19 5.81 2.85 0 4.51-1.74 5.2-2.76l-2-.13-.97.82z" fill="#EA4335"/>
+            </svg>
+            <span class="google-reviews-label">Bewertungen</span>
           </div>
-          <ul class="price-card-list">
-            <li><i class="fas fa-check"></i> Preis pro Tonne: <strong><span class="price-big-gross">398</span>,– €</strong></li>
-            <li><i class="fas fa-check"></i> Abschlauchgebühr: <strong><span class="price-abschlauch-val">58</span>,– €</strong> (einmalig)</li>
-            <li><i class="fas fa-check"></i> Beispiel 5 t: <strong>2.048,– €</strong></li>
-            <li><i class="fas fa-check"></i> Beispiel 10 t: <strong>4.038,– €</strong></li>
-            <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
-          </ul>
-          <a href="#bestellung" class="btn btn-primary btn-full">Preis berechnen & bestellen</a>
+          <div class="google-score-number">4.9</div>
+          <div class="google-stars-row">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="google-review-count">Basierend auf Google-Rezensionen</div>
+          <a href="https://www.google.com/maps/search/Steirer+Pellets+K%C3%B6flach" target="_blank" rel="noopener" class="google-all-reviews-btn" data-google-reviews-link>
+            <i class="fab fa-google"></i> Alle Google-Bewertungen
+          </a>
         </div>
 
-        <div class="price-card">
-          <div class="price-card-icon"><i class="fas fa-box"></i></div>
-          <h3>Kleinlieferung</h3>
-          <p class="price-card-sub">Unter 4 Tonnen lose</p>
-          <div class="price-card-amount">
-            <span class="price-big price-big-klein">418 €</span>
-            <span class="price-per">/ Tonne</span>
+        <!-- Karten-Grid -->
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:#4285F4">K</div>
+              <div>
+                <div class="reviewer-name">Kundenstimme</div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              </div>
+              <i class="fas fa-quote-right review-g-icon"></i>
+            </div>
+            <p class="review-text">„Von der Bestellung bis zur vereinbarten Lieferung hat alles bestens geklappt. Der Fahrer war besonders nett und sehr bemüht. Eine Firma, welche man nur empfehlen kann."</p>
+            <div class="review-meta">Öffentlich sichtbare Rezension zu Steirer Pellets</div>
           </div>
-          <ul class="price-card-list">
-            <li><i class="fas fa-check"></i> Preis pro Tonne: <strong><span class="price-big-klein">418</span>,– €</strong></li>
-            <li><i class="fas fa-check"></i> Abschlauchgebühr: <strong><span class="price-abschlauch-val">58</span>,– €</strong> (einmalig)</li>
-            <li><i class="fas fa-check"></i> Beispiel 2 t: <strong>894,– €</strong></li>
-            <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
-            <li><i class="fas fa-info-circle" style="color:var(--amber)"></i> Mindestbestellung: 2 Tonnen</li>
-          </ul>
-          <a href="#bestellung" class="btn btn-outline btn-full">Lieferpreis anfragen</a>
-        </div>
 
-        <div class="price-card price-info-card">
-          <div class="price-card-icon"><i class="fas fa-info-circle"></i></div>
-          <h3>Preishinweise</h3>
-          <div class="price-info-list">
-            <div class="price-info-item">
-              <i class="fas fa-blender"></i>
+          <div class="review-card review-card-featured">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:#EA4335">C</div>
               <div>
-                <strong>Abschlauchgebühr</strong>
-                <p>58,– € einmalig pro Lieferung – unabhängig von der Menge.</p>
+                <div class="reviewer-name">Christian aus Großpetersdorf</div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
               </div>
+              <i class="fas fa-quote-right review-g-icon"></i>
             </div>
-            <div class="price-info-item">
-              <i class="fas fa-map-marker-alt"></i>
+            <p class="review-text">„Angefangen bei der Bestellung: freundlich und kompetent obwohl ich meinen Liefertermin 3x verschieben musste - DANKE! Lieferung - pünktlich, Fahrer sehr freundlich und kompetent!"</p>
+            <div class="review-meta">Verifizierte Kundenbewertung, 3.000 kg lose Pellets</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar" style="background:#34A853">M</div>
               <div>
-                <strong>Liefergebiet</strong>
-                <p>Steiermark, südl. Niederösterreich, Burgenland &amp; Ost-Kärnten.</p>
+                <div class="reviewer-name">Michael aus Mörbisch</div>
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
               </div>
+              <i class="fas fa-quote-right review-g-icon"></i>
             </div>
-            <div class="price-info-item">
-              <i class="fas fa-calendar-alt"></i>
-              <div>
-                <strong>Preisgarantie</strong>
-                <p>Preise gelten zum Zeitpunkt der Bestellbestätigung durch uns.</p>
-              </div>
-            </div>
-            <div class="price-info-item">
-              <i class="fas fa-phone"></i>
-              <div>
-                <strong>Fragen?</strong>
-                <p>Ruf uns an: <a href="tel:+436767060300">0676 7060300</a></p>
-              </div>
-            </div>
+            <p class="review-text">„Vom ersten Telefonat an bis zur Lieferung wurden wir kompetent und freundlich beraten. Ein Kompliment an das ganze Team. MFG Familie O."</p>
+            <div class="review-meta">Öffentlich sichtbare Kundenstimme</div>
           </div>
         </div>
       </div>
 
+      <!-- CTA zur Google-Seite -->
+      <div class="google-cta-row">
+        <a href="https://www.google.com/maps/search/Steirer+Pellets+K%C3%B6flach" target="_blank" rel="noopener" class="btn btn-outline google-write-btn" data-google-write-link>
+          <i class="fab fa-google"></i> Bewertung auf Google schreiben
+        </a>
+        <span class="google-cta-hint">Teil deine Erfahrung – hilf anderen bei der Entscheidung.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== ÜBER UNS + INSTAGRAM ===== -->
+  <section class="section section-light" id="ueberuns">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Über uns</span>
+        <h2 class="section-title">Wir sind Steirer Pellets</h2>
+        <p class="section-subtitle">Wir sind ein lebensfrohes und motiviertes Team aus der Steiermark. Wie wir ticken und was unser Anspruch auf unser Produkt ist, erfährst du hier.</p>
+      </div>
+
+      <div class="about-intro">
+        <div class="about-insta-col">
+          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="about-insta-header">
+            <i class="fab fa-instagram"></i>
+            <span class="about-insta-header-text">Folge uns auf Instagram</span>
+            <span class="about-insta-header-handle">@steirerpellets</span>
+          </a>
+          <div class="about-insta-grid">
+          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
+            <img src="images/instagram/bild5.png" alt="Steirer Pellets Team beim Stadtfest" loading="lazy" />
+            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+          </a>
+          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
+            <img src="images/instagram/bild1.png" alt="Steirer Pellets Team beim Segeln" loading="lazy" />
+            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+          </a>
+          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
+            <img src="images/instagram/bild2.png" alt="Steirer Pellets Hüpfburg bei Familienevent" loading="lazy" />
+            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+          </a>
+          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
+            <img src="images/instagram/bild3.png" alt="Steirer Pellets in New York am Times Square" loading="lazy" />
+            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+          </a>
+          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
+            <img src="images/instagram/bild4.png" alt="Das Steirer Pellets Team beim Sportevent" loading="lazy" />
+            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+          </a>
+          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
+            <img src="images/instagram/bild6.png" alt="Steirer Pellets Einblick" loading="lazy" />
+            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
+          </a>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>Wärme heißt für uns: Verantwortung übernehmen. Verantwortung gegenüber der Natur, den Menschen in unserer Region und den Ressourcen, die wir nutzen. Deshalb setzen wir auf kurze Wege, volle Transparenz und hochwertige Pellets aus heimischem Holz.</p>
+          <p>Gemeinsam mit der <strong><a href="https://www.rubner.com" target="_blank" rel="noopener">Rubner Holzindustrie</a></strong> haben wir am Standort Rohrbach a.d. Lafnitz ein Pelletswerk geschaffen, das kompromisslos auf Regionalität und Effizienz setzt. Unsere Pellets entstehen direkt aus Sägenebenprodukten – ohne Umwege, ohne Zusatzstoffe, ohne leere Versprechen.</p>
+          <p>Unser Anspruch? Ehrliche Energie, auf die du dich verlassen kannst. Mit Qualität und regionaler Herkunft. Wärme, die passt – zu dir, deinem Zuhause und einer Zukunft, die wir gemeinsam gestalten.</p>
+          <div class="about-tags">
+            <span class="about-tag"><i class="fas fa-map-marker-alt"></i> Köflach, Steiermark</span>
+            <span class="about-tag"><i class="fas fa-industry"></i> Pelletswerk Rohrbach a.d. Lafnitz</span>
+            <span class="about-tag"><i class="fas fa-users"></i> Junges Team</span>
+            <span class="about-tag"><i class="fas fa-handshake"></i> Handschlagqualität</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -667,6 +728,92 @@
         <div class="delivery-info-item"><i class="fas fa-weight-hanging"></i><div><strong>Mindestbestellung</strong><span>2 Tonnen lose</span></div></div>
         <div class="delivery-info-item"><i class="fas fa-calendar-week"></i><div><strong>Lieferzeit</strong><span>Wunsch-Kalenderwoche wählen</span></div></div>
         <div class="delivery-info-item"><i class="fas fa-blender"></i><div><strong>Befüllmethode</strong><span>Blasbefüllung per Schlauch</span></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PREISLISTE ===== -->
+  <section class="section section-light" id="preise">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Transparente Preise</span>
+        <h2 class="section-title">Aktuelle Pellets-Preise</h2>
+        <p class="section-subtitle">Alle Preise inkl. MwSt. · Lieferung per Tankwagen (Blasbefüllung) · direkt online kalkulieren und bestellen</p>
+      </div>
+
+      <div class="price-table-wrap">
+        <div class="price-card best-price">
+          <div class="price-card-badge">Bestes Preis-Leistungs-Verhältnis</div>
+          <div class="price-card-icon"><i class="fas fa-truck-moving"></i></div>
+          <h3>Großlieferung</h3>
+          <p class="price-card-sub">Ab 4 Tonnen lose</p>
+          <div class="price-card-amount">
+            <span class="price-big price-big-gross">398 €</span>
+            <span class="price-per">/ Tonne</span>
+          </div>
+          <ul class="price-card-list">
+            <li><i class="fas fa-check"></i> Preis pro Tonne: <strong><span class="price-big-gross">398</span>,– €</strong></li>
+            <li><i class="fas fa-check"></i> Abschlauchgebühr: <strong><span class="price-abschlauch-val">58</span>,– €</strong> (einmalig)</li>
+            <li><i class="fas fa-check"></i> Beispiel 5 t: <strong>2.048,– €</strong></li>
+            <li><i class="fas fa-check"></i> Beispiel 10 t: <strong>4.038,– €</strong></li>
+            <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
+          </ul>
+          <a href="#bestellung" class="btn btn-primary btn-full">Preis berechnen & bestellen</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-icon"><i class="fas fa-box"></i></div>
+          <h3>Kleinlieferung</h3>
+          <p class="price-card-sub">Unter 4 Tonnen lose</p>
+          <div class="price-card-amount">
+            <span class="price-big price-big-klein">418 €</span>
+            <span class="price-per">/ Tonne</span>
+          </div>
+          <ul class="price-card-list">
+            <li><i class="fas fa-check"></i> Preis pro Tonne: <strong><span class="price-big-klein">418</span>,– €</strong></li>
+            <li><i class="fas fa-check"></i> Abschlauchgebühr: <strong><span class="price-abschlauch-val">58</span>,– €</strong> (einmalig)</li>
+            <li><i class="fas fa-check"></i> Beispiel 2 t: <strong>894,– €</strong></li>
+            <li><i class="fas fa-check"></i> ENplus A1 Qualität</li>
+            <li><i class="fas fa-info-circle" style="color:var(--amber)"></i> Mindestbestellung: 2 Tonnen</li>
+          </ul>
+          <a href="#bestellung" class="btn btn-outline btn-full">Lieferpreis anfragen</a>
+        </div>
+
+        <div class="price-card price-info-card">
+          <div class="price-card-icon"><i class="fas fa-info-circle"></i></div>
+          <h3>Preishinweise</h3>
+          <div class="price-info-list">
+            <div class="price-info-item">
+              <i class="fas fa-blender"></i>
+              <div>
+                <strong>Abschlauchgebühr</strong>
+                <p>58,– € einmalig pro Lieferung – unabhängig von der Menge.</p>
+              </div>
+            </div>
+            <div class="price-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>Liefergebiet</strong>
+                <p>Steiermark, südl. Niederösterreich, Burgenland &amp; Ost-Kärnten.</p>
+              </div>
+            </div>
+            <div class="price-info-item">
+              <i class="fas fa-calendar-alt"></i>
+              <div>
+                <strong>Preisgarantie</strong>
+                <p>Preise gelten zum Zeitpunkt der Bestellbestätigung durch uns.</p>
+              </div>
+            </div>
+            <div class="price-info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Fragen?</strong>
+                <p>Ruf uns an: <a href="tel:+436767060300">0676 7060300</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -835,174 +982,6 @@
     </div>
   </section>
 
-  <!-- ===== GOOGLE BEWERTUNGEN ===== -->
-  <section class="section" id="kundenstimmen">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Kundenstimmen</span>
-        <h2 class="section-title">Was unsere Kunden sagen</h2>
-        <p class="section-subtitle">Aus öffentlich sichtbaren Kundenrezensionen und Erfahrungsberichten zu Steirer Pellets.</p>
-      </div>
-
-      <!-- Google Bewertungs-Badge + Widget -->
-      <div class="google-reviews-wrap">
-
-        <!-- Gesamt-Score links -->
-        <div class="google-score-card">
-          <div class="google-logo-row">
-            <svg class="google-logo-svg" viewBox="0 0 74 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.24 8.19v2.46h5.88c-.18 1.38-.64 2.39-1.34 3.1-.86.86-2.2 1.8-4.54 1.8-3.62 0-6.45-2.92-6.45-6.54s2.83-6.54 6.45-6.54c1.95 0 3.38.77 4.43 1.76L15.4 2.5C13.94 1.08 11.98 0 9.24 0 4.28 0 .11 4.04.11 9s4.17 9 9.13 9c2.68 0 4.7-.88 6.28-2.52 1.62-1.62 2.13-3.91 2.13-5.75 0-.57-.04-1.1-.13-1.54H9.24z" fill="#4285F4"/>
-              <path d="M25 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z" fill="#EA4335"/>
-              <path d="M53.58 7.49h-.09c-.57-.68-1.67-1.3-3.06-1.3C47.53 6.19 45 8.72 45 12c0 3.26 2.53 5.81 5.43 5.81 1.39 0 2.49-.62 3.06-1.32h.09v.81c0 2.22-1.19 3.41-3.1 3.41-1.56 0-2.53-1.12-2.93-2.07l-2.22.92c.64 1.54 2.33 3.43 5.15 3.43 2.99 0 5.52-1.76 5.52-6.05V6.49h-2.42v1zm-2.93 8.03c-1.76 0-3.1-1.5-3.1-3.52 0-2.05 1.34-3.52 3.1-3.52 1.74 0 3.1 1.5 3.1 3.54-.01 2.03-1.36 3.5-3.1 3.5z" fill="#4285F4"/>
-              <path d="M38 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52 0-2.09 1.52-3.52 3.28-3.52s3.28 1.43 3.28 3.52c0 2.07-1.52 3.52-3.28 3.52z" fill="#FBBC05"/>
-              <path d="M58.78 .24h2.55v17.57h-2.55z" fill="#34A853"/>
-              <path d="M63.81 12.18c-.05-3.68 2.84-5.99 5.57-5.99 1.65 0 3.16.82 3.65 2.01l-8.61 3.57-.61-1.59zm9.33 2.56c-.59 1.63-2.38 2.57-3.78 2.57-1.27 0-2.35-.59-3.06-1.48l8.72-3.61-.44-1.06c-.8-2.17-2.89-3.97-5.67-3.97-3.42 0-6.19 2.72-6.19 5.81 0 3.26 2.74 5.81 6.19 5.81 2.85 0 4.51-1.74 5.2-2.76l-2-.13-.97.82z" fill="#EA4335"/>
-            </svg>
-            <span class="google-reviews-label">Bewertungen</span>
-          </div>
-          <div class="google-score-number">4.9</div>
-          <div class="google-stars-row">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="google-review-count">Basierend auf Google-Rezensionen</div>
-          <a href="https://www.google.com/maps/search/Steirer+Pellets+K%C3%B6flach" target="_blank" rel="noopener" class="google-all-reviews-btn" data-google-reviews-link>
-            <i class="fab fa-google"></i> Alle Google-Bewertungen
-          </a>
-        </div>
-
-        <!-- Karten-Grid -->
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="review-header">
-              <div class="reviewer-avatar" style="background:#4285F4">K</div>
-              <div>
-                <div class="reviewer-name">Kundenstimme</div>
-                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              </div>
-              <i class="fas fa-quote-right review-g-icon"></i>
-            </div>
-            <p class="review-text">„Von der Bestellung bis zur vereinbarten Lieferung hat alles bestens geklappt. Der Fahrer war besonders nett und sehr bemüht. Eine Firma, welche man nur empfehlen kann."</p>
-            <div class="review-meta">Öffentlich sichtbare Rezension zu Steirer Pellets</div>
-          </div>
-
-          <div class="review-card review-card-featured">
-            <div class="review-header">
-              <div class="reviewer-avatar" style="background:#EA4335">C</div>
-              <div>
-                <div class="reviewer-name">Christian aus Großpetersdorf</div>
-                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              </div>
-              <i class="fas fa-quote-right review-g-icon"></i>
-            </div>
-            <p class="review-text">„Angefangen bei der Bestellung: freundlich und kompetent obwohl ich meinen Liefertermin 3x verschieben musste - DANKE! Lieferung - pünktlich, Fahrer sehr freundlich und kompetent!"</p>
-            <div class="review-meta">Verifizierte Kundenbewertung, 3.000 kg lose Pellets</div>
-          </div>
-
-          <div class="review-card">
-            <div class="review-header">
-              <div class="reviewer-avatar" style="background:#34A853">M</div>
-              <div>
-                <div class="reviewer-name">Michael aus Mörbisch</div>
-                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              </div>
-              <i class="fas fa-quote-right review-g-icon"></i>
-            </div>
-            <p class="review-text">„Vom ersten Telefonat an bis zur Lieferung wurden wir kompetent und freundlich beraten. Ein Kompliment an das ganze Team. MFG Familie O."</p>
-            <div class="review-meta">Öffentlich sichtbare Kundenstimme</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA zur Google-Seite -->
-      <div class="google-cta-row">
-        <a href="https://www.google.com/maps/search/Steirer+Pellets+K%C3%B6flach" target="_blank" rel="noopener" class="btn btn-outline google-write-btn" data-google-write-link>
-          <i class="fab fa-google"></i> Bewertung auf Google schreiben
-        </a>
-        <span class="google-cta-hint">Teil deine Erfahrung – hilf anderen bei der Entscheidung.</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== ÜBER UNS + INSTAGRAM ===== -->
-  <section class="section section-light" id="ueberuns">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Über uns</span>
-        <h2 class="section-title">Wir sind Steirer Pellets</h2>
-        <p class="section-subtitle">Wir sind ein lebensfrohes und motiviertes Team aus der Steiermark. Wie wir ticken und was unser Anspruch auf unser Produkt ist, erfährst du hier.</p>
-      </div>
-
-      <div class="about-intro">
-        <div class="about-insta-col">
-          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="about-insta-header">
-            <i class="fab fa-instagram"></i>
-            <span class="about-insta-header-text">Folge uns auf Instagram</span>
-            <span class="about-insta-header-handle">@steirerpellets</span>
-          </a>
-          <div class="about-insta-grid">
-          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
-            <img src="images/instagram/bild5.png" alt="Steirer Pellets Team beim Stadtfest" loading="lazy" />
-            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
-          </a>
-          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
-            <img src="images/instagram/bild1.png" alt="Steirer Pellets Team beim Segeln" loading="lazy" />
-            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
-          </a>
-          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
-            <img src="images/instagram/bild2.png" alt="Steirer Pellets Hüpfburg bei Familienevent" loading="lazy" />
-            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
-          </a>
-          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
-            <img src="images/instagram/bild3.png" alt="Steirer Pellets in New York am Times Square" loading="lazy" />
-            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
-          </a>
-          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
-            <img src="images/instagram/bild4.png" alt="Das Steirer Pellets Team beim Sportevent" loading="lazy" />
-            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
-          </a>
-          <a href="https://www.instagram.com/steirerpellets/" target="_blank" rel="noopener" class="insta-item">
-            <img src="images/instagram/bild6.png" alt="Steirer Pellets Einblick" loading="lazy" />
-            <div class="insta-overlay"><i class="fab fa-instagram"></i></div>
-          </a>
-          </div>
-        </div>
-        <div class="about-text">
-          <p>Wärme heißt für uns: Verantwortung übernehmen. Verantwortung gegenüber der Natur, den Menschen in unserer Region und den Ressourcen, die wir nutzen. Deshalb setzen wir auf kurze Wege, volle Transparenz und hochwertige Pellets aus heimischem Holz.</p>
-          <p>Gemeinsam mit der <strong><a href="https://www.rubner.com" target="_blank" rel="noopener">Rubner Holzindustrie</a></strong> haben wir am Standort Rohrbach a.d. Lafnitz ein Pelletswerk geschaffen, das kompromisslos auf Regionalität und Effizienz setzt. Unsere Pellets entstehen direkt aus Sägenebenprodukten – ohne Umwege, ohne Zusatzstoffe, ohne leere Versprechen.</p>
-          <p>Unser Anspruch? Ehrliche Energie, auf die du dich verlassen kannst. Mit Qualität und regionaler Herkunft. Wärme, die passt – zu dir, deinem Zuhause und einer Zukunft, die wir gemeinsam gestalten.</p>
-          <div class="about-tags">
-            <span class="about-tag"><i class="fas fa-map-marker-alt"></i> Köflach, Steiermark</span>
-            <span class="about-tag"><i class="fas fa-industry"></i> Pelletswerk Rohrbach a.d. Lafnitz</span>
-            <span class="about-tag"><i class="fas fa-users"></i> Junges Team</span>
-            <span class="about-tag"><i class="fas fa-handshake"></i> Handschlagqualität</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== NEWSLETTER BOTTOM ===== -->
-  <section class="newsletter-bottom" id="newsletter">
-    <div class="container">
-      <div class="newsletter-bottom-inner">
-        <div class="newsletter-bottom-icon"><i class="fas fa-envelope-open-text"></i></div>
-        <h2>Pellets-News &amp; Preisalarm</h2>
-        <p>Erhalte exklusive Angebote, aktuelle Preise und Tipps rund ums Heizen mit Pellets direkt in dein Postfach.</p>
-        <form class="newsletter-form newsletter-form-bottom" id="newsletterBottomForm">
-          <input type="email" placeholder="Deine E-Mail-Adresse" required class="newsletter-input" />
-          <button type="submit" class="btn btn-green"><i class="fas fa-paper-plane"></i> Jetzt anmelden</button>
-        </form>
-        <p class="newsletter-hint"><i class="fas fa-shield-alt"></i> Kein Spam. Jederzeit abmeldbar. Wir respektieren deine Daten.</p>
-        <div class="newsletter-features">
-          <span><i class="fas fa-tag"></i> Preisalarme</span>
-          <span><i class="fas fa-percent"></i> Exklusive Rabatte</span>
-          <span><i class="fas fa-lightbulb"></i> Heiztipps</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== FAQ ===== -->
   <section class="section section-dark" id="faq">
     <div class="container">
@@ -1158,6 +1137,27 @@
             <a href="https://wa.me/436767060300" class="btn btn-primary btn-large" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp schreiben</a>
             <a href="tel:+436767060300" class="btn btn-outline btn-large"><i class="fas fa-phone"></i> 0676 7060300</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER BOTTOM ===== -->
+  <section class="newsletter-bottom" id="newsletter">
+    <div class="container">
+      <div class="newsletter-bottom-inner">
+        <div class="newsletter-bottom-icon"><i class="fas fa-envelope-open-text"></i></div>
+        <h2>Pellets-News &amp; Preisalarm</h2>
+        <p>Erhalte exklusive Angebote, aktuelle Preise und Tipps rund ums Heizen mit Pellets direkt in dein Postfach.</p>
+        <form class="newsletter-form newsletter-form-bottom" id="newsletterBottomForm">
+          <input type="email" placeholder="Deine E-Mail-Adresse" required class="newsletter-input" />
+          <button type="submit" class="btn btn-green"><i class="fas fa-paper-plane"></i> Jetzt anmelden</button>
+        </form>
+        <p class="newsletter-hint"><i class="fas fa-shield-alt"></i> Kein Spam. Jederzeit abmeldbar. Wir respektieren deine Daten.</p>
+        <div class="newsletter-features">
+          <span><i class="fas fa-tag"></i> Preisalarme</span>
+          <span><i class="fas fa-percent"></i> Exklusive Rabatte</span>
+          <span><i class="fas fa-lightbulb"></i> Heiztipps</span>
         </div>
       </div>
     </div>
