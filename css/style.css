@@ -1891,20 +1891,22 @@ textarea:focus-visible {
 /* ===== ÜBER UNS + INSTAGRAM ===== */
 .about-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: 340px 1fr;
+  gap: 56px;
+  align-items: center;
   margin-bottom: 0;
 }
 .about-insta-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
+  gap: 8px;
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow: visible;
 }
 .about-insta-grid .insta-item {
   aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .about-insta-grid .insta-item img {
   width: 100%;
@@ -1921,7 +1923,8 @@ textarea:focus-visible {
   color: white;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  border-radius: 10px;
   transition: var(--transition);
 }
 .about-insta-follow:hover { opacity: 0.9; transform: scale(1.03); }
@@ -2071,10 +2074,12 @@ textarea:focus-visible {
     gap: 28px;
   }
   .about-insta-grid {
-    max-width: 480px;
+    order: 2;
+    max-width: 400px;
     margin: 0 auto;
   }
   .about-text {
+    order: 1;
     text-align: center;
   }
   .about-tags {
