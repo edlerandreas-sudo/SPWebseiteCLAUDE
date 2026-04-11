@@ -1891,48 +1891,56 @@ textarea:focus-visible {
 /* ===== ÜBER UNS + INSTAGRAM ===== */
 .about-intro {
   display: grid;
-  grid-template-columns: 480px 1fr;
+  grid-template-columns: 560px 1fr;
   gap: 56px;
   align-items: center;
   margin-bottom: 0;
 }
+.about-insta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.about-insta-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  text-decoration: none;
+  border-radius: 14px 14px 0 0;
+  transition: var(--transition);
+}
+.about-insta-header:hover { opacity: 0.92; }
+.about-insta-header i {
+  font-size: 1.5rem;
+}
+.about-insta-header-text {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.about-insta-header-handle {
+  margin-left: auto;
+  font-size: 0.8rem;
+  opacity: 0.85;
+  font-weight: 500;
+}
 .about-insta-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  border-radius: var(--radius-lg);
-  overflow: visible;
+  gap: 4px;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
 }
 .about-insta-grid .insta-item {
   aspect-ratio: 1;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 0;
 }
 .about-insta-grid .insta-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.about-insta-follow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  border-radius: 10px;
-  transition: var(--transition);
-}
-.about-insta-follow:hover { opacity: 0.9; transform: scale(1.03); }
-.about-insta-follow i { font-size: 1.6rem; }
-.about-insta-handle {
-  font-size: 0.75rem;
-  font-weight: 500;
-  opacity: 0.85;
 }
 .about-text p {
   font-size: 1.08rem;
@@ -2073,9 +2081,9 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .about-insta-grid {
+  .about-insta-col {
     order: 2;
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto;
   }
   .about-text {
