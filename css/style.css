@@ -1891,7 +1891,7 @@ textarea:focus-visible {
 /* ===== ÜBER UNS + INSTAGRAM ===== */
 .about-intro {
   display: grid;
-  grid-template-columns: 520px 1fr;
+  grid-template-columns: 780px 1fr;
   gap: 48px;
   align-items: center;
   margin-bottom: 56px;
@@ -2045,7 +2045,7 @@ textarea:focus-visible {
     gap: 28px;
   }
   .about-photo {
-    max-width: 300px;
+    max-width: 450px;
     margin: 0 auto;
   }
   .about-text {
