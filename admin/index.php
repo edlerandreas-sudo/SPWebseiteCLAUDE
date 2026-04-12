@@ -926,6 +926,8 @@ if (empty($_SESSION['sp_admin_auth'])) {
                 <button onclick="fmtLink()"><i class="fas fa-link"></i> Link</button>
                 <button onclick="fmtHR()">― Trennlinie</button>
                 <button onclick="openImgDialog()" style="color:var(--green);font-weight:700"><i class="fas fa-image"></i> Bild</button>
+                <button onclick="fmtEmbed()" style="color:#E1306C;font-weight:700"><i class="fab fa-instagram"></i> Embed</button>
+                <button onclick="fmtPreisTag()" style="color:var(--amber);font-weight:700"><i class="fas fa-euro-sign"></i> Preis</button>
                 <button onclick="document.getElementById('contentEditor').innerHTML = ''" style="color:var(--red)"><i class="fas fa-trash"></i> Leeren</button>
               </div>
               <div id="contentEditor" contenteditable="true"></div>
@@ -1142,6 +1144,8 @@ if (empty($_SESSION['sp_admin_auth'])) {
                 <span>H3 = Kleine Überschrift</span>
                 <span>• Liste = Aufzählung</span>
                 <span>🖼️ Bild = Foto einfügen</span>
+                <span><i class="fab fa-instagram"></i> Embed = Social-Media-Beitrag einbetten</span>
+                <span>€ Preis = Aktuellen Preis einfügen (immer aktuell)</span>
               </div>
             </li>
             <li>
@@ -2405,6 +2409,24 @@ function fmtLink() {
 function fmtHR() {
   document.getElementById('contentEditor').focus();
   document.execCommand('insertHTML', false, '<hr/>');
+}
+function fmtEmbed() {
+  const code = prompt('Social-Media Embed-Code einfügen:\n(Instagram/Facebook/TikTok → Beitrag öffnen → „Einbetten" → Code kopieren)');
+  if (!code || !code.trim()) return;
+  const wrapper = '<div class="social-embed">' + code.trim() + '</div>';
+  document.getElementById('contentEditor').focus();
+  document.execCommand('insertHTML', false, wrapper);
+}
+function fmtPreisTag() {
+  const tags = {
+    '1': '{{preis_gross}}',
+    '2': '{{preis_klein}}',
+    '3': '{{abschlauch}}'
+  };
+  const choice = prompt('Welchen Preis einfügen?\n1 = Großlieferung (€/t)\n2 = Kleinlieferung (€/t)\n3 = Abschlauchgebühr (€)');
+  if (!choice || !tags[choice]) return;
+  document.getElementById('contentEditor').focus();
+  document.execCommand('insertHTML', false, '<strong>' + tags[choice] + '</strong>');
 }
 
 // ══════════════════════════════════════════════

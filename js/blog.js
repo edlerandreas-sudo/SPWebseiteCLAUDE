@@ -323,6 +323,12 @@ if (isArticlePage) {
 
   async function loadArticle() {
     try {
+      // Load prices for placeholder replacement
+      try {
+        const pRes = await fetch('../data/preise.json');
+        if (pRes.ok) window._spPreise = await pRes.json();
+      } catch (_) {}
+
       let all = [];
       try {
         const res  = await fetch('../data/blog_articles.json');
@@ -433,7 +439,34 @@ if (isArticlePage) {
       }
     }
 
-    body.innerHTML = art.content || '<p>Kein Inhalt verfügbar.</p>';
+    let articleHtml = art.content || '<p>Kein Inhalt verfügbar.</p>';
+
+    // Replace price placeholders with current values
+    if (window._spPreise) {
+      articleHtml = articleHtml
+        .replace(/\{\{preis_gross\}\}/g, window._spPreise.preis_gross + ',– €')
+        .replace(/\{\{preis_klein\}\}/g, window._spPreise.preis_klein + ',– €')
+        .replace(/\{\{abschlauch\}\}/g, window._spPreise.abschlauch + ',– €');
+    }
+
+    body.innerHTML = articleHtml;
+
+    // Activate social media embeds (Instagram, Facebook, TikTok)
+    body.querySelectorAll('.social-embed').forEach(el => {
+      const scripts = el.querySelectorAll('script');
+      scripts.forEach(orig => {
+        const s = document.createElement('script');
+        if (orig.src) s.src = orig.src;
+        else s.textContent = orig.textContent;
+        orig.replaceWith(s);
+      });
+    });
+    if (body.querySelector('.instagram-media') && !document.querySelector('script[src*="instagram.com/embed"]')) {
+      const s = document.createElement('script'); s.src = 'https://www.instagram.com/embed.js'; s.async = true; document.body.appendChild(s);
+    } else if (window.instgrm) { window.instgrm.Embeds.process(); }
+    if (body.querySelector('.fb-post, .fb-video') && !document.querySelector('script[src*="connect.facebook"]')) {
+      const s = document.createElement('script'); s.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v18.0'; s.async = true; s.defer = true; document.body.appendChild(s);
+    } else if (window.FB) { window.FB.XFBML.parse(body); }
 
     // Build TOC from h2s
     buildToc(body);

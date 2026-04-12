@@ -676,6 +676,16 @@
 }
 .article-text tr:nth-child(even) td { background: var(--gray-100); }
 
+/* ===== SOCIAL EMBEDS ===== */
+.social-embed {
+  margin: 28px 0;
+  max-width: 540px;
+}
+.social-embed iframe {
+  max-width: 100% !important;
+  border-radius: 12px;
+}
+
 /* ===== TOC ===== */
 .article-toc { display: flex; flex-direction: column; gap: 4px; }
 .toc-link {
