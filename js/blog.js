@@ -30,6 +30,7 @@ const catIcon = (cat) => {
     'Nachhaltigkeit':'fas fa-leaf',
     'Aktuell':       'fas fa-bolt',
     'Produkt':       'fas fa-box',
+    'Video':         'fas fa-video',
   };
   return icons[cat] || 'fas fa-newspaper';
 };
@@ -41,6 +42,7 @@ const catClass = (cat) => {
     'Nachhaltigkeit':'cat-nach',
     'Aktuell':       'cat-aktuell',
     'Produkt':       'cat-produkt',
+    'Video':         'cat-video',
   };
   return classes[cat] || 'cat-ratgeber';
 };
@@ -88,6 +90,23 @@ function getArticleImage(art) {
 }
 
 // ──────────────────────────────────────────────
+// VIDEO EMBED HELPER
+// ──────────────────────────────────────────────
+function getVideoEmbedUrl(url) {
+  if (!url) return null;
+  // YouTube
+  let m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]+)/);
+  if (m) return `https://www.youtube.com/embed/${m[1]}`;
+  // Instagram Reel / Post
+  m = url.match(/instagram\.com\/(reel|p)\/([\w-]+)/);
+  if (m) return `https://www.instagram.com/${m[1]}/${m[2]}/embed`;
+  // TikTok
+  m = url.match(/tiktok\.com\/@[\w.]+\/video\/(\d+)/);
+  if (m) return `https://www.tiktok.com/embed/v2/${m[1]}`;
+  return null;
+}
+
+// ──────────────────────────────────────────────
 // ARTICLE CARD HTML
 // ──────────────────────────────────────────────
 function renderCard(art) {
@@ -95,28 +114,40 @@ function renderCard(art) {
   const icon = catIcon(art.category);
   const img  = getArticleImage(art);
   const safeTitle = escHtml(art.title);
-  const headerContent = img
-    ? `<img src="${escHtml(img)}" alt="${safeTitle}" class="article-card-img" />`
-    : `<i class="${icon} article-card-icon"></i>`;
+  const videoEmbed = art.category === 'Video' ? getVideoEmbedUrl(art.video_url) : null;
+
+  let headerContent;
+  if (videoEmbed) {
+    headerContent = `<iframe src="${escHtml(videoEmbed)}" class="article-card-video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+  } else if (img) {
+    headerContent = `<img src="${escHtml(img)}" alt="${safeTitle}" class="article-card-img" />`;
+  } else {
+    headerContent = `<i class="${icon} article-card-icon"></i>`;
+  }
+
+  const cardTag = videoEmbed ? 'div' : 'a';
+  const cardHref = videoEmbed ? '' : ` href="${articleUrl(art)}"`;
+  const cardAria = videoEmbed ? '' : ` aria-label="${safeTitle}"`;
+
   return `
-    <a class="article-card" href="${articleUrl(art)}" aria-label="${safeTitle}">
-      <div class="article-card-header ${cc} ${img ? 'has-image' : ''}">
+    <${cardTag} class="article-card ${videoEmbed ? 'video-card' : ''}"${cardHref}${cardAria}>
+      <div class="article-card-header ${cc} ${img || videoEmbed ? 'has-image' : ''}">
         <span class="article-card-cat">${escHtml(art.category || 'Allgemein')}</span>
         ${headerContent}
       </div>
       <div class="article-card-body">
         <div class="article-card-meta">
           <span><i class="fas fa-calendar-alt"></i> ${fmt(art.published_at)}</span>
-          <span><i class="fas fa-clock"></i> ${art.reading_time || '–'} Min.</span>
+          ${!videoEmbed ? `<span><i class="fas fa-clock"></i> ${art.reading_time || '–'} Min.</span>` : ''}
         </div>
         <h2 class="article-card-title">${safeTitle}</h2>
         <p class="article-card-teaser">${escHtml(art.teaser)}</p>
         <div class="article-card-footer">
-          <span class="article-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></span>
+          ${videoEmbed ? `<a href="${articleUrl(art)}" class="article-card-link">Zum Artikel <i class="fas fa-arrow-right"></i></a>` : `<span class="article-card-link">Weiterlesen <i class="fas fa-arrow-right"></i></span>`}
           <span class="article-card-meta">${(art.tags || []).slice(0,2).map(t => `<span class="tag-pill" style="padding:2px 8px;font-size:0.7rem">${escHtml(t)}</span>`).join('')}</span>
         </div>
       </div>
-    </a>`;
+    </${cardTag}>`;
 }
 
 // ──────────────────────────────────────────────

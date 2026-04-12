@@ -865,6 +865,7 @@ if (empty($_SESSION['sp_admin_auth'])) {
               <option>Tipps &amp; Tricks</option>
               <option>Aktuell</option>
               <option>Produkt</option>
+              <option>Video</option>
             </select>
           </div>
         </div>
@@ -951,7 +952,13 @@ if (empty($_SESSION['sp_admin_auth'])) {
                 <option>Tipps &amp; Tricks</option>
                 <option>Aktuell</option>
                 <option>Produkt</option>
+                <option>Video</option>
               </select>
+            </div>
+            <div class="form-group" id="videoUrlGroup" style="margin-bottom:12px;display:none">
+              <label><i class="fas fa-video" style="color:var(--green);margin-right:4px"></i> Video-URL</label>
+              <input type="url" id="edVideoUrl" placeholder="https://www.youtube.com/watch?v=... oder Instagram/TikTok-URL" />
+              <p style="font-size:0.72rem;color:var(--gray-400);margin-top:4px">YouTube, Instagram oder TikTok Video-Link einfügen. Wird direkt in der Magazin-Übersicht abgespielt.</p>
             </div>
             <div class="form-group" style="margin-bottom:12px">
               <label>Autor</label>
@@ -2000,6 +2007,11 @@ let editingId = null;
 let editorTags = [];
 let inlineImageSrc = '';
 
+// Show/hide video URL field based on category
+document.getElementById('edKategorie').addEventListener('change', function() {
+  document.getElementById('videoUrlGroup').style.display = this.value === 'Video' ? 'block' : 'none';
+});
+
 function resetEditor() {
   editingId = null;
   editorTags = [];
@@ -2010,6 +2022,8 @@ function resetEditor() {
   document.getElementById('edTeaser').value = '';
   document.getElementById('contentEditor').innerHTML = '';
   document.getElementById('edKategorie').value = '';
+  document.getElementById('edVideoUrl').value = '';
+  document.getElementById('videoUrlGroup').style.display = 'none';
   document.getElementById('edAutor').value = 'Steirer Pellets Team';
   document.getElementById('edLesezeit').value = '5';
   document.getElementById('edFeatured').checked = false;
@@ -2040,6 +2054,8 @@ function editArtikel(id) {
   document.getElementById('edAutor').value      = art.author       || 'Steirer Pellets Team';
   document.getElementById('edLesezeit').value   = art.reading_time || 5;
   document.getElementById('edFeatured').checked = !!art.featured;
+  document.getElementById('edVideoUrl').value = art.video_url || '';
+  document.getElementById('videoUrlGroup').style.display = art.category === 'Video' ? 'block' : 'none';
   editorTags = Array.isArray(art.tags) ? [...art.tags] : [];
   renderTagChips();
   updateSlugPreview();
@@ -2460,6 +2476,7 @@ async function saveArtikel(publish) {
     featured:     document.getElementById('edFeatured').checked,
     tags:         editorTags,
     image:        imageVal,
+    video_url:    cat === 'Video' ? document.getElementById('edVideoUrl').value.trim() : '',
     slug,
     status:       publish ? 'published' : 'draft',
     published_at: publish ? (currentArtikel?.published_at || new Date().toISOString()) : (currentArtikel?.published_at || null),
