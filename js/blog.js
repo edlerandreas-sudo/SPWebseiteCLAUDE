@@ -96,13 +96,13 @@ function getVideoEmbedUrl(url) {
   if (!url) return null;
   // YouTube
   let m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]+)/);
-  if (m) return `https://www.youtube.com/embed/${m[1]}`;
+  if (m) return `https://www.youtube.com/embed/${m[1]}?autoplay=1&mute=1&loop=1&playlist=${m[1]}`;
   // Instagram Reel / Post
   m = url.match(/instagram\.com\/(reel|p)\/([\w-]+)/);
   if (m) return `https://www.instagram.com/${m[1]}/${m[2]}/embed`;
   // TikTok
   m = url.match(/tiktok\.com\/@[\w.]+\/video\/(\d+)/);
-  if (m) return `https://www.tiktok.com/embed/v2/${m[1]}`;
+  if (m) return `https://www.tiktok.com/embed/v2/${m[1]}?autoplay=1`;
   return null;
 }
 
