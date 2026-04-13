@@ -3,6 +3,29 @@
    Logo-Farbe: Dunkelgrün #1d6b28 / #0f4d18
    ============================================= */
 
+/* ===== CUSTOM FONTS ===== */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'League Spartan';
+  src: url('../fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Covered By Your Grace';
+  src: url('../fonts/CoveredByYourGrace-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Brand Grün (exakt aus Logo) */
   --green-logo:    #1d6b28;
@@ -47,8 +70,9 @@
   --transition:      all 0.3s cubic-bezier(0.4,0,0.2,1);
   --transition-slow: all 0.6s cubic-bezier(0.4,0,0.2,1);
 
-  --font-body:    'Inter', sans-serif;
-  --font-heading: 'Playfair Display', serif;
+  --font-body:    'Montserrat', 'Inter', sans-serif;
+  --font-heading: 'League Spartan', 'Inter', sans-serif;
+  --font-accent:  'Covered By Your Grace', cursive;
 }
 
 /* ===== RESET ===== */
@@ -869,8 +893,9 @@ textarea:focus-visible {
   display: inline-block;
   background: var(--green-pale);
   color: var(--green-logo);
-  padding: 6px 16px;
+  padding: 8px 18px;
   border-radius: var(--radius-full);
+  font-family: var(--font-accent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 1px;
