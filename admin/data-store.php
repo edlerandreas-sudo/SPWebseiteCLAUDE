@@ -22,8 +22,46 @@ function sp_write_json(string $file, $data): void {
     if (!is_dir($dir)) {
         mkdir($dir, 0775, true);
     }
-    file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+    // Backup before overwrite
+    if (is_file($path)) {
+        $backupDir = $dir . '/backups';
+        if (!is_dir($backupDir)) {
+            mkdir($backupDir, 0775, true);
+        }
+        copy($path, $backupDir . '/' . basename($file, '.json') . '_' . date('Y-m-d_H-i-s') . '.json');
+        // Keep only last 20 backups per file
+        $prefix = basename($file, '.json') . '_';
+        $backups = glob($backupDir . '/' . $prefix . '*.json');
+        if ($backups && count($backups) > 20) {
+            sort($backups);
+            foreach (array_slice($backups, 0, count($backups) - 20) as $old) {
+                @unlink($old);
+            }
+        }
+    }
+    file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), LOCK_EX);
 }
+
+/** Ensure essential data files exist (creates empty defaults if missing) */
+function sp_ensure_data_files(): void {
+    $defaults = [
+        'blog_articles.json' => '[]',
+        'preise.json'        => '{"id":"aktuell","preis_gross":398,"preis_klein":418,"abschlauch":58,"updated_at_label":""}',
+    ];
+    foreach ($defaults as $file => $content) {
+        $path = sp_data_path($file);
+        if (!is_file($path)) {
+            $dir = dirname($path);
+            if (!is_dir($dir)) {
+                mkdir($dir, 0775, true);
+            }
+            file_put_contents($path, $content, LOCK_EX);
+        }
+    }
+}
+
+// Auto-init on every include
+sp_ensure_data_files();
 
 function sp_json_response($data, int $status = 200): void {
     http_response_code($status);

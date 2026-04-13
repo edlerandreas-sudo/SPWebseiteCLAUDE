@@ -1,5 +1,6 @@
 admin/config.php
 data/*.json
+data/backups/
 .DS_Store
 .claude/
 Archiv.zip
