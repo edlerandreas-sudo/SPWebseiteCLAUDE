@@ -893,9 +893,8 @@ textarea:focus-visible {
   display: inline-block;
   background: var(--green-pale);
   color: var(--green-logo);
-  padding: 8px 18px;
+  padding: 6px 16px;
   border-radius: var(--radius-full);
-  font-family: var(--font-accent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 1px;
